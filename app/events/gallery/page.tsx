@@ -2,7 +2,7 @@
 
 import {useMemo, useState} from "react";
 import {useRouter} from "next/navigation";
-import {Camera, Calendar, MapPin, Users, Search, Filter, X, ChevronLeft, ChevronRight, ArrowRight} from "lucide-react";
+import {Camera, Calendar, MapPin, Users, Search, Filter, X, ChevronLeft, ChevronRight, ArrowRight, Grid3X3, List, ZoomIn, Heart, Share2, Download, Folder, Play, Image as ImageIcon} from "lucide-react";
 import {TopBar} from "@/components/top-bar";
 import {Navigation} from "@/components/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs"
@@ -10,7 +10,7 @@ import {Footer} from "@/components/footer";
 import { useLanguage } from "@/lib/i18n/context"
 import { translations } from "@/lib/i18n/translations"
 
-type Photo = {
+type MediaItem = {
     id: string;
     title: string;
     dateLabel: string;
@@ -20,6 +20,26 @@ type Photo = {
     participants: string;
     image: string;
     description: string;
+    likes: number;
+    downloads: number;
+    views: number;
+    type: 'photo' | 'video';
+    duration?: string; // for videos
+};
+
+type Album = {
+    id: string;
+    title: string;
+    description: string;
+    coverImage: string;
+    mediaCount: number;
+    photoCount: number;
+    videoCount: number;
+    dateLabel: string;
+    dateISO: string;
+    location: string;
+    category: string;
+    tags: string[];
 };
 
 export default function GalleryPage() {
@@ -29,144 +49,181 @@ export default function GalleryPage() {
     // Get translated content
     const galleryContent = translations[language].galleryPage
     
-    const photos: Photo[] = [
+    const albums: Album[] = [
+        {
+            id: "coastal-beauty",
+            title: "Coastal Beauty",
+            description: "Stunning coastline views and pristine beaches of Mannar Island",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 45,
+            photoCount: 38,
+            videoCount: 7,
+            dateLabel: "January 2024",
+            dateISO: "2024-01-31",
+            location: "Mannar Coastline",
+            category: "Environment",
+            tags: ["Beaches", "Sunset", "Waves", "Nature"]
+        },
+        {
+            id: "historical-heritage",
+            title: "Historical Heritage",
+            description: "Ancient forts, churches, and colonial architecture",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 32,
+            photoCount: 28,
+            videoCount: 4,
+            dateLabel: "December 2023",
+            dateISO: "2023-12-31",
+            location: "Mannar Town",
+            category: "Heritage",
+            tags: ["Fort", "Church", "Architecture", "History"]
+        },
+        {
+            id: "wildlife-nature",
+            title: "Wildlife & Nature",
+            description: "Flora, fauna, and natural landscapes of Mannar",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 28,
+            photoCount: 25,
+            videoCount: 3,
+            dateLabel: "November 2023",
+            dateISO: "2023-11-30",
+            location: "Mannar Region",
+            category: "Wildlife",
+            tags: ["Birds", "Donkeys", "Baobab", "Nature"]
+        },
+        {
+            id: "cultural-events",
+            title: "Cultural Events",
+            description: "Festivals, traditions, and community celebrations",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 36,
+            photoCount: 30,
+            videoCount: 6,
+            dateLabel: "October 2023",
+            dateISO: "2023-10-31",
+            location: "Mannar Town Center",
+            category: "Culture",
+            tags: ["Festival", "Dance", "Music", "Community"]
+        },
+        {
+            id: "local-life",
+            title: "Local Life",
+            description: "Daily life, markets, and traditional activities",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 41,
+            photoCount: 35,
+            videoCount: 6,
+            dateLabel: "September 2023",
+            dateISO: "2023-09-30",
+            location: "Mannar Villages",
+            category: "Community",
+            tags: ["Market", "Fishing", "Culture", "People"]
+        },
+        {
+            id: "landmarks",
+            title: "Landmarks",
+            description: "Iconic landmarks and significant locations",
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: 22,
+            photoCount: 20,
+            videoCount: 2,
+            dateLabel: "August 2023",
+            dateISO: "2023-08-31",
+            location: "Mannar District",
+            category: "Landmarks",
+            tags: ["Lighthouse", "Monuments", "Significant"]
+        }
+    ];
+
+    const mediaItems: MediaItem[] = [
         {
             id: "1",
-            title: galleryContent.photos[0].title,
-            dateLabel: galleryContent.photos[0].dateLabel,
+            title: "Mannar Island Beaches",
+            dateLabel: "January 15, 2024",
             dateISO: "2024-01-15",
-            location: galleryContent.photos[0].location,
-            category: galleryContent.categories.environment,
-            participants: galleryContent.photos[0].participants,
+            location: "Mannar Coastline",
+            category: "Environment",
+            participants: "Community Members",
             image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            description: galleryContent.photos[0].description,
+            description: "Pristine coastline of Mannar Island showcasing beautiful beaches with crystal clear waters and golden sands",
+            likes: 124,
+            downloads: 89,
+            views: 1567,
+            type: 'photo'
         },
         {
             id: "2",
-            title: galleryContent.photos[1].title,
-            dateLabel: galleryContent.photos[1].dateLabel,
+            title: "Historic Fort Mannar Tour",
+            dateLabel: "January 10, 2024",
             dateISO: "2024-01-10",
-            location: galleryContent.photos[1].location,
-            category: galleryContent.categories.youth,
-            participants: galleryContent.photos[1].participants,
-            image: "/historic-fort-mannar-sri-lanka-colonial-architectu.jpg",
-            description: galleryContent.photos[1].description,
+            location: "Mannar Fort",
+            category: "Heritage",
+            participants: "Tourists & Locals",
+            image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            description: "Guided tour through the colonial architecture and historical significance of Mannar Fort",
+            likes: 89,
+            downloads: 45,
+            views: 987,
+            type: 'video',
+            duration: "2:45"
         },
-        {
-            id: "3",
-            title: galleryContent.photos[2].title,
-            dateLabel: galleryContent.photos[2].dateLabel,
-            dateISO: "2024-01-01",
-            location: galleryContent.photos[2].location,
-            category: galleryContent.categories.events,
-            participants: galleryContent.photos[2].participants,
-            image: "/baobab-trees-mannar-sri-lanka-ancient-african-tree.jpg",
-            description: galleryContent.photos[2].description,
-        },
-        {
-            id: "4",
-            title: galleryContent.photos[3].title,
-            dateLabel: galleryContent.photos[3].dateLabel,
-            dateISO: "2023-12-20",
-            location: galleryContent.photos[3].location,
-            category: galleryContent.categories.council,
-            participants: galleryContent.photos[3].participants,
-            image: "/mannar-lighthouse-sri-lanka-historic-maritime-land.jpg",
-            description: galleryContent.photos[3].description,
-        },
-        {
-            id: "5",
-            title: galleryContent.photos[4].title,
-            dateLabel: galleryContent.photos[4].dateLabel,
-            dateISO: "2023-12-15",
-            location: galleryContent.photos[4].location,
-            category: galleryContent.categories.community,
-            participants: galleryContent.photos[4].participants,
-            image: "/st-sebastian-church-mannar-catholic-colonial-archi.jpg",
-            description: galleryContent.photos[4].description,
-        },
-        // {
-        //     id: "6",
-        //     title: galleryContent.photos[5].title,
-        //     dateLabel: galleryContent.photos[5].dateLabel,
-        //     dateISO: "2023-12-10",
-        //     location: galleryContent.photos[5].location,
-        //     category: galleryContent.categories.environment,
-        //     participants: galleryContent.photos[5].participants,
-        //     image: "/tree-planting-campaign-mannar-environmental-init.jpg",
-        //     description: galleryContent.photos[5].description,
-        // },
-        // {
-        //     id: "7",
-        //     title: galleryContent.photos[6].title,
-        //     dateLabel: galleryContent.photos[6].dateLabel,
-        //     dateISO: "2023-11-25",
-        //     location: galleryContent.photos[6].location,
-        //     category: galleryContent.categories.environment,
-        //     participants: galleryContent.photos[6].participants,
-        //     image: "/beach-restoration-project.jpg",
-        //     description: galleryContent.photos[6].description,
-        // },
-        // {
-        //     id: "8",
-        //     title: galleryContent.photos[7].title,
-        //     dateLabel: galleryContent.photos[7].dateLabel,
-        //     dateISO: "2023-11-15",
-        //     location: galleryContent.photos[7].location,
-        //     category: galleryContent.categories.events,
-        //     participants: galleryContent.photos[7].participants,
-        //     image: "/sports-festival.jpg",
-        //     description: galleryContent.photos[7].description,
-        // },
-        // {
-        //     id: "9",
-        //     title: galleryContent.photos[8].title,
-        //     dateLabel: galleryContent.photos[8].dateLabel,
-        //     dateISO: "2023-10-30",
-        //     location: galleryContent.photos[8].location,
-        //     category: galleryContent.categories.business,
-        //     participants: galleryContent.photos[8].participants,
-        //     image: "/business-expo.jpg",
-        //     description: galleryContent.photos[8].description,
-        // },
+        // Add more media items as needed...
     ];
 
-    // Extract unique categories
+    // State for current view
+    const [currentView, setCurrentView] = useState<'albums' | 'album-detail'>('albums');
+    const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
+
+    // Extract unique categories from albums
     const categories = useMemo(() => {
-        return Object.values(galleryContent.categories);
-    }, [galleryContent.categories]);
+        const uniqueCategories = [...new Set(albums.map(album => album.category))];
+        return uniqueCategories;
+    }, []);
 
     const [search, setSearch] = useState("");
-    const [sort, setSort] = useState<"latest" | "oldest">("latest");
+    const [sort, setSort] = useState<"latest" | "popular" | "name">("latest");
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [page, setPage] = useState(1);
     const [showFilters, setShowFilters] = useState(false);
-    const pageSize = 6;
+    const [viewMode, setViewMode] = useState<"grid" | "masonry">("grid");
+    const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+    const pageSize = 12;
 
-    const filteredAndSorted = useMemo(() => {
+    const filteredAndSortedAlbums = useMemo(() => {
         // Filter by search and categories
-        const filtered = photos.filter((photo) => {
+        const filtered = albums.filter((album) => {
             const matchesSearch =
                 search === "" ||
-                photo.title.toLowerCase().includes(search.toLowerCase()) ||
-                photo.location.toLowerCase().includes(search.toLowerCase()) ||
-                photo.category.toLowerCase().includes(search.toLowerCase());
+                album.title.toLowerCase().includes(search.toLowerCase()) ||
+                album.location.toLowerCase().includes(search.toLowerCase()) ||
+                album.category.toLowerCase().includes(search.toLowerCase()) ||
+                album.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase()));
 
-            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(photo.category);
+            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(album.category);
 
             return matchesSearch && matchesCategory;
         });
 
         // Sort
-        filtered.sort((a, b) =>
-            sort === "latest" ? b.dateISO.localeCompare(a.dateISO) : a.dateISO.localeCompare(b.dateISO)
-        );
+        filtered.sort((a, b) => {
+            switch (sort) {
+                case "latest":
+                    return b.dateISO.localeCompare(a.dateISO);
+                case "popular":
+                    return b.mediaCount - a.mediaCount;
+                case "name":
+                    return a.title.localeCompare(b.title);
+                default:
+                    return b.dateISO.localeCompare(a.dateISO);
+            }
+        });
         return filtered;
-    }, [search, sort, selectedCategories, photos]);
+    }, [search, sort, selectedCategories]);
 
-    const totalPages = Math.ceil(filteredAndSorted.length / pageSize);
+    const totalPages = Math.ceil(filteredAndSortedAlbums.length / pageSize);
     const start = (page - 1) * pageSize;
-    const visiblePhotos = filteredAndSorted.slice(start, start + pageSize);
+    const visibleAlbums = filteredAndSortedAlbums.slice(start, start + pageSize);
 
     const toggleCategory = (category: string) => {
         setSelectedCategories((prev) =>
@@ -181,12 +238,29 @@ export default function GalleryPage() {
         setPage(1);
     };
 
-    const handlePhotoClick = (id: string) => {
-        router.push(`/events/${id}`);
+    const handleAlbumClick = (album: Album) => {
+        setSelectedAlbum(album);
+        setCurrentView('album-detail');
+    };
+
+    const handleBackToAlbums = () => {
+        setCurrentView('albums');
+        setSelectedAlbum(null);
+    };
+
+    const handleMediaClick = (id: string) => {
+        router.push(`/gallery/${id}`);
+    };
+
+    const formatNumber = (num: number) => {
+        if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'k';
+        }
+        return num.toString();
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-primary/5">
             {/* Top Navigation */}
             <TopBar />
             <Navigation />
@@ -195,116 +269,186 @@ export default function GalleryPage() {
             <Breadcrumbs
                 items={[
                     { label: t.nav.home, href: "/" },
-                    { label: t.nav.events, href: "/events" },
-                    { label: t.nav.gallery },
+                    { label: t.nav.gallery, href: "/gallery" },
+                    ...(currentView === 'album-detail' && selectedAlbum ? [
+                        { label: selectedAlbum.title, href: `#` }
+                    ] : [])
                 ]}
             />
 
-            {/* Hero Section with HD Background */}
-            <section
-                className="relative py-20 bg-cover bg-center bg-no-repeat bg-fixed"
-                style={{
-                    backgroundImage: `url(${galleryContent.heroImage})`,
-                }}
-            >
-                <div className="absolute inset-0 bg-black/50"></div>
+            {/* Hero Section */}
+            <section className="relative py-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 overflow-hidden">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
+                
                 <div className="container mx-auto px-4 text-center relative z-10">
-                    <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-16 bg-[oklch(0.2_0.08_250)]/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <Camera className="w-8 h-8 text-white" />
+                    <div className="flex items-center justify-center mb-8">
+                        <div className="w-24 h-24 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-white/30">
+                            <Camera className="w-12 h-12 text-white" />
                         </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{galleryContent.title}</h1>
-                    <p className="text-xl text-gray-100 max-w-2xl mx-auto">
-                        {galleryContent.description}
+                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white to-primary/20 bg-clip-text text-transparent">
+                        {currentView === 'albums' ? 'Photo Gallery' : selectedAlbum?.title}
+                    </h1>
+                    <p className="text-xl text-primary/90 max-w-3xl mx-auto leading-relaxed">
+                        {currentView === 'albums' 
+                            ? 'Discover the breathtaking beauty, rich culture, and unique heritage of Mannar through our carefully curated albums'
+                            : selectedAlbum?.description
+                        }
                     </p>
+                    
+                    {currentView === 'album-detail' && selectedAlbum && (
+                        <div className="flex justify-center gap-8 mt-12">
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">{selectedAlbum.mediaCount}</div>
+                                <div className="text-primary/80">Total Media</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">{selectedAlbum.photoCount}</div>
+                                <div className="text-primary/80">Photos</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-white">{selectedAlbum.videoCount}</div>
+                                <div className="text-primary/80">Videos</div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
-            {/* Search & Filter Section */}
-            <section className="sticky top-16 z-10 bg-white shadow-sm py-6">
+            {/* Back Button for Album Detail View */}
+            {currentView === 'album-detail' && (
+                <section className="bg-white/80 backdrop-blur-xl py-6 border-b border-white/20">
+                    <div className="container mx-auto px-4">
+                        <button
+                            onClick={handleBackToAlbums}
+                            className="flex items-center gap-3 px-6 py-3 text-primary hover:text-primary/80 font-semibold transition-all duration-300 hover:bg-primary/10 rounded-2xl"
+                        >
+                            <ChevronLeft className="w-5 h-5" />
+                            Back to Albums
+                        </button>
+                    </div>
+                </section>
+            )}
+
+            {/* Controls Section */}
+            <section className="sticky top-16 z-20 bg-white/80 backdrop-blur-xl shadow-xl py-6 border-b border-white/20">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                    <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
                         {/* Search */}
-                        <div className="relative w-full md:w-2/5">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <div className="relative w-full lg:w-2/5">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                             <input
                                 type="text"
-                                placeholder={galleryContent.searchPlaceholder}
+                                placeholder={currentView === 'albums' 
+                                    ? "🔍 Search albums by title, location, or category..." 
+                                    : "🔍 Search media in this album..."
+                                }
                                 value={search}
                                 onChange={(e) => {
                                     setSearch(e.target.value);
                                     setPage(1);
                                 }}
-                                className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[oklch(0.2_0.08_250)] focus:border-[oklch(0.2_0.08_250)] focus:outline-none"
+                                className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 bg-white/50 focus:ring-3 focus:ring-primary/20 focus:border-primary focus:outline-none transition-all duration-300 shadow-sm"
                             />
                             {search && (
                                 <button
                                     onClick={() => setSearch("")}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
                             )}
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                            {/* View Mode Toggle */}
+                            <div className="flex bg-gray-100 rounded-xl p-1.5 border border-gray-200">
+                                <button
+                                    onClick={() => setViewMode("grid")}
+                                    className={`p-3 rounded-lg transition-all duration-300 ${
+                                        viewMode === "grid" 
+                                            ? "bg-white shadow-lg border border-gray-300" 
+                                            : "hover:bg-gray-200/50"
+                                    }`}
+                                >
+                                    <Grid3X3 className="w-5 h-5" />
+                                </button>
+                                <button
+                                    onClick={() => setViewMode("masonry")}
+                                    className={`p-3 rounded-lg transition-all duration-300 ${
+                                        viewMode === "masonry" 
+                                            ? "bg-white shadow-lg border border-gray-300" 
+                                            : "hover:bg-gray-200/50"
+                                    }`}
+                                >
+                                    <List className="w-5 h-5" />
+                                </button>
+                            </div>
+
                             {/* Sort */}
-                            <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-4 py-2.5">
-                                <span className="text-gray-700 font-medium whitespace-nowrap">{galleryContent.sortBy}:</span>
+                            <div className="flex items-center gap-3 bg-gray-100 rounded-xl px-4 py-3 border border-gray-200">
+                                <span className="text-gray-700 font-semibold whitespace-nowrap">Sort by:</span>
                                 <select
                                     value={sort}
                                     onChange={(e) => {
-                                        setSort(e.target.value as "latest" | "oldest");
+                                        setSort(e.target.value as "latest" | "popular" | "name");
                                         setPage(1);
                                     }}
-                                    className="bg-transparent border-none focus:ring-0 focus:outline-none"
+                                    className="bg-transparent border-none focus:ring-0 focus:outline-none font-medium"
                                 >
-                                    <option value="latest">{galleryContent.sortOptions.newest}</option>
-                                    <option value="oldest">{galleryContent.sortOptions.oldest}</option>
+                                    <option value="latest">Newest First</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="name">Alphabetical</option>
                                 </select>
                             </div>
 
-                            {/* Filter Toggle */}
-                            <button
-                                onClick={() => setShowFilters(!showFilters)}
-                                className="flex items-center gap-2 px-4 py-2.5 bg-[oklch(0.2_0.08_250)]/10 hover:bg-[oklch(0.2_0.08_250)]/20 text-[oklch(0.2_0.08_250)] rounded-lg transition-colors font-medium"
-                            >
-                                <Filter className="w-5 h-5" />
-                                <span>{galleryContent.filters}</span>
-                                {selectedCategories.length > 0 && (
-                                    <span className="bg-[oklch(0.2_0.08_250)] text-white text-sm rounded-full h-6 w-6 flex items-center justify-center">
-                                        {selectedCategories.length}
-                                    </span>
-                                )}
-                            </button>
+                            {/* Filter Toggle (only show for albums view) */}
+                            {currentView === 'albums' && (
+                                <button
+                                    onClick={() => setShowFilters(!showFilters)}
+                                    className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+                                >
+                                    <Filter className="w-5 h-5" />
+                                    <span>Filters</span>
+                                    {selectedCategories.length > 0 && (
+                                        <span className="bg-white text-primary text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+                                            {selectedCategories.length}
+                                        </span>
+                                    )}
+                                </button>
+                            )}
 
                             {/* Clear Filters */}
                             {(search || selectedCategories.length > 0) && (
                                 <button
                                     onClick={clearFilters}
-                                    className="flex items-center gap-2 px-4 py-2.5 text-gray-600 hover:text-[oklch(0.2_0.08_250)] transition-colors font-medium"
+                                    className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-primary transition-all duration-300 font-medium hover:bg-gray-100 rounded-xl"
                                 >
                                     <X className="w-5 h-5" />
-                                    <span>{galleryContent.clearFilters}</span>
+                                    <span>Clear All</span>
                                 </button>
                             )}
                         </div>
                     </div>
 
-                    {/* Category Filters */}
-                    {showFilters && (
-                        <div className="mt-6 pt-6 border-t border-gray-200">
-                            <h3 className="text-lg font-medium text-gray-700 mb-4">{galleryContent.filterByCategory}</h3>
+                    {/* Category Filters (only show for albums view) */}
+                    {showFilters && currentView === 'albums' && (
+                        <div className="mt-8 pt-8 border-t border-gray-200/50">
+                            <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                                <Filter className="w-6 h-6 text-primary" />
+                                Filter by Category
+                            </h3>
                             <div className="flex flex-wrap gap-3">
                                 {categories.map((category) => (
                                     <button
                                         key={category}
                                         onClick={() => toggleCategory(category)}
-                                        className={`px-4 py-2 rounded-full font-medium transition-all ${
+                                        className={`px-5 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                                             selectedCategories.includes(category)
-                                                ? "bg-[oklch(0.2_0.08_250)] text-white shadow-md"
-                                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                                ? "bg-gradient-to-r from-primary to-primary/80 text-white shadow-2xl"
+                                                : "bg-white text-gray-700 shadow-lg hover:shadow-xl border border-gray-200"
                                         }`}
                                     >
                                         {category}
@@ -316,71 +460,225 @@ export default function GalleryPage() {
                 </div>
             </section>
 
-            {/* Photo Gallery */}
-            <section className="py-12">
+            {/* Content Section */}
+            <section className="py-16">
                 <div className="container mx-auto px-4">
                     {/* Results Count */}
-                    <div className="mb-8 flex justify-between items-center">
-                        <p className="text-gray-600">
-                            {galleryContent.showing.replace('{count}', visiblePhotos.length.toString()).replace('{total}', filteredAndSorted.length.toString())}
-                        </p>
+                    <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <p className="text-lg text-gray-600">
+                                {currentView === 'albums' ? (
+                                    <>
+                                        Showing <span className="font-bold text-primary">{visibleAlbums.length}</span> of{" "}
+                                        <span className="font-bold text-gray-800">{filteredAndSortedAlbums.length}</span> curated albums
+                                    </>
+                                ) : (
+                                    <>
+                                        Showing <span className="font-bold text-primary">{mediaItems.length}</span> media items in{" "}
+                                        <span className="font-bold text-gray-800">{selectedAlbum?.title}</span>
+                                    </>
+                                )}
+                            </p>
+                            {(search || selectedCategories.length > 0) && currentView === 'albums' && (
+                                <p className="text-sm text-gray-500 mt-1">
+                                    Filtered by: {search && `"${search}"`} {selectedCategories.length > 0 && `${selectedCategories.join(", ")}`}
+                                </p>
+                            )}
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <div className="text-sm text-gray-500 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-gray-200">
+                                Page <span className="font-bold text-primary">{page}</span> of <span className="font-bold">{totalPages}</span>
+                            </div>
+                        </div>
                     </div>
 
-                    {visiblePhotos.length === 0 ? (
-                        <div className="text-center py-16">
-                            <Camera className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                            <h3 className="text-xl font-medium text-gray-700 mb-2">{galleryContent.noEvents}</h3>
-                            <p className="text-gray-500 mb-6">{galleryContent.tryAdjusting}</p>
-                            <button
-                                onClick={clearFilters}
-                                className="px-6 py-3 bg-[oklch(0.2_0.08_250)] text-white rounded-lg hover:bg-[oklch(0.2_0.08_250)]/90 transition-colors font-medium"
-                            >
-                                {galleryContent.clearAllFilters}
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {visiblePhotos.map((photo) => (
-                                <div
-                                    key={photo.id}
-                                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group border border-gray-100"
-                                    onClick={() => handlePhotoClick(photo.id)}
+                    {/* Albums View */}
+                    {currentView === 'albums' ? (
+                        visibleAlbums.length === 0 ? (
+                            <div className="text-center py-24">
+                                <div className="w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                                    <Folder className="w-16 h-16 text-primary" />
+                                </div>
+                                <h3 className="text-3xl font-bold text-gray-800 mb-4">No albums found</h3>
+                                <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                                    We couldn't find any albums matching your criteria. Try adjusting your search or filters.
+                                </p>
+                                <button
+                                    onClick={clearFilters}
+                                    className="px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white rounded-2xl hover:from-primary/90 hover:to-primary transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
                                 >
-                                    <div className="aspect-video overflow-hidden relative">
-                                        <div
-                                            className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                                            style={{
-                                                backgroundImage: `url(${photo.image})`,
-                                            }}
-                                        >
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                                                <span className="inline-block px-3 py-1.5 bg-[oklch(0.2_0.08_250)] text-white rounded-full text-sm font-medium">
-                                                    {photo.category}
+                                    Clear All Filters
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {visibleAlbums.map((album) => (
+                                    <div
+                                        key={album.id}
+                                        className="group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer border border-white/20"
+                                        onMouseEnter={() => setHoveredCard(album.id)}
+                                        onMouseLeave={() => setHoveredCard(null)}
+                                        onClick={() => handleAlbumClick(album)}
+                                    >
+                                        {/* Album Cover */}
+                                        <div className="aspect-video overflow-hidden relative">
+                                            <img
+                                                src={album.coverImage}
+                                                alt={album.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            
+                                            {/* Gradient Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                            
+                                            {/* Media Type Badges */}
+                                            <div className="absolute top-4 left-4 flex gap-2">
+                                                <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                    <ImageIcon className="w-3 h-3" />
+                                                    {album.photoCount}
                                                 </span>
-                                                <div className="flex items-center gap-2 text-white text-sm font-medium">
-                                                    {galleryContent.viewDetails}
-                                                    <ArrowRight className="w-4 h-4" />
+                                                <span className="px-3 py-1 bg-red-500 text-white rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                    <Play className="w-3 h-3" />
+                                                    {album.videoCount}
+                                                </span>
+                                            </div>
+
+                                            {/* Hover Action */}
+                                            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                                <div className="flex items-center gap-2 text-white font-semibold">
+                                                    View Album
+                                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-2 text-gray-500 mb-3">
-                                            <Calendar className="w-5 h-5" />
-                                            <span>{photo.dateLabel}</span>
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2 group-hover:text-[oklch(0.2_0.08_250)] transition-colors">
-                                            {photo.title}
-                                        </h3>
-                                        <p className="text-gray-600 mb-5 line-clamp-2">{photo.description}</p>
-                                        <div className="space-y-2 text-gray-500">
-                                            <div className="flex items-center gap-2">
-                                                <MapPin className="w-5 h-5" />
-                                                <span className="truncate">{photo.location}</span>
+                                        
+                                        {/* Album Info */}
+                                        <div className="p-6">
+                                            <h3 className="font-bold text-gray-800 text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                                {album.title}
+                                            </h3>
+                                            <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+                                                {album.description}
+                                            </p>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                    <Calendar className="w-4 h-4" />
+                                                    <span>{album.dateLabel}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                    <MapPin className="w-4 h-4" />
+                                                    <span className="line-clamp-1">{album.location}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                    <Folder className="w-4 h-4" />
+                                                    <span>{album.mediaCount} items</span>
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <Users className="w-5 h-5" />
-                                                <span>{photo.participants}</span>
+                                            
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-1 mt-4">
+                                                {album.tags.slice(0, 3).map((tag, index) => (
+                                                    <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs">
+                                                        #{tag}
+                                                    </span>
+                                                ))}
+                                                {album.tags.length > 3 && (
+                                                    <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs">
+                                                        +{album.tags.length - 3}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    ) : (
+                        /* Album Detail View - Media Items */
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            {mediaItems.map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer border border-white/20"
+                                    onMouseEnter={() => setHoveredCard(item.id)}
+                                    onMouseLeave={() => setHoveredCard(null)}
+                                    onClick={() => handleMediaClick(item.id)}
+                                >
+                                    {/* Media Thumbnail */}
+                                    <div className="aspect-square overflow-hidden relative">
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                        
+                                        {/* Video Overlay */}
+                                        {item.type === 'video' && (
+                                            <>
+                                                <div className="absolute inset-0 bg-black/20"></div>
+                                                <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                                                    <Play className="w-3 h-3" />
+                                                    Video
+                                                </div>
+                                                {item.duration && (
+                                                    <div className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm">
+                                                        {item.duration}
+                                                    </div>
+                                                )}
+                                            </>
+                                        )}
+                                        
+                                        {/* Hover Actions */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                                <Heart className="w-5 h-5 text-white" />
+                                            </button>
+                                            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                                <Download className="w-5 h-5 text-white" />
+                                            </button>
+                                        </div>
+
+                                        {/* Hover Info */}
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                            <div className="flex justify-between items-center mb-3">
+                                                <span className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold backdrop-blur-sm">
+                                                    {item.type === 'video' ? 'Video' : 'Photo'}
+                                                </span>
+                                                <div className="flex items-center gap-3 text-white/90">
+                                                    <div className="flex items-center gap-1 text-sm">
+                                                        <Heart className="w-4 h-4" />
+                                                        {formatNumber(item.likes)}
+                                                    </div>
+                                                    <div className="flex items-center gap-1 text-sm">
+                                                        <ZoomIn className="w-4 h-4" />
+                                                        {formatNumber(item.views)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-white font-semibold">
+                                                View {item.type === 'video' ? 'Video' : 'Photo'}
+                                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Media Info */}
+                                    <div className="p-6">
+                                        <h3 className="font-bold text-gray-800 text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                <Calendar className="w-4 h-4" />
+                                                <span>{item.dateLabel}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                <MapPin className="w-4 h-4" />
+                                                <span className="line-clamp-1">{item.location}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -389,16 +687,16 @@ export default function GalleryPage() {
                         </div>
                     )}
 
-                    {/* Pagination */}
-                    {totalPages > 1 && (
-                        <div className="flex items-center justify-center gap-3 mt-16">
+                    {/* Pagination (only for albums view) */}
+                    {currentView === 'albums' && totalPages > 1 && (
+                        <div className="flex items-center justify-center gap-4 mt-20">
                             <button
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg transform hover:scale-105"
                                 disabled={page === 1}
                                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                             >
                                 <ChevronLeft className="w-5 h-5" />
-                                {galleryContent.previous}
+                                Previous
                             </button>
 
                             <div className="flex gap-2">
@@ -406,10 +704,10 @@ export default function GalleryPage() {
                                     <button
                                         key={p}
                                         onClick={() => setPage(p)}
-                                        className={`px-4 py-2 rounded-lg border font-medium ${
+                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 transform hover:scale-105 ${
                                             p === page
-                                                ? "bg-[oklch(0.2_0.08_250)] text-white border-[oklch(0.2_0.08_250)] shadow-md"
-                                                : "border-gray-300 hover:bg-gray-50"
+                                                ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-2xl border-primary"
+                                                : "border-gray-300 bg-white hover:bg-gray-50 hover:shadow-lg"
                                         }`}
                                     >
                                         {p}
@@ -418,11 +716,11 @@ export default function GalleryPage() {
                             </div>
 
                             <button
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg transform hover:scale-105"
                                 disabled={page === totalPages}
                                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                             >
-                                {galleryContent.next}
+                                Next
                                 <ChevronRight className="w-5 h-5" />
                             </button>
                         </div>

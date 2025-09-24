@@ -13,7 +13,7 @@ import { LanguageAwareWrapper } from "@/components/language-aware-wrapper"
 
 export default function HomePage() {
   return (
-    <LanguageAwareWrapper className="min-h-screen">
+    // <LanguageAwareWrapper className="min-h-screen">
       <div className="min-h-screen">
         <TopBar />
         <Navigation />
@@ -30,6 +30,6 @@ export default function HomePage() {
         </main>
         <Footer />
       </div>
-    </LanguageAwareWrapper>
+    // </LanguageAwareWrapper>
   )
 }

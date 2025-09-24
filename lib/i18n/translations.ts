@@ -357,102 +357,102 @@ export const translations: Record<string, TranslationData> = {
         },
       ],
     },
-   ChairmanPage : {
-  hero: {
-    name: "Balen Shah",
-    description: "Engineer, Rapper, and Mayor of Kathmandu. Champion of urban reform and transparent governance.",
-    cta: "Get Involved"
-  },
-  whoIsBalen: {
-    title: "Who is Balen?",
-    paragraphs: [
-      "Balen Shah (Balendra Shah) is a prominent figure in Nepal, known for his roles as an engineer, rapper, and politician. He gained widespread recognition as an independent candidate and was elected the mayor of Kathmandu in May 2022. His unexpected victory, without the backing of any political party, was a landmark event in Nepalese politics, signaling a shift towards more independent leadership.",
-      "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. He is also a civil engineer by profession. As mayor, he has been vocal about issues like urban planning, waste management, and corruption, and has earned praise for his straightforward approach to addressing challenges in the capital city.",
-      "Balen has also become a polarizing figure due to his unconventional style of governance and willingness to challenge the status quo, which has sparked both admiration and criticism."
-    ]
-  },
-  academics: {
-    title: "Academics & Qualifications",
-    imageAlt: "Balen Shah - Engineer and Politician",
-    qualifications: [
-      {
-        degree: "Master of Science (Mechanical Engineering, Production Technology)",
-        institution: "Magdeburg Technical School & Otto-Von-Guericke University Magdeburg, Germany"
+    ChairmanPage: {
+      hero: {
+        name: "Balen Shah",
+        description: "Engineer, Rapper, and Mayor of Kathmandu. Champion of urban reform and transparent governance.",
+        cta: "Get Involved"
       },
-      {
-        degree: "Certificate in Senior Management",
-        institution: "Kenya Institute of Management, Kenya"
+      whoIsBalen: {
+        title: "Who is Balen?",
+        paragraphs: [
+          "Balen Shah (Balendra Shah) is a prominent figure in Nepal, known for his roles as an engineer, rapper, and politician. He gained widespread recognition as an independent candidate and was elected the mayor of Kathmandu in May 2022. His unexpected victory, without the backing of any political party, was a landmark event in Nepalese politics, signaling a shift towards more independent leadership.",
+          "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. He is also a civil engineer by profession. As mayor, he has been vocal about issues like urban planning, waste management, and corruption, and has earned praise for his straightforward approach to addressing challenges in the capital city.",
+          "Balen has also become a polarizing figure due to his unconventional style of governance and willingness to challenge the status quo, which has sparked both admiration and criticism."
+        ]
       },
-      {
-        degree: "Certificate in Standardization & Quality Control",
-        institution: "University of Denver, Colorado, USA"
+      academics: {
+        title: "Academics & Qualifications",
+        imageAlt: "Balen Shah - Engineer and Politician",
+        qualifications: [
+          {
+            degree: "Master of Science (Mechanical Engineering, Production Technology)",
+            institution: "Magdeburg Technical School & Otto-Von-Guericke University Magdeburg, Germany"
+          },
+          {
+            degree: "Certificate in Senior Management",
+            institution: "Kenya Institute of Management, Kenya"
+          },
+          {
+            degree: "Certificate in Standardization & Quality Control",
+            institution: "University of Denver, Colorado, USA"
+          },
+          {
+            degree: "Certificate in Establishment of Natural Physical Standards",
+            institution: "National Bureau of Standards & Technology, Gaithersburg, MD, USA"
+          },
+          {
+            degree: "Certificate in Standards Specification Writing",
+            institution: "British Standards Institution (BSI Group)"
+          }
+        ]
       },
-      {
-        degree: "Certificate in Establishment of Natural Physical Standards",
-        institution: "National Bureau of Standards & Technology, Gaithersburg, MD, USA"
+      awards: {
+        title: "Honours, Awards & Publications",
+        imageAlt: "Balen Shah's awards and publications",
+        items: [
+          {
+            title: "Greater Good Award",
+            details: "Mazari Africa, Istanbul, Kenya, May 2021"
+          },
+          {
+            title: "Doctor Of Sciences (Honoris Causa)",
+            details: "Jurumegh Opriga Obriga University of Science & Technology, Siyap, Kenya, December 2010"
+          },
+          {
+            title: "The Quest For Nationhood Roadmap To Our Future",
+            details: "Nairobi Mountainsho Publishers, 2017"
+          },
+          {
+            title: "The Flame of Freedom",
+            details: "Nairobi Mountainsho Publishers, 2019"
+          },
+          {
+            title: "Doctorate of Leadership in Social Development (Honoris Causa)",
+            details: "Lambalong University of Creative Technology, Kuala Lumpur, July 2012"
+          },
+          {
+            title: "Honorary Doctorate",
+            details: "Florida Agricultural Mechanical University, USA, 2009"
+          },
+          {
+            title: "Doctor of Laws (LLD) (Honoris Causa)",
+            details: "The University of Nairobi, Kenya, October 2008"
+          }
+        ]
       },
-      {
-        degree: "Certificate in Standards Specification Writing",
-        institution: "British Standards Institution (BSI Group)"
+      leadership: {
+        title: "Leadership & Impact",
+        mayorSection: {
+          title: "As Mayor of Kathmandu",
+          description: "Since being elected in 2022, Balen Shah has focused on critical urban issues including:",
+          initiatives: [
+            "Urban planning and development",
+            "Waste management solutions",
+            "Anti-corruption initiatives",
+            "Infrastructure improvement",
+            "Cultural preservation"
+          ]
+        },
+        cultureSection: {
+          title: "Cultural Influence",
+          description: "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. His music often addresses social issues, which aligns with his political approach of challenging the status quo and advocating for transparency.",
+          quote: "Balen has become a polarizing figure due to his unconventional style of governance and willingness to challenge established systems, sparking both admiration and criticism."
+        }
       }
-    ]
-  },
-  awards: {
-    title: "Honours, Awards & Publications",
-    imageAlt: "Balen Shah's awards and publications",
-    items: [
-      {
-        title: "Greater Good Award",
-        details: "Mazari Africa, Istanbul, Kenya, May 2021"
-      },
-      {
-        title: "Doctor Of Sciences (Honoris Causa)",
-        details: "Jurumegh Opriga Obriga University of Science & Technology, Siyap, Kenya, December 2010"
-      },
-      {
-        title: "The Quest For Nationhood Roadmap To Our Future",
-        details: "Nairobi Mountainsho Publishers, 2017"
-      },
-      {
-        title: "The Flame of Freedom",
-        details: "Nairobi Mountainsho Publishers, 2019"
-      },
-      {
-        title: "Doctorate of Leadership in Social Development (Honoris Causa)",
-        details: "Lambalong University of Creative Technology, Kuala Lumpur, July 2012"
-      },
-      {
-        title: "Honorary Doctorate",
-        details: "Florida Agricultural Mechanical University, USA, 2009"
-      },
-      {
-        title: "Doctor of Laws (LLD) (Honoris Causa)",
-        details: "The University of Nairobi, Kenya, October 2008"
-      }
-    ]
-  },
-  leadership: {
-    title: "Leadership & Impact",
-    mayorSection: {
-      title: "As Mayor of Kathmandu",
-      description: "Since being elected in 2022, Balen Shah has focused on critical urban issues including:",
-      initiatives: [
-        "Urban planning and development",
-        "Waste management solutions",
-        "Anti-corruption initiatives",
-        "Infrastructure improvement",
-        "Cultural preservation"
-      ]
-    },
-    cultureSection: {
-      title: "Cultural Influence",
-      description: "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. His music often addresses social issues, which aligns with his political approach of challenging the status quo and advocating for transparency.",
-      quote: "Balen has become a polarizing figure due to his unconventional style of governance and willingness to challenge established systems, sparking both admiration and criticism."
-    }
-  }
 
-  },
-  galleryPage: {
+    },
+    galleryPage: {
       title: "Event Gallery",
       description: "Explore moments from Mannar's vibrant community events and initiatives.",
       heroImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4000&q=80",
@@ -545,9 +545,32 @@ export const translations: Record<string, TranslationData> = {
           description: "Showcasing local businesses and entrepreneurs to promote economic growth."
         }
       ]
+    },
+    AdsSectionTranslations: {
+      topBar: {
+        title: "Official Notices & Announcements",
+        viewAll: "View All"
+      },
+      title: "Public Notices & Announcements",
+      subtitle: "Stay updated with the latest news and important information from Mannar Urban Council",
+      searchPlaceholder: "Search notices, tenders, events...",
+      allCategories: "All Categories",
+      viewAll: "View All Notices",
+      notices: "notices",
+      urgent: "URGENT",
+      readMore: "Read Details",
+      noResults: {
+        title: "No notices found",
+        description: "Try adjusting your search or filter criteria"
+      },
+      modal: {
+        title: "All Public Notices",
+        subtitle: "Official announcements from Mannar Urban Council"
+      }
     }
-  
-},
+  },
+
+
 
   ta: {
     nav: {
@@ -587,7 +610,7 @@ export const translations: Record<string, TranslationData> = {
         title: "ஒரு சிறந்த",
         subtitle: "சமுதாயத்தை ஒன்றாக கட்டமைத்தல்",
         description:
-          "வெளிப்படைத்தன்மை, புதுமை மற்றும் உள்ளூர் நிர்வாகத்தில் சிறப்புடன் எங்கள் குடியிருப்பாளர்களுக்கு சேவை செய்வதில் அர்ப்பணிப்பு.",
+        "வெளிப்படைத்தன்மை, புதுமை மற்றும் உள்ளூர் நிர்வாகத்தில் சிறப்புடன் எங்கள் குடியிருப்பாளர்களுக்கு சேவை செய்வதில் அர்ப்பணிப்பு.",
         exploreServices: "எங்கள் சேவைகளை ஆராயுங்கள்",
         contactUs: "எங்களை தொடர்பு கொள்ளுங்கள்",
       },
@@ -598,25 +621,25 @@ export const translations: Record<string, TranslationData> = {
       mission: {
         title: "பணி",
         content:
-          "குடியிருப்பாளர்களின் வாழ்க்கைத் தரத்தை மேம்படுத்த நல்ல நிர்வாகம் மற்றும் நிறுவனங்களுக்கிடையே பயனுள்ள ஒருங்கிணைப்புடன் சிறந்த நகராட்சி பொறிமுறைக்கான தலைமையை வழங்குதல்.",
+        "குடியிருப்பாளர்களின் வாழ்க்கைத் தரத்தை மேம்படுத்த நல்ல நிர்வாகம் மற்றும் நிறுவனங்களுக்கிடையே பயனுள்ள ஒருங்கிணைப்புடன் சிறந்த நகராட்சி பொறிமுறைக்கான தலைமையை வழங்குதல்.",
       },
       chairman: {
         title: "தலைவரின் செய்தி",
         name: "மாண். ராஜேஷ் பெரேரா",
         position: "தலைவர், நகர சபை",
         message:
-          "அன்புள்ள குடிமக்களே, உங்கள் தலைவராக சேவை செய்வதும், எங்கள் அர்ப்பணிப்புள்ள குழுவுடன் இணைந்து அனைத்து குடியிருப்பாளர்களுக்கும் வலுவான, மேலும் செழிப்பான சமுதாயத்தை கட்டமைப்பதும் எனது பெருமை.",
+        "அன்புள்ள குடிமக்களே, உங்கள் தலைவராக சேவை செய்வதும், எங்கள் அர்ப்பணிப்புள்ள குழுவுடன் இணைந்து அனைத்து குடியிருப்பாளர்களுக்கும் வலுவான, மேலும் செழிப்பான சமுதாயத்தை கட்டமைப்பதும் எனது பெருமை.",
         paragraph1:
-          "எங்கள் நிர்வாகம் வெளிப்படைத்தன்மை, நிலையான வளர்ச்சி மற்றும் எங்கள் சமூகத்தில் உள்ள ஒவ்வொரு குரலும் கேட்கப்படுவதை உறுதி செய்வதில் உறுதிபூண்டுள்ளது. ஒன்றாக, உள்கட்டமைப்பை மேம்படுத்த, பொது சேவைகளை மேம்படுத்த மற்றும் பொருளாதார வளர்ச்சிக்கான வாய்ப்புகளை உருவாக்க புதுமையான தீர்வுகளை நாங்கள் செயல்படுத்துகிறோம்.",
+        "எங்கள் நிர்வாகம் வெளிப்படைத்தன்மை, நிலையான வளர்ச்சி மற்றும் எங்கள் சமூகத்தில் உள்ள ஒவ்வொரு குரலும் கேட்கப்படுவதை உறுதி செய்வதில் உறுதிபூண்டுள்ளது. ஒன்றாக, உள்கட்டமைப்பை மேம்படுத்த, பொது சேவைகளை மேம்படுத்த மற்றும் பொருளாதார வளர்ச்சிக்கான வாய்ப்புகளை உருவாக்க புதுமையான தீர்வுகளை நாங்கள் செயல்படுத்துகிறோம்.",
         paragraph2:
-          "சிறந்து விளங்கும் எங்கள் பகிரப்பட்ட தரVisionக்கு நாங்கள் தொடர்ந்து பணியாற்றும் போது எங்கள் சமூக முன்முயற்சிகளில் தீவிரமாக பங்கேற்று உங்கள் மதிப்புமிக்க கருத்துக்களைப் பகிர்ந்து கொள்ள உங்களை ஊக்குவிக்கிறேன்.",
+        "சிறந்து விளங்கும் எங்கள் பகிரப்பட்ட தரVisionக்கு நாங்கள் தொடர்ந்து பணியாற்றும் போது எங்கள் சமூக முன்முயற்சிகளில் தீவிரமாக பங்கேற்று உங்கள் மதிப்புமிக்க கருத்துக்களைப் பகிர்ந்து கொள்ள உங்களை ஊக்குவிக்கிறேன்.",
         readFullMessage: "முழு செய்தியைப் படிக்கவும்",
       },
       services: {
         title: "நகராட்சி சேவைகள் & தகவல்",
         subtitle: "நகராட்சி சேவைகள் & தகவல்",
         description:
-          "அத்தியாவசிய சேவைகளை அணுகி நகராட்சி திட்டங்கள் மற்றும் முன்முயற்சிகள் பற்றி அறிந்து கொள்ளுங்கள்",
+        "அத்தியாவசிய சேவைகளை அணுகி நகராட்சி திட்டங்கள் மற்றும் முன்முயற்சிகள் பற்றி அறிந்து கொள்ளுங்கள்",
         garbageCollection: {
           title: "குப்பை சேகரிப்பு",
           description: "உங்கள் பகுதியில் குப்பை மேலாண்மை திட்டங்களைப் பற்றி அறிந்து கொள்ளுங்கள்.",
@@ -624,33 +647,33 @@ export const translations: Record<string, TranslationData> = {
         certificates: {
           title: "சான்றிதழ்கள் & அனுமதிகள்",
           description:
-            "பிறப்பு சான்றிதழ்கள், திருமண சான்றிதழ்கள் மற்றும் பிற அதிகாரப்பூர்வ நகராட்சி ஆவணங்களுக்கு ஆன்லைனில் விண்ணப்பிக்கவும்.",
+          "பிறப்பு சான்றிதழ்கள், திருமண சான்றிதழ்கள் மற்றும் பிற அதிகாரப்பூர்வ நகராட்சி ஆவணங்களுக்கு ஆன்லைனில் விண்ணப்பிக்கவும்.",
         },
         publicNotices: {
           title: "பொது அறிவிப்புகள்",
           description:
-            "சமீபத்திய நகராட்சி அறிவிப்புகள், கொள்கை மாற்றங்கள் மற்றும் சமுதாய புதுப்பிப்புகளுடன் தகவலறிந்த நிலையில் இருங்கள்.",
+          "சமீபத்திய நகராட்சி அறிவிப்புகள், கொள்கை மாற்றங்கள் மற்றும் சமுதாய புதுப்பிப்புகளுடன் தகவலறிந்த நிலையில் இருங்கள்.",
         },
         eServices: {
           title: "மின்-சேவைகள்",
           description:
-            "ஆன்லைன் கொடுப்பனவுகள், அனுமதி விண்ணப்பங்கள் மற்றும் சேவை கோரிக்கைகள் உட்பட டிஜிட்டல் சேவைகளை அணுகவும்.",
+          "ஆன்லைன் கொடுப்பனவுகள், அனுமதி விண்ணப்பங்கள் மற்றும் சேவை கோரிக்கைகள் உட்பட டிஜிட்டல் சேவைகளை அணுகவும்.",
         },
         tourism: {
           title: "சுற்றுலா",
           description:
-            "மன்னாரில் உள்ள உள்ளூர் சுற்றுலா இடங்கள், கலாச்சார நிகழ்வுகள், வரலாற்று தளங்கள் மற்றும் இயற்கை அழகு இடங்கள் பற்றிய தகவல்களை வழங்குகிறது.",
+          "மன்னாரில் உள்ள உள்ளூர் சுற்றுலா இடங்கள், கலாச்சார நிகழ்வுகள், வரலாற்று தளங்கள் மற்றும் இயற்கை அழகு இடங்கள் பற்றிய தகவல்களை வழங்குகிறது.",
         },
         communityServices: {
           title: "சமுதாய சேவைகள்",
           description:
-            "இளைஞர்கள், முதியவர்கள், சுகாதார கிளினிக்குகள் மற்றும் பொது நல முன்முயற்சிகளுக்கான திட்டங்கள்.",
+          "இளைஞர்கள், முதியவர்கள், சுகாதார கிளினிக்குகள் மற்றும் பொது நல முன்முயற்சிகளுக்கான திட்டங்கள்.",
         },
       },
       events: {
         title: "நிகழ்வுகள் & புதுப்பிப்புகள்",
         description:
-          "மன்னார் நகர சபையின் வரவிருக்கும் நிகழ்வுகள், பொது அறிவிப்புகள் மற்றும் அதிகாரப்பூர்வ அறிவிப்புகள் பற்றி தகவலறிந்த நிலையில் இருங்கள்.",
+        "மன்னார் நகர சபையின் வரவிருக்கும் நிகழ்வுகள், பொது அறிவிப்புகள் மற்றும் அதிகாரப்பூர்வ அறிவிப்புகள் பற்றி தகவலறிந்த நிலையில் இருங்கள்.",
         announcements: "அறிவிப்புகள்",
         notices: "அறிவிப்புகள்",
       },
@@ -665,22 +688,22 @@ export const translations: Record<string, TranslationData> = {
           {
             question: "அலுவலக நேரங்கள் என்ன?",
             answer:
-              "எங்கள் அலுவலகம் திங்கள் முதல் வெள்ளி வரை காலை 8:00 முதல் மாலை 4:30 வரை திறந்திருக்கும்.",
+            "எங்கள் அலுவலகம் திங்கள் முதல் வெள்ளி வரை காலை 8:00 முதல் மாலை 4:30 வரை திறந்திருக்கும்.",
           },
           {
             question: "கட்டிட அனுமதியை எவ்வாறு பெறலாம்?",
             answer:
-              "நீங்கள் ஆன்லைன் அல்லது திட்டப்பிரிவில் நேரடியாக விண்ணப்பிக்கலாம்.",
+            "நீங்கள் ஆன்லைன் அல்லது திட்டப்பிரிவில் நேரடியாக விண்ணப்பிக்கலாம்.",
           },
           {
             question: "என் பகுதியில் குப்பை சேகரிப்பு எப்போது?",
             answer:
-              "குப்பை சேகரிப்பு அட்டவணை பகுதிகளின் அடிப்படையில் மாறும்.",
+            "குப்பை சேகரிப்பு அட்டவணை பகுதிகளின் அடிப்படையில் மாறும்.",
           },
           {
             question: "புகார் செய்வது எப்படி?",
             answer:
-              "இந்த படிவம், ஹாட்லைன் அல்லது ஆன்லைன் வழியாக புகாரளிக்கலாம்.",
+            "இந்த படிவம், ஹாட்லைன் அல்லது ஆன்லைன் வழியாக புகாரளிக்கலாம்.",
           },
         ],
       },
@@ -688,7 +711,7 @@ export const translations: Record<string, TranslationData> = {
         visualShowcase: "கண்ணுக்கு விருந்து",
         title: "எங்கள் காட்சியகத்தை ஆராயுங்கள்",
         description:
-          "மன்னாரின் அழகு மற்றும் பாரம்பரியத்தை எங்கள் தேர்ந்தெடுக்கப்பட்ட படத் தொகுப்பின் மூலம் கண்டறியுங்கள்",
+        "மன்னாரின் அழகு மற்றும் பாரம்பரியத்தை எங்கள் தேர்ந்தெடுக்கப்பட்ட படத் தொகுப்பின் மூலம் கண்டறியுங்கள்",
         carouselView: "கரூசல் காட்சி",
         gridView: "கட்டம் காட்சி",
         clickToView: "முழு அளவில் காண கிளிக் செய்யவும்",
@@ -730,14 +753,14 @@ export const translations: Record<string, TranslationData> = {
         media: {
           title: "மன்னாரின் அழகை கண்டறியுங்கள்",
           description:
-            "இலங்கையின் மறைக்கப்பட்ட மணியை கண்டறியுங்கள், மன்னாரின் இயற்கை அழகு, பண்பாடு மற்றும் தனித்துவமான ஈர்ப்புகளை வெளிப்படுத்தும் இந்தக் கவர்ச்சிகரமான வீடியோக்கள் மூலம்.",
+          "இலங்கையின் மறைக்கப்பட்ட மணியை கண்டறியுங்கள், மன்னாரின் இயற்கை அழகு, பண்பாடு மற்றும் தனித்துவமான ஈர்ப்புகளை வெளிப்படுத்தும் இந்தக் கவர்ச்சிகரமான வீடியோக்கள் மூலம்.",
           moreVideos: "மேலும் வீடியோக்கள்",
           about: {
             title: "மன்னார் பற்றி",
             para1:
-              "இலங்கையின் வடக்கு மாகாணத்தில் அமைந்துள்ள மன்னார், தூய்மையான கடற்கரை, செழுமையான பண்பாட்டு பாரம்பரியம் மற்றும் தனித்துவமான உயிரின வளம் கொண்ட ஒரு தீவுப் பிரதேசமாகும்...",
+            "இலங்கையின் வடக்கு மாகாணத்தில் அமைந்துள்ள மன்னார், தூய்மையான கடற்கரை, செழுமையான பண்பாட்டு பாரம்பரியம் மற்றும் தனித்துவமான உயிரின வளம் கொண்ட ஒரு தீவுப் பிரதேசமாகும்...",
             para2:
-              "பறவைகளை விரும்புவோருக்கான சொர்க்கமாக விளங்கும் மன்னார், மீன்பிடி, வேளாண்மை மற்றும் உப்பு உற்பத்தியை அடிப்படையாகக் கொண்டது...",
+            "பறவைகளை விரும்புவோருக்கான சொர்க்கமாக விளங்கும் மன்னார், மீன்பிடி, வேளாண்மை மற்றும் உப்பு உற்பத்தியை அடிப்படையாகக் கொண்டது...",
           },
           travelTips: {
             title: "பயண குறிப்புகள்",
@@ -750,25 +773,25 @@ export const translations: Record<string, TranslationData> = {
               id: "YWCMA2G22A8",
               title: "மன்னார் இலங்கை - மறைக்கப்பட்ட அழகை ஆராயுங்கள்",
               description:
-                "தூய்மையான கடற்கரை, வரலாற்றுச் சின்னங்கள் மற்றும் விலங்குகள் கொண்ட மன்னாரின் அழகை கண்டறியுங்கள்.",
+              "தூய்மையான கடற்கரை, வரலாற்றுச் சின்னங்கள் மற்றும் விலங்குகள் கொண்ட மன்னாரின் அழகை கண்டறியுங்கள்.",
             },
             {
               id: "qRcIv8PJTG8",
               title: "மன்னார் - தொடாத சொர்க்கம்",
               description:
-                "அழகிய இயற்கை காட்சிகள் மற்றும் பண்பாட்டு பாரம்பரியத்துடன் மன்னார்.",
+              "அழகிய இயற்கை காட்சிகள் மற்றும் பண்பாட்டு பாரம்பரியத்துடன் மன்னார்.",
             },
             {
               id: "tL2qrDNBLzQ",
               title: "மன்னார் தீவு - பாரம்பரியம் மற்றும் இயற்கை அழகு",
               description:
-                "தமிழ் மற்றும் காலனித்துவ கலாச்சாரத்தின் கலவையை ஆராயுங்கள் மற்றும் இயற்கை அழகுகளை அனுபவிக்கவும்.",
+              "தமிழ் மற்றும் காலனித்துவ கலாச்சாரத்தின் கலவையை ஆராயுங்கள் மற்றும் இயற்கை அழகுகளை அனுபவிக்கவும்.",
             },
             {
               id: "LRAL62axdmE",
               title: "மன்னார் சுற்றுலா - கடற்கரை, வரலாறு மற்றும் பறவைகள்",
               description:
-                "பவோபாப் மரம் முதல் பறவைகள் வரை பல்வேறு அனுபவங்களை வழங்குகிறது.",
+              "பவோபாப் மரம் முதல் பறவைகள் வரை பல்வேறு அனுபவங்களை வழங்குகிறது.",
             },
           ],
         },
@@ -777,14 +800,14 @@ export const translations: Record<string, TranslationData> = {
     footer: {
       about: "மன்னார் நகர சபை",
       aboutDescription:
-        "1987 முதல் வெளிப்படைத்தன்மை, திறன் மற்றும் அர்ப்பணிப்புடன் மன்னாரின் துடிப்பான சமுதாயத்திற்கு சேவை செய்து வருகிறது. தரமான நகராட்சி சேவைகள் மூலம் ஒன்றாக நிலையான மற்றும் செழிப்பான எதிர்காலத்தை கட்டமைத்தல்.",
+      "1987 முதல் வெளிப்படைத்தன்மை, திறன் மற்றும் அர்ப்பணிப்புடன் மன்னாரின் துடிப்பான சமுதாயத்திற்கு சேவை செய்து வருகிறது. தரமான நகராட்சி சேவைகள் மூலம் ஒன்றாக நிலையான மற்றும் செழிப்பான எதிர்காலத்தை கட்டமைத்தல்.",
       quickLinks: "விரைவு இணைப்புகள்",
       contactInfo: "தொடர்பு தகவல்",
       address: "பிரதான வீதி, மன்னார் 41000, இலங்கை",
       phone: "+94 23 223 5678",
       email: "info@mannaruc.gov.lk",
       copyright:
-        "© 2025மன்னார் நகர சபை. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. எங்கள் சமுதாயத்திற்கான அர்ப்பணிப்புடன் கட்டமைக்கப்பட்டது.",
+      "© 2025மன்னார் நகர சபை. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. எங்கள் சமுதாயத்திற்கான அர்ப்பணிப்புடன் கட்டமைக்கப்பட்டது.",
       builtWith: "எங்கள் சமுதாயத்திற்கான அர்ப்பணிப்புடன் கட்டமைக்கப்பட்டது",
     },
     contactPage: {
@@ -823,7 +846,7 @@ export const translations: Record<string, TranslationData> = {
           location: "மத்திய பூங்கா",
           image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
           description:
-            "எங்கள் பகுதிகளை அழகாகவும் நிலைத்தன்மையுடனும் வைத்திருக்க மாதாந்திர சமூக தூய்மை முயற்சியில் சேருங்கள்.",
+          "எங்கள் பகுதிகளை அழகாகவும் நிலைத்தன்மையுடனும் வைத்திருக்க மாதாந்திர சமூக தூய்மை முயற்சியில் சேருங்கள்.",
         },
         {
           id: 2,
@@ -834,7 +857,7 @@ export const translations: Record<string, TranslationData> = {
           location: "சபை அரங்கம்",
           image: "/historic-fort-mannar-sri-lanka-colonial-architectu.jpg",
           description:
-            "ஆண்டிறுதி பட்ஜெட் அறிக்கை மற்றும் பொது ஆலோசனை அமர்வு. நமது சமூகத்தின் எதிர்காலத்திற்கு உங்கள் பங்களிப்பு முக்கியம்.",
+          "ஆண்டிறுதி பட்ஜெட் அறிக்கை மற்றும் பொது ஆலோசனை அமர்வு. நமது சமூகத்தின் எதிர்காலத்திற்கு உங்கள் பங்களிப்பு முக்கியம்.",
         },
         {
           id: 3,
@@ -864,7 +887,7 @@ export const translations: Record<string, TranslationData> = {
           date: "ஏப்ரல் 5, 2025",
           image: "/mannar-lighthouse-sri-lanka-historic-maritime-land.jpg",
           description:
-            "திட்டமிடப்பட்ட பராமரிப்பு ஏப்ரல் 5 அன்று காலை 9 மணி முதல் மாலை 3 மணி வரை மண்டலம் A இல் தண்ணீர் வழங்கலை பாதிக்கும்.",
+          "திட்டமிடப்பட்ட பராமரிப்பு ஏப்ரல் 5 அன்று காலை 9 மணி முதல் மாலை 3 மணி வரை மண்டலம் A இல் தண்ணீர் வழங்கலை பாதிக்கும்.",
         },
         {
           id: 2,
@@ -872,7 +895,7 @@ export const translations: Record<string, TranslationData> = {
           date: "ஏப்ரல் 3, 2025",
           image: "/historic-fort-mannar-sri-lanka-colonial-architectu.jpg",
           description:
-            "முதன்மை வீதி மறுசீரமைப்புக்காக மூடப்பட்டுள்ளது. வழித்தடக் குறியீடுகள் இடப்பட்டுள்ளன. எதிர்பார்க்கப்படும் நிறைவு: ஏப்ரல் 10.",
+          "முதன்மை வீதி மறுசீரமைப்புக்காக மூடப்பட்டுள்ளது. வழித்தடக் குறியீடுகள் இடப்பட்டுள்ளன. எதிர்பார்க்கப்படும் நிறைவு: ஏப்ரல் 10.",
         },
         {
           id: 3,
@@ -880,7 +903,7 @@ export const translations: Record<string, TranslationData> = {
           date: "ஏப்ரல் 1, 2025",
           image: "/baobab-trees-mannar-sri-lanka-ancient-african-tree.jpg",
           description:
-            "மறுசுழற்சி சேகரிப்பு நாட்கள் புதுப்பிக்கப்பட்டது. புதிய பின்கள் ஏப்ரல் 7 முதல் விநியோகிக்கப்படும்.",
+          "மறுசுழற்சி சேகரிப்பு நாட்கள் புதுப்பிக்கப்பட்டது. புதிய பின்கள் ஏப்ரல் 7 முதல் விநியோகிக்கப்படும்.",
         },
       ],
       announcement: [
@@ -890,7 +913,7 @@ export const translations: Record<string, TranslationData> = {
           date: "மார்ச் 30, 2025",
           icon: "megaphone",
           description:
-            "மன்னாரின் உள்ளூர் பொருளாதாரத்தை மீட்டெடுக்கும் தொடர்பான தலைவரின் சமீபத்திய உரையைப் பாருங்கள்.",
+          "மன்னாரின் உள்ளூர் பொருளாதாரத்தை மீட்டெடுக்கும் தொடர்பான தலைவரின் சமீபத்திய உரையைப் பாருங்கள்.",
         },
         {
           id: 2,
@@ -898,7 +921,7 @@ export const translations: Record<string, TranslationData> = {
           date: "மார்ச் 28, 2025",
           icon: "alert",
           description:
-            "வரவிருக்கும் மழைக்கால நிலைகளுக்கு குடியிருப்பாளர்கள் தயாராக அறிவுறுத்தப்படுகிறார்கள். அவசர கிட்கள் கிடைக்கின்றன.",
+          "வரவிருக்கும் மழைக்கால நிலைகளுக்கு குடியிருப்பாளர்கள் தயாராக அறிவுறுத்தப்படுகிறார்கள். அவசர கிட்கள் கிடைக்கின்றன.",
         },
         {
           id: 3,
@@ -911,98 +934,98 @@ export const translations: Record<string, TranslationData> = {
     },
 
     ChairmanPage: {
-  hero: {
-    name: "பாலென் ஷா",
-    description: "இன்ஜினீயர், ராப்பர் மற்றும் காத்த்மாண்டு மேயர். நகர அபிவிருத்தி மற்றும் திறந்த நிர்வாகத்தின் முன்னோடி.",
-    cta: "பங்கேற்கவும்"
-  },
-  whoIsBalen: {
-    title: "பாலென் யார்?",
-    paragraphs: [
-      "பாலென் ஷா (பாலென்றா ஷா) நேபாளில் ஒரு புகழ்பெற்ற நபர், இன்ஜினீயர், ராப்பர் மற்றும் அரசியல்வாதியாகப் பரிச்சயமானவர். அவர் சுதந்திர வேட்பாளராக வெற்றி பெற்றபோது, 2022 மே மாதத்தில் காத்த்மாண்டு மேயராக தேர்வாயினர். எந்த அரசியல் கட்சியின் ஆதரவும் இல்லாமல் வந்த இந்த எதிர்பாராத வெற்றி, நேபாள அரசியலில் ஒரு முக்கியமான நிகழ்வாகும், சுயாதீன தலைமையின் மாற்றத்தை வெளிப்படுத்தியது.",
-      "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராகப் பிரபலமாக இருந்தார். அவர் ஒரு சிவில் இன்ஜினீயராகவும் உள்ளார். மேயராக இருக்கையில், நகர திட்டமிடல், கழிவு மேலாண்மை மற்றும் ஊழல் போன்ற பிரச்சினைகள் தொடர்பில் அவர் வெளிப்படையாக கருத்து கூறியுள்ளார்.",
-      "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியாலும் நிலையான முறைகளுக்கு எதிராக முன்வந்ததாலும், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்."
-    ]
-  },
-  academics: {
-    title: "கல்வி & தகுதிகள்",
-    imageAlt: "பாலென் ஷா - இன்ஜினீயர் மற்றும் அரசியல்வாதி",
-    qualifications: [
-      {
-        degree: "மெக்கானிக்கல் இன்ஜினீயரிங், தயாரிப்பு தொழில்நுட்பம் - எம்.எஸ்.",
-        institution: "Magdeburg தொழில்நுட்ப பள்ளி & Otto-Von-Guericke பல்கலைக்கழகம், ஜெர்மனி"
+      hero: {
+        name: "பாலென் ஷா",
+        description: "இன்ஜினீயர், ராப்பர் மற்றும் காத்த்மாண்டு மேயர். நகர அபிவிருத்தி மற்றும் திறந்த நிர்வாகத்தின் முன்னோடி.",
+        cta: "பங்கேற்கவும்"
       },
-      {
-        degree: "சீனியர் மேலாண்மை சான்றிதழ்",
-        institution: "Kenya மேலாண்மை நிறுவனம், கென்யா"
+      whoIsBalen: {
+        title: "பாலென் யார்?",
+        paragraphs: [
+          "பாலென் ஷா (பாலென்றா ஷா) நேபாளில் ஒரு புகழ்பெற்ற நபர், இன்ஜினீயர், ராப்பர் மற்றும் அரசியல்வாதியாகப் பரிச்சயமானவர். அவர் சுதந்திர வேட்பாளராக வெற்றி பெற்றபோது, 2022 மே மாதத்தில் காத்த்மாண்டு மேயராக தேர்வாயினர். எந்த அரசியல் கட்சியின் ஆதரவும் இல்லாமல் வந்த இந்த எதிர்பாராத வெற்றி, நேபாள அரசியலில் ஒரு முக்கியமான நிகழ்வாகும், சுயாதீன தலைமையின் மாற்றத்தை வெளிப்படுத்தியது.",
+          "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராகப் பிரபலமாக இருந்தார். அவர் ஒரு சிவில் இன்ஜினீயராகவும் உள்ளார். மேயராக இருக்கையில், நகர திட்டமிடல், கழிவு மேலாண்மை மற்றும் ஊழல் போன்ற பிரச்சினைகள் தொடர்பில் அவர் வெளிப்படையாக கருத்து கூறியுள்ளார்.",
+          "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியாலும் நிலையான முறைகளுக்கு எதிராக முன்வந்ததாலும், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்."
+        ]
       },
-      {
-        degree: "தரநிலை & தர கட்டுப்பாடு சான்றிதழ்",
-        institution: "University of Denver, கொலராடோ, அமெரிக்கா"
+      academics: {
+        title: "கல்வி & தகுதிகள்",
+        imageAlt: "பாலென் ஷா - இன்ஜினீயர் மற்றும் அரசியல்வாதி",
+        qualifications: [
+          {
+            degree: "மெக்கானிக்கல் இன்ஜினீயரிங், தயாரிப்பு தொழில்நுட்பம் - எம்.எஸ்.",
+            institution: "Magdeburg தொழில்நுட்ப பள்ளி & Otto-Von-Guericke பல்கலைக்கழகம், ஜெர்மனி"
+          },
+          {
+            degree: "சீனியர் மேலாண்மை சான்றிதழ்",
+            institution: "Kenya மேலாண்மை நிறுவனம், கென்யா"
+          },
+          {
+            degree: "தரநிலை & தர கட்டுப்பாடு சான்றிதழ்",
+            institution: "University of Denver, கொலராடோ, அமெரிக்கா"
+          },
+          {
+            degree: "இயற்கை உடல் தரநிலைகள் நிறுவல் சான்றிதழ்",
+            institution: "National Bureau of Standards & Technology, Gaithersburg, MD, USA"
+          },
+          {
+            degree: "தர விவரக்குறிப்பு எழுதும் சான்றிதழ்",
+            institution: "British Standards Institution (BSI Group)"
+          }
+        ]
       },
-      {
-        degree: "இயற்கை உடல் தரநிலைகள் நிறுவல் சான்றிதழ்",
-        institution: "National Bureau of Standards & Technology, Gaithersburg, MD, USA"
+      awards: {
+        title: "பட்டங்கள், விருதுகள் & பதிப்புரைகள்",
+        imageAlt: "பாலென் ஷாவின் விருதுகள் மற்றும் பதிப்புரைகள்",
+        items: [
+          {
+            title: "மிகச்சிறந்த நன்மை விருது",
+            details: "Mazari Africa, Istanbul, கென்யா, மே 2021"
+          },
+          {
+            title: "அறிவியல் டாக்டர் (மாண்புமிகு) (Honoris Causa)",
+            details: "Jurumegh Opriga Obriga University of Science & Technology, Siyap, கென்யா, டிசம்பர் 2010"
+          },
+          {
+            title: "தேசியத்தின் பாதை: எங்கள் எதிர்கால திட்டம்",
+            details: "Nairobi Mountainsho Publishers, 2017"
+          },
+          {
+            title: "சுதந்திரத்தின் தீ",
+            details: "Nairobi Mountainsho Publishers, 2019"
+          },
+          {
+            title: "சமூக மேம்பாட்டில் தலைமைக் கல்வி டாக்டர் (Honoris Causa)",
+            details: "Lambalong University of Creative Technology, குவாலாலம்பூர், ஜூலை 2012"
+          },
+          {
+            title: "கௌரவ பட்டம்",
+            details: "Florida Agricultural Mechanical University, USA, 2009"
+          },
+          {
+            title: "சட்டங்களில் டாக்டர் (LLD) (Honoris Causa)",
+            details: "The University of Nairobi, கென்யா, அக்டோபர் 2008"
+          }
+        ]
       },
-      {
-        degree: "தர விவரக்குறிப்பு எழுதும் சான்றிதழ்",
-        institution: "British Standards Institution (BSI Group)"
+      leadership: {
+        title: "நிர்வாகம் & தாக்கம்",
+        mayorSection: {
+          title: "காத்த்மாண்டு மேயராக",
+          description: "2022ல் தேர்வாய்ந்தபின்னர், பாலென் ஷா முக்கிய நகர பிரச்சினைகளில் கவனம் செலுத்தியுள்ளார்:",
+          initiatives: [
+            "நகர திட்டமிடல் மற்றும் அபிவிருத்தி",
+            "கழிவு மேலாண்மை தீர்வுகள்",
+            "ஊழல் எதிர்ப்பு முயற்சிகள்",
+            "அமைப்பு மேம்பாடு",
+            "கலை மற்றும் பண்பாட்டு பாதுகாப்பு"
+          ]
+        },
+        cultureSection: {
+          title: "பண்பாட்டு தாக்கம்",
+          description: "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராக பிரபலமாக இருந்தார். அவரது இசை சமூக பிரச்சினைகளை அடிக்கடி உரைக்கும், இது அரசியல் முறையின் வெளிப்படையான அணுகுமுறையுடன் இணைக்கப்பட்டுள்ளது.",
+          quote: "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியால் மற்றும் நிலையான முறைகளை சவால் செய்வதில் முன்வந்ததனால், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்."
+        }
       }
-    ]
-  },
-  awards: {
-    title: "பட்டங்கள், விருதுகள் & பதிப்புரைகள்",
-    imageAlt: "பாலென் ஷாவின் விருதுகள் மற்றும் பதிப்புரைகள்",
-    items: [
-      {
-        title: "மிகச்சிறந்த நன்மை விருது",
-        details: "Mazari Africa, Istanbul, கென்யா, மே 2021"
-      },
-      {
-        title: "அறிவியல் டாக்டர் (மாண்புமிகு) (Honoris Causa)",
-        details: "Jurumegh Opriga Obriga University of Science & Technology, Siyap, கென்யா, டிசம்பர் 2010"
-      },
-      {
-        title: "தேசியத்தின் பாதை: எங்கள் எதிர்கால திட்டம்",
-        details: "Nairobi Mountainsho Publishers, 2017"
-      },
-      {
-        title: "சுதந்திரத்தின் தீ",
-        details: "Nairobi Mountainsho Publishers, 2019"
-      },
-      {
-        title: "சமூக மேம்பாட்டில் தலைமைக் கல்வி டாக்டர் (Honoris Causa)",
-        details: "Lambalong University of Creative Technology, குவாலாலம்பூர், ஜூலை 2012"
-      },
-      {
-        title: "கௌரவ பட்டம்",
-        details: "Florida Agricultural Mechanical University, USA, 2009"
-      },
-      {
-        title: "சட்டங்களில் டாக்டர் (LLD) (Honoris Causa)",
-        details: "The University of Nairobi, கென்யா, அக்டோபர் 2008"
-      }
-    ]
-  },
-  leadership: {
-    title: "நிர்வாகம் & தாக்கம்",
-    mayorSection: {
-      title: "காத்த்மாண்டு மேயராக",
-      description: "2022ல் தேர்வாய்ந்தபின்னர், பாலென் ஷா முக்கிய நகர பிரச்சினைகளில் கவனம் செலுத்தியுள்ளார்:",
-      initiatives: [
-        "நகர திட்டமிடல் மற்றும் அபிவிருத்தி",
-        "கழிவு மேலாண்மை தீர்வுகள்",
-        "ஊழல் எதிர்ப்பு முயற்சிகள்",
-        "அமைப்பு மேம்பாடு",
-        "கலை மற்றும் பண்பாட்டு பாதுகாப்பு"
-      ]
-    },
-    cultureSection: {
-      title: "பண்பாட்டு தாக்கம்",
-      description: "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராக பிரபலமாக இருந்தார். அவரது இசை சமூக பிரச்சினைகளை அடிக்கடி உரைக்கும், இது அரசியல் முறையின் வெளிப்படையான அணுகுமுறையுடன் இணைக்கப்பட்டுள்ளது.",
-      quote: "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியால் மற்றும் நிலையான முறைகளை சவால் செய்வதில் முன்வந்ததனால், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்."
-    }
-  }
     },
     galleryPage: {
       title: "நிகழ்வு கேலரி",
@@ -1097,11 +1120,37 @@ export const translations: Record<string, TranslationData> = {
           description: "பொருளாதார வளர்ச்சியை ஊக்குவிக்க உள்ளூர் வணிகங்கள் மற்றும் தொழில்முனைவோரைக் காட்சிப்படுத்துதல்."
         }
       ]
+    },
+    AdsSectionTranslations: {
+      
+        topBar: {
+          title: "அதிகாரப்பூர்வ அறிவிப்புகள்",
+          viewAll: "அனைத்தையும் பார்க்க"
+        },
+        title: "பொது அறிவிப்புகள்",
+        subtitle: "மன்னார் நகராட்சியின் சமீபத்திய செய்திகள் முக்கிய தகவல்களுடன் தொடர்பு கொள்ளுங்கள்",
+        searchPlaceholder: "அறிவிப்புகள், டெண்டர்கள், நிகழ்வுகள்...",
+        allCategories: "அனைத்து வகைகள்",
+        viewAll: "அனைத்து அறிவிப்புகள்",
+        notices: "அறிவிப்புகள்",
+        urgent: "அவசரம்",
+        readMore: "மேலும் வாசிக்க",
+        noResults: {
+          title: "அறிவிப்புகள் எதுவும் கிடைக்கவில்லை",
+          description: "உங்கள் தேடல் அல்லது வடிகட்டல் அளவுகோல்களை சரிசெய்ய முயற்சிக்கவும்"
+        },
+        modal: {
+          title: "அனைத்து பொது அறிவிப்புகள்",
+          subtitle: "மன்னார் நகராட்சியின் அதிகாரப்பூர்வ அறிவிப்புகள்"
+        }
+      
+
+
+
+
     }
+  },
 
- 
-
-},
 
   si: {
     nav: {
@@ -1141,7 +1190,7 @@ export const translations: Record<string, TranslationData> = {
         title: "වඩා හොඳ",
         subtitle: "ප්‍රජාවක් එකට ගොඩනැගීම",
         description:
-          "පාරදෘශ්‍යතාව, නවෝත්පාදනය සහ ප්‍රාදේශීය පාලනයේ විශිෂ්ටත්වයෙන් අපගේ පදිංචිකරුවන්ට සේවය කිරීමට කැපවී සිටිමු.",
+        "පාරදෘශ්‍යතාව, නවෝත්පාදනය සහ ප්‍රාදේශීය පාලනයේ විශිෂ්ටත්වයෙන් අපගේ පදිංචිකරුවන්ට සේවය කිරීමට කැපවී සිටිමු.",
         exploreServices: "අපගේ සේවා ගවේෂණය කරන්න",
         contactUs: "අප හා සම්බන්ධ වන්න",
       },
@@ -1152,18 +1201,18 @@ export const translations: Record<string, TranslationData> = {
       mission: {
         title: "මෙහෙවර",
         content:
-          "පදිංචිකරුවන්ගේ ජීවන තත්ත්වය වැඩිදියුණු කිරීම සඳහා හොඳ පාලනයක් සහ ආයතන අතර ඵලදායී සම්බන්ධීකරණයක් සහිත විශිෂ්ට නාගරික යාන්ත්‍රණයක් සඳහා නායකත්වය ලබා දීම.",
+        "පදිංචිකරුවන්ගේ ජීවන තත්ත්වය වැඩිදියුණු කිරීම සඳහා හොඳ පාලනයක් සහ ආයතන අතර ඵලදායී සම්බන්ධීකරණයක් සහිත විශිෂ්ට නාගරික යාන්ත්‍රණයක් සඳහා නායකත්වය ලබා දීම.",
       },
       chairman: {
         title: "සභාපතිගේ පණිවිඩය",
         name: "ගරු. රාජේෂ් පෙරේරා",
         position: "සභාපති, නගර සභාව",
         message:
-          "ආදරණීය පුරවැසියන්, ඔබගේ සභාපති ලෙස සේවය කිරීම සහ අපගේ කැපවූ කණ්ඩායම සමඟ එක්ව සියලුම පදිංචිකරුවන් සඳහා ශක්තිමත්, වඩාත් සමෘද්ධිමත් ප්‍රජාවක් ගොඩනැගීම මගේ ගෞරවයයි.",
+        "ආදරණීය පුරවැසියන්, ඔබගේ සභාපති ලෙස සේවය කිරීම සහ අපගේ කැපවූ කණ්ඩායම සමඟ එක්ව සියලුම පදිංචිකරුවන් සඳහා ශක්තිමත්, වඩාත් සමෘද්ධිමත් ප්‍රජාවක් ගොඩනැගීම මගේ ගෞරවයයි.",
         paragraph1:
-          "අපගේ පරිපාලනය පාරදෘශ්‍යතාවයට, තිරසාර සංවර්ධනයට සහ අපගේ ප්‍රජාව තුළ ඇති සෑම හඬක්ම ඇසෙන බවට වග බලා ගැනීමට කැපවී සිටී. එක්ව, යටිතල පහසුකම් වැඩිදියුණු කිරීම, රාජකාරී සේවා වැඩිදියුණු කිරීම සහ ආර්ථික වර්ධනය සඳහා අවස්ථා නිර්මාණය කිරීම සඳහා නව්‍ය විසඳුම් ක්‍රියාත්මක කරනු ලැබේ.",
+        "අපගේ පරිපාලනය පාරදෘශ්‍යතාවයට, තිරසාර සංවර්ධනයට සහ අපගේ ප්‍රජාව තුළ ඇති සෑම හඬක්ම ඇසෙන බවට වග බලා ගැනීමට කැපවී සිටී. එක්ව, යටිතල පහසුකම් වැඩිදියුණු කිරීම, රාජකාරී සේවා වැඩිදියුණු කිරීම සහ ආර්ථික වර්ධනය සඳහා අවස්ථා නිර්මාණය කිරීම සඳහා නව්‍ය විසඳුම් ක්‍රියාත්මක කරනු ලැබේ.",
         paragraph2:
-          "අපගේ පොදු අභිලාෂය වන උසස් බව අත්කර ගැනීම සඳහා අපි දිගටම වැඩ කරන විට, අපගේ ප්‍රජා අභිප්‍රාරයන්හි සක්‍රියව සහභාගී වීමට සහ ඔබගේ වටිනා ප්‍රතිපෝෂණ බෙදාගැනීමට මම ඔබව පොළඹවයි.",
+        "අපගේ පොදු අභිලාෂය වන උසස් බව අත්කර ගැනීම සඳහා අපි දිගටම වැඩ කරන විට, අපගේ ප්‍රජා අභිප්‍රාරයන්හි සක්‍රියව සහභාගී වීමට සහ ඔබගේ වටිනා ප්‍රතිපෝෂණ බෙදාගැනීමට මම ඔබව පොළඹවයි.",
         readFullMessage: "සම්පූර්ණ පණිවිඩය කියවන්න",
       },
       services: {
@@ -1185,12 +1234,12 @@ export const translations: Record<string, TranslationData> = {
         eServices: {
           title: "ඊ-සේවා",
           description:
-            "අන්තර්ජාල ගෙවීම්, අවසර අයදුම්පත් සහ සේවා ඉල්ලීම් ඇතුළු ඩිජිටල් සේවා වලට ප්‍රවේශ වන්න.",
+          "අන්තර්ජාල ගෙවීම්, අවසර අයදුම්පත් සහ සේවා ඉල්ලීම් ඇතුළු ඩිජිටල් සේවා වලට ප්‍රවේශ වන්න.",
         },
         tourism: {
           title: "සංචාරක",
           description:
-            "මන්නාරය තුළ ප්‍රාදේශීය සංචාරක ආකර්ෂණ, සංස්කෘතික සිදුවීම්, ඓතිහාසික ස්ථාන සහ ස්වභාවික සුන්දරත්ව ස්ථාන පිළිබඳ තොරතුරු ඉදිරිපත් කරයි.",
+          "මන්නාරය තුළ ප්‍රාදේශීය සංචාරක ආකර්ෂණ, සංස්කෘතික සිදුවීම්, ඓතිහාසික ස්ථාන සහ ස්වභාවික සුන්දරත්ව ස්ථාන පිළිබඳ තොරතුරු ඉදිරිපත් කරයි.",
         },
         communityServices: {
           title: "ප්‍රජා සේවා",
@@ -1274,14 +1323,14 @@ export const translations: Record<string, TranslationData> = {
         media: {
           title: "මන්නාරමයේ සිරිමත් රූපය සොයාගන්න",
           description:
-            "ශ්‍රී ලංකාවේ සඟවා තිබෙන මැණික වූ මන්නාරම, එහි සොඳුරු දර්ශන, සංස්කෘතික උරුමය සහ විශේෂ දර්ශනීය ස්ථාන නරඹන්න.",
+          "ශ්‍රී ලංකාවේ සඟවා තිබෙන මැණික වූ මන්නාරම, එහි සොඳුරු දර්ශන, සංස්කෘතික උරුමය සහ විශේෂ දර්ශනීය ස්ථාන නරඹන්න.",
           moreVideos: "තවත් වීඩියෝ",
           about: {
             title: "මන්නාරම, ශ්‍රී ලංකාව ගැන",
             para1:
-              "ශ්‍රී ලංකාවේ උතුරු පළාතේ පිහිටි මන්නාරම, නිවන් ගන්නා ලස්සන වෙරළතීර, සම්ප්‍රදායික උරුමය සහ ජෛව විවිධත්වය සඳහා ප්‍රසිද්ධ දිස්ත්‍රික්කයකි...",
+            "ශ්‍රී ලංකාවේ උතුරු පළාතේ පිහිටි මන්නාරම, නිවන් ගන්නා ලස්සන වෙරළතීර, සම්ප්‍රදායික උරුමය සහ ජෛව විවිධත්වය සඳහා ප්‍රසිද්ධ දිස්ත්‍රික්කයකි...",
             para2:
-              "මන්නාරම පිටසර පක්ෂීන්ට දර්ශනය කිරීමට උතුම් ස්ථානයක් වන අතර, එහි ආර්ථිකය මූලිකව මත්ස්‍යබන්ධනය, කෘෂිකර්මය සහ ලුණු නිෂ්පාදනය මත පදනම් වී ඇත...",
+            "මන්නාරම පිටසර පක්ෂීන්ට දර්ශනය කිරීමට උතුම් ස්ථානයක් වන අතර, එහි ආර්ථිකය මූලිකව මත්ස්‍යබන්ධනය, කෘෂිකර්මය සහ ලුණු නිෂ්පාදනය මත පදනම් වී ඇත...",
           },
           travelTips: {
             title: "ගමන් උපදෙස්",
@@ -1294,25 +1343,25 @@ export const translations: Record<string, TranslationData> = {
               id: "YWCMA2G22A8",
               title: "මන්නාරම - සඟවා තිබෙන රූපය සොයා",
               description:
-                "අපූරු වෙරළතීර, විඥානය සහ විශේෂිත වනාන්තර සොයාගන්න.",
+              "අපූරු වෙරළතීර, විඥානය සහ විශේෂිත වනාන්තර සොයාගන්න.",
             },
             {
               id: "qRcIv8PJTG8",
               title: "මන්නාරම - නොමැකුණු සුරක්ෂිත ස්වර්ගය",
               description:
-                "මන්නාරමයේ ගොඩනැගීම් සහ සන්සුන් භූ දර්ශන අත්විඳින්න.",
+              "මන්නාරමයේ ගොඩනැගීම් සහ සන්සුන් භූ දර්ශන අත්විඳින්න.",
             },
             {
               id: "tL2qrDNBLzQ",
               title: "මන්නාරම් දූපත - උරුමය සහ ස්වභාවික රූපය",
               description:
-                "දමිළ සහ ගෝලීය බලපෑම් මිශ්‍ර වූ විශේෂ දර්ශන නරඹන්න.",
+              "දමිළ සහ ගෝලීය බලපෑම් මිශ්‍ර වූ විශේෂ දර්ශන නරඹන්න.",
             },
             {
               id: "LRAL62axdmE",
               title: "මන්නාරම් සංචාරක - වෙරළතීර, ඉතිහාසය සහ පක්ෂීන්",
               description:
-                "බාඔබාබ් ගස සිට පිටසර පක්ෂීන් දක්වා විවිධ අත්දැකීම්.",
+              "බාඔබාබ් ගස සිට පිටසර පක්ෂීන් දක්වා විවිධ අත්දැකීම්.",
             },
           ],
         },
@@ -1321,7 +1370,7 @@ export const translations: Record<string, TranslationData> = {
     footer: {
       about: "මන්නාර නගර සභාව",
       aboutDescription:
-        "1987 සිට පාරදෘශ්‍යතාව, කාර්යක්ෂමතාව සහ කැපවීමෙන් මන්නාරයේ ජීවන්ත ප්‍රජාවට සේවය කරමින්. ගුණාත්මක නාගරික සේවා හරහා එකට තිරසාර සහ සමෘද්ධිමත් අනාගතයක් ගොඩනැගීම.",
+      "1987 සිට පාරදෘශ්‍යතාව, කාර්යක්ෂමතාව සහ කැපවීමෙන් මන්නාරයේ ජීවන්ත ප්‍රජාවට සේවය කරමින්. ගුණාත්මක නාගරික සේවා හරහා එකට තිරසාර සහ සමෘද්ධිමත් අනාගතයක් ගොඩනැගීම.",
       quickLinks: "ඉක්මන් සබැඳි",
       contactInfo: "සම්බන්ධතා තොරතුරු",
       address: "ප්‍රධාන වීදිය, මන්නාරම 41000, ශ්‍රී ලංකාව",
@@ -1366,7 +1415,7 @@ export const translations: Record<string, TranslationData> = {
           location: "මධ්‍යම උයන",
           image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
           description:
-            "අපගේ පරිශ්‍රයන් ලස්සන සහ තිරසාරව තබා ගැනීමට අපගේ මාසික සමූහ පිරිසිදු කිරීමේ උත්සාහයට එක්වන්න.",
+          "අපගේ පරිශ්‍රයන් ලස්සන සහ තිරසාරව තබා ගැනීමට අපගේ මාසික සමූහ පිරිසිදු කිරීමේ උත්සාහයට එක්වන්න.",
         },
         {
           id: 2,
@@ -1377,7 +1426,7 @@ export const translations: Record<string, TranslationData> = {
           location: "සභා කාමරය",
           image: "/historic-fort-mannar-sri-lanka-colonial-architectu.jpg",
           description:
-            "වාර්ෂික බජට් ඉදිරිපත් කිරීම සහ පොදු උපදේශන සැසිය. අපගේ ප්‍රජාවේ අනාගතය සඳහා ඔබගේ දායකත්වය වැදගත් වේ.",
+          "වාර්ෂික බජට් ඉදිරිපත් කිරීම සහ පොදු උපදේශන සැසිය. අපගේ ප්‍රජාවේ අනාගතය සඳහා ඔබගේ දායකත්වය වැදගත් වේ.",
         },
         {
           id: 3,
@@ -1388,7 +1437,7 @@ export const translations: Record<string, TranslationData> = {
           location: "ප්‍රජා මධ්‍යස්ථානය",
           image: "/baobab-trees-mannar-sri-lanka-ancient-african-tree.jpg",
           description:
-            "වයස අවුරුදු 16-25 අතර තරුණ පදිංචිකරුවන් සඳහා කුසලතා සංවර්ධන සහ වෘත්තීය මාර්ගෝපදේශන වැඩමුළුව.",
+          "වයස අවුරුදු 16-25 අතර තරුණ පදිංචිකරුවන් සඳහා කුසලතා සංවර්ධන සහ වෘත්තීය මාර්ගෝපදේශන වැඩමුළුව.",
         },
         {
           id: 4,
@@ -1399,7 +1448,7 @@ export const translations: Record<string, TranslationData> = {
           location: "නගර ශාලාව",
           image: "/mannar-lighthouse-sri-lanka-historic-maritime-land.jpg",
           description:
-            "අපගේ වැඩිහිටි ප්‍රජා සාමාජිකයන් සඳහා නොමිලේ සෞඛ්‍ය පරීක්ෂණ, සුභසාධන උපදේශන සහ සෞඛ්‍ය අධ්‍යාපනය.",
+          "අපගේ වැඩිහිටි ප්‍රජා සාමාජිකයන් සඳහා නොමිලේ සෞඛ්‍ය පරීක්ෂණ, සුභසාධන උපදේශන සහ සෞඛ්‍ය අධ්‍යාපනය.",
         },
       ],
       notice: [
@@ -1416,7 +1465,7 @@ export const translations: Record<string, TranslationData> = {
           date: "2025 අප්‍රේල් 3",
           image: "/historic-fort-mannar-sri-lanka-colonial-architectu.jpg",
           description:
-            "ප්‍රධාන වීදිය නැවත පිරිසිදු කිරීම සඳහා වසා ඇත. මාර්ග සංඥා තබා ඇත. අපේක්ෂිත නිමාව: අප්‍රේල් 10.",
+          "ප්‍රධාන වීදිය නැවත පිරිසිදු කිරීම සඳහා වසා ඇත. මාර්ග සංඥා තබා ඇත. අපේක්ෂිත නිමාව: අප්‍රේල් 10.",
         },
         {
           id: 3,
@@ -1424,7 +1473,7 @@ export const translations: Record<string, TranslationData> = {
           date: "2025 අප්‍රේල් 1",
           image: "/baobab-trees-mannar-sri-lanka-ancient-african-tree.jpg",
           description:
-            "ප්‍රතිචක්‍රීකරණ එකතු කිරීමේ දින යාවත්කාලීන කර ඇත. නව බිම් අප්‍රේල් 7 සිට බෙදා හැරීමට ඇත.",
+          "ප්‍රතිචක්‍රීකරණ එකතු කිරීමේ දින යාවත්කාලීන කර ඇත. නව බිම් අප්‍රේල් 7 සිට බෙදා හැරීමට ඇත.",
         },
       ],
       announcement: [
@@ -1441,7 +1490,7 @@ export const translations: Record<string, TranslationData> = {
           date: "2025 මාර්තු 28",
           icon: "alert",
           description:
-            "ආසන්න මොන්සූන් තත්ත්ව සඳහා පුරවැසියන්ට සූදානම් වීමට උපදෙස් දෙනු ලැබේ. හදිසි කට්ටල ලබා ගත හැක.",
+          "ආසන්න මොන්සූන් තත්ත්ව සඳහා පුරවැසියන්ට සූදානම් වීමට උපදෙස් දෙනු ලැබේ. හදිසි කට්ටල ලබා ගත හැක.",
         },
         {
           id: 3,
@@ -1453,98 +1502,98 @@ export const translations: Record<string, TranslationData> = {
       ],
     },
     ChairmanPage: {
-  hero: {
-    name: "බාලෙන් ෂා",
-    description: "ඉංජිනේරු, රැප් ගායකයෙකු සහ කට්මණ්ඩු නගරයේ මහමැති. නගර සංවර්ධනය සහ විවෘත පාලනය පිළිබඳ පුරෝගාමී.",
-    cta: "ඇතුළු වන්න"
-  },
-  whoIsBalen: {
-    title: "බාලෙන් කවුරුද?",
-    paragraphs: [
-      "බාලෙන් ෂා (බාලෙන්ද්‍ර ෂා) නෙපාලයේ ප්‍රසිද්ධ පුද්ගලයෙකි, ඉංජිනේරු, රැප් ගායක සහ රාජ්‍ය නිලධාරියා ලෙස හැඳින්වෙයි. ඔහු ස්වාධීන අපේක්ෂකයෙකු ලෙස ජනප්‍රියත්වය ලැබූ අතර 2022 මැයි මාසයේ කට්මණ්ඩු නගරයේ මහමැති ලෙස විභාගයට ලක්විය. ඕනෑම දේශපාලන පක්ෂයක ආධාරයක් නොමැතිව ලැබූ මේ අනපේක්ෂිත ජයග්‍රහණය නෙපාල රාජ්‍ය විද්‍යාවේ ලක්ෂ්‍යමය සිදුවීමක් වන අතර ස්වාධීන නායකත්වයට පිවිසීමේ මාර්ගයක් සලසයි.",
-      "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස නම් දායකව තිබුණි. ඔහු පුරවැසි ඉංජිනේරුවරයෙකු ලෙසද කටයුතු කරයි. මහමැති ලෙස, නගර සැලසුම් කිරීම, අපද්‍රව්‍ය කළමනාකරණය සහ අධිෂ්ඨානික කටයුතු පිළිබඳව ඔහු විවෘතව කතා කරමින් ඇත.",
-      "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා බාලෙන් අගය හා විවේචන දෙකටම ලක්වී ඇත."
-    ]
-  },
-  academics: {
-    title: "අධ්‍යාපන සහ සුදුසුකම්",
-    imageAlt: "බාලෙන් ෂා - ඉංජිනේරු සහ රාජ්‍ය නිලධාරියා",
-    qualifications: [
-      {
-        degree: "සංයුක්ත විද්‍යාත්මක පීඨය (මැකැනිකල් ඉංජිනේරු, නිෂ්පාදන තාක්ෂණය)",
-        institution: "Magdeburg තාක්ෂණ පාසල සහ Otto-Von-Guericke විශ්ව විද්‍යාලය, ජර්මනිය"
+      hero: {
+        name: "බාලෙන් ෂා",
+        description: "ඉංජිනේරු, රැප් ගායකයෙකු සහ කට්මණ්ඩු නගරයේ මහමැති. නගර සංවර්ධනය සහ විවෘත පාලනය පිළිබඳ පුරෝගාමී.",
+        cta: "ඇතුළු වන්න"
       },
-      {
-        degree: "ජ්‍යේෂ්ඨ කළමනාකරණ සහතිකය",
-        institution: "Kenya කළමනාකරණ ආයතනය, කෙන්යා"
+      whoIsBalen: {
+        title: "බාලෙන් කවුරුද?",
+        paragraphs: [
+          "බාලෙන් ෂා (බාලෙන්ද්‍ර ෂා) නෙපාලයේ ප්‍රසිද්ධ පුද්ගලයෙකි, ඉංජිනේරු, රැප් ගායක සහ රාජ්‍ය නිලධාරියා ලෙස හැඳින්වෙයි. ඔහු ස්වාධීන අපේක්ෂකයෙකු ලෙස ජනප්‍රියත්වය ලැබූ අතර 2022 මැයි මාසයේ කට්මණ්ඩු නගරයේ මහමැති ලෙස විභාගයට ලක්විය. ඕනෑම දේශපාලන පක්ෂයක ආධාරයක් නොමැතිව ලැබූ මේ අනපේක්ෂිත ජයග්‍රහණය නෙපාල රාජ්‍ය විද්‍යාවේ ලක්ෂ්‍යමය සිදුවීමක් වන අතර ස්වාධීන නායකත්වයට පිවිසීමේ මාර්ගයක් සලසයි.",
+          "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස නම් දායකව තිබුණි. ඔහු පුරවැසි ඉංජිනේරුවරයෙකු ලෙසද කටයුතු කරයි. මහමැති ලෙස, නගර සැලසුම් කිරීම, අපද්‍රව්‍ය කළමනාකරණය සහ අධිෂ්ඨානික කටයුතු පිළිබඳව ඔහු විවෘතව කතා කරමින් ඇත.",
+          "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා බාලෙන් අගය හා විවේචන දෙකටම ලක්වී ඇත."
+        ]
       },
-      {
-        degree: "සම්මතීකරණ සහ ගුණාත්මක පාලන සහතිකය",
-        institution: "Denver විශ්ව විද්‍යාලය, කොලරැඩෝ, ඇමරිකාව"
+      academics: {
+        title: "අධ්‍යාපන සහ සුදුසුකම්",
+        imageAlt: "බාලෙන් ෂා - ඉංජිනේරු සහ රාජ්‍ය නිලධාරියා",
+        qualifications: [
+          {
+            degree: "සංයුක්ත විද්‍යාත්මක පීඨය (මැකැනිකල් ඉංජිනේරු, නිෂ්පාදන තාක්ෂණය)",
+            institution: "Magdeburg තාක්ෂණ පාසල සහ Otto-Von-Guericke විශ්ව විද්‍යාලය, ජර්මනිය"
+          },
+          {
+            degree: "ජ්‍යේෂ්ඨ කළමනාකරණ සහතිකය",
+            institution: "Kenya කළමනාකරණ ආයතනය, කෙන්යා"
+          },
+          {
+            degree: "සම්මතීකරණ සහ ගුණාත්මක පාලන සහතිකය",
+            institution: "Denver විශ්ව විද්‍යාලය, කොලරැඩෝ, ඇමරිකාව"
+          },
+          {
+            degree: "ස්වාභාවික භෞතික සම්මතයන් පිහිටුවීමේ සහතිකය",
+            institution: "ජාතික සම්මත හා තාක්ෂණ කාර්යාලය, Gaithersburg, MD, ඇමරිකාව"
+          },
+          {
+            degree: "සම්මත විශේෂණ ලිවීමේ සහතිකය",
+            institution: "බ්‍රිතාන්‍ය සම්මත ආයතනය (BSI Group)"
+          }
+        ]
       },
-      {
-        degree: "ස්වාභාවික භෞතික සම්මතයන් පිහිටුවීමේ සහතිකය",
-        institution: "ජාතික සම්මත හා තාක්ෂණ කාර්යාලය, Gaithersburg, MD, ඇමරිකාව"
+      awards: {
+        title: "ගෞරව, සම්මාන සහ ප්‍රකාශන",
+        imageAlt: "බාලෙන් ෂාගේ සම්මාන සහ ප්‍රකාශන",
+        items: [
+          {
+            title: "ග්‍රීටර් ගුඩ් සම්මාන",
+            details: "Mazari Africa, Istanbul, කෙන්යා, මැයි 2021"
+          },
+          {
+            title: "විද්‍යා ඩොක්ටරේට් (ගෞරවමාන)",
+            details: "Jurumegh Opriga Obriga විද්‍යා සහ තාක්ෂණ විශ්ව විද්‍යාලය, Siyap, කෙන්යා, දෙසැම්බර් 2010"
+          },
+          {
+            title: "ජාතිකත්වය සඳහා පසුබැසීමේ මාර්ගය",
+            details: "Nairobi Mountainsho Publishers, 2017"
+          },
+          {
+            title: "සැහැල්ලු නිදහස් ඇගිලි",
+            details: "Nairobi Mountainsho Publishers, 2019"
+          },
+          {
+            title: "සමාජ සංවර්ධනයේ නායකත්ව ඩොක්ටරේට් (ගෞරවමාන)",
+            details: "Lambalong Creative Technology විශ්ව විද්‍යාලය, Kuala Lumpur, ජූලි 2012"
+          },
+          {
+            title: "ගෞරවමාන ඩොක්ටරේට්",
+            details: "Florida Agricultural Mechanical University, USA, 2009"
+          },
+          {
+            title: "නීති ඩොක්ටරේට් (LLD) (ගෞරවමාන)",
+            details: "නෙරොබි විශ්ව විද්‍යාලය, කෙන්යා, ඔක්තෝබර් 2008"
+          }
+        ]
       },
-      {
-        degree: "සම්මත විශේෂණ ලිවීමේ සහතිකය",
-        institution: "බ්‍රිතාන්‍ය සම්මත ආයතනය (BSI Group)"
+      leadership: {
+        title: "නායකත්වය සහ බලපෑම්",
+        mayorSection: {
+          title: "කට්මණ්ඩු මහමැති ලෙස",
+          description: "2022 තේරීම් වුනා පසු, බාලෙන් ෂා අවධානය යොමු කළ ප්‍රධාන නගර ගැටළු:",
+          initiatives: [
+            "නගර සැලසුම් කිරීම සහ සංවර්ධනය",
+            "අපද්‍රව්‍ය කළමනාකරණ විසඳුම්",
+            "අධිෂ්ඨානික කටයුතු මර්දන උත්සාහ",
+            "ආධාර හා ව්‍යූහ මධ්‍යමගීකරණය",
+            "සංස්කෘතික හා උරුම සංරක්ෂණය"
+          ]
+        },
+        cultureSection: {
+          title: "සංස්කෘතික බලපෑම්",
+          description: "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස හිටියා. ඔහුගේ සංගීතය සාමාජික ගැටලු කතා කරයි, එය ඔහුගේ රාජ්‍ය ක්‍රමවේදයේ විවෘත සහිතත්වය සමඟ සම්බන්ධ වේ.",
+          quote: "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා, බාලෙන් අගය සහ විවේචන දෙකටම ලක්වී ඇත."
+        }
       }
-    ]
-  },
-  awards: {
-    title: "ගෞරව, සම්මාන සහ ප්‍රකාශන",
-    imageAlt: "බාලෙන් ෂාගේ සම්මාන සහ ප්‍රකාශන",
-    items: [
-      {
-        title: "ග්‍රීටර් ගුඩ් සම්මාන",
-        details: "Mazari Africa, Istanbul, කෙන්යා, මැයි 2021"
-      },
-      {
-        title: "විද්‍යා ඩොක්ටරේට් (ගෞරවමාන)",
-        details: "Jurumegh Opriga Obriga විද්‍යා සහ තාක්ෂණ විශ්ව විද්‍යාලය, Siyap, කෙන්යා, දෙසැම්බර් 2010"
-      },
-      {
-        title: "ජාතිකත්වය සඳහා පසුබැසීමේ මාර්ගය",
-        details: "Nairobi Mountainsho Publishers, 2017"
-      },
-      {
-        title: "සැහැල්ලු නිදහස් ඇගිලි",
-        details: "Nairobi Mountainsho Publishers, 2019"
-      },
-      {
-        title: "සමාජ සංවර්ධනයේ නායකත්ව ඩොක්ටරේට් (ගෞරවමාන)",
-        details: "Lambalong Creative Technology විශ්ව විද්‍යාලය, Kuala Lumpur, ජූලි 2012"
-      },
-      {
-        title: "ගෞරවමාන ඩොක්ටරේට්",
-        details: "Florida Agricultural Mechanical University, USA, 2009"
-      },
-      {
-        title: "නීති ඩොක්ටරේට් (LLD) (ගෞරවමාන)",
-        details: "නෙරොබි විශ්ව විද්‍යාලය, කෙන්යා, ඔක්තෝබර් 2008"
-      }
-    ]
-  },
-  leadership: {
-    title: "නායකත්වය සහ බලපෑම්",
-    mayorSection: {
-      title: "කට්මණ්ඩු මහමැති ලෙස",
-      description: "2022 තේරීම් වුනා පසු, බාලෙන් ෂා අවධානය යොමු කළ ප්‍රධාන නගර ගැටළු:",
-      initiatives: [
-        "නගර සැලසුම් කිරීම සහ සංවර්ධනය",
-        "අපද්‍රව්‍ය කළමනාකරණ විසඳුම්",
-        "අධිෂ්ඨානික කටයුතු මර්දන උත්සාහ",
-        "ආධාර හා ව්‍යූහ මධ්‍යමගීකරණය",
-        "සංස්කෘතික හා උරුම සංරක්ෂණය"
-      ]
-    },
-    cultureSection: {
-      title: "සංස්කෘතික බලපෑම්",
-      description: "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස හිටියා. ඔහුගේ සංගීතය සාමාජික ගැටලු කතා කරයි, එය ඔහුගේ රාජ්‍ය ක්‍රමවේදයේ විවෘත සහිතත්වය සමඟ සම්බන්ධ වේ.",
-      quote: "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා, බාලෙන් අගය සහ විවේචන දෙකටම ලක්වී ඇත."
-    }
-  }
     },
     galleryPage: {
       title: "සිදුවීම් ගැලරිය",
@@ -1616,19 +1665,44 @@ export const translations: Record<string, TranslationData> = {
           location: "සභා කාර්යාලය",
           participants: "30 කොන්ත්‍රාත් සේවකයින්",
           description: "සේවා ප්රමිතීන් සහ පාරිභෝගික සේවා පිළිබඳ පුහුණුව."
-          
+
         }
       ]
-    }
-},
-};
-
+    },
+    AdsSectionTranslations: {
+     
+        topBar: {
+          title: "නිල නිවේදන සහ ප්රකාශන",
+          viewAll: "සියල්ල බලන්න"
+        },
+        title: "පොදු නිවේදන",
+        subtitle: "මන්නාරම් නගර සභාවේ නවතම ප්රකාශන සහ වැදගත් තොරතුරු සමඟ යාවත්කාලීනව රැඳෙන්න",
+        searchPlaceholder: "නිවේදන, ඇමතුම්පත්, උත්සව...",
+        allCategories: "සියලුම කාණ්ඩ",
+        viewAll: "සියලු නිවේදන බලන්න",
+        notices: "නිවේදන",
+        urgent: "හදිසි",
+        readMore: "විස්තර වෙත යන්න",
+        noResults: {
+          title: "නිවේදන නැත",
+          description: "ඔබේ සෙවුම හෝ පෙරහන් නිර්ණායක සකස් කරන්න"
+        },
+        modal: {
+          title: "සියලු පොදු නිවේදන",
+          subtitle: "මන්නාරම් නගර සභාවේ නිල ප්රකාශන"
+        }
+      }
     
 
-  
-  
- 
+  }
+}
 
-    
+
+
+
+
+
+
+
 
 

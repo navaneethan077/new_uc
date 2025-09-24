@@ -37,7 +37,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <LanguageAwareWrapper className="min-h-screen">
+    // <LanguageAwareWrapper className="min-h-screen">
       <div className="min-h-screen">
         <TopBar />
         <Navigation />
@@ -207,6 +207,6 @@ export default function AboutPage() {
 
         <Footer />
       </div>
-    </LanguageAwareWrapper>
+    // </LanguageAwareWrapper>
   )
 }
