@@ -12,7 +12,7 @@ const containerStyle = {
     height: "400px",
 };
 
-// ✅ CORRECTED COORDINATES FROM YOUR GOOGLE MAPS LINK
+// ✅ URBAN COUNCIL MANNAR COORDINATES
 const defaultCenter = {
     lat: 8.9798667,
     lng: 79.9125385,
@@ -203,8 +203,8 @@ export function ContactSection() {
                                         <MapPin className="w-5 h-5 text-primary" />
                                     </div>
                                     <div>
-                                        <p className="font-medium text-gray-900">{t.footer.about}</p>
-                                        <p className="text-gray-600 text-sm mt-1">{t.footer.address}</p>
+                                        <p className="font-medium text-gray-900">Urban Council Mannar</p>
+                                        <p className="text-gray-600 text-sm mt-1">Medawachchiya-Talaimannar Hwy, Mannar 41000</p>
                                     </div>
                                 </div>
                             </div>
@@ -212,56 +212,79 @@ export function ContactSection() {
 
                         {/* Google Map */}
                         <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-                            <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
-                                <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                                    <MapPin className="w-5 h-5 text-primary" />
-                                    {t.home.contact.findUs}
-                                </h3>
-                            </div>
-                            <div className="relative">
-                                {isLoaded ? (
-                                    <GoogleMap
-                                        mapContainerStyle={containerStyle}
-                                        center={defaultCenter}
-                                        zoom={16}
-                                        options={{
-                                            disableDefaultUI: false,
-                                            zoomControl: true,
-                                            streetViewControl: false,
-                                            mapTypeControl: false,
-                                            fullscreenControl: false,
-                                            gestureHandling: "greedy",
-                                            draggable: true,
-                                            scrollwheel: true,
-                                        }}
-                                        onLoad={onMapLoad}
-                                        onUnmount={onMapUnmount}
-                                    >
-                                        <Marker
-                                            position={defaultCenter}
-                                            title={t.footer.about}
-                                            aria-label={`${t.footer.about} Location`}
-                                            icon={{
-                                                path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z",
-                                                fillColor: "#001f4d",
-                                                fillOpacity: 1,
-                                                strokeWeight: 2,
-                                                strokeColor: "#ffffff",
-                                                scale: 1.5,
-                                            }}
-                                        />
-                                    </GoogleMap>
-                                ) : (
-                                    <div className="h-full flex flex-col items-center justify-center bg-gray-50 p-8">
-                                        <div className="inline-block animate-pulse bg-gray-300 rounded-xl w-16 h-16 mb-4"></div>
-                                        <p className="text-gray-600 font-medium text-center">{t.common.loading}...</p>
-                                        <p className="text-sm text-gray-500 text-center mt-2 max-w-xs">
-                                            Please ensure JavaScript is enabled and your API key is configured.
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+    <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
+        <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <MapPin className="w-5 h-5 text-primary" />
+            {t.home.contact.findUs}
+        </h3>
+        <p className="text-sm text-gray-600 mt-1">Urban Council Mannar</p>
+    </div>
+    <div className="relative">
+        {/* Embedded Responsive Google Map */}
+        <div className="embed-map-responsive">
+            <div className="embed-map-container">
+                <iframe 
+                    className="embed-map-frame"
+                    frameBorder="0"
+                    scrolling="no"
+                    marginHeight={0}
+                    marginWidth={0}
+                    src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Urban%20Council%20%E0%AE%AE%E0%AE%A9%E0%AF%8D%E0%AE%A9%E0%AE%BE%E0%AE%B0%E0%AF%8D%20%E0%AE%A8%E0%AE%95%E0%AE%B0%E0%AE%9A%E0%AE%AA%E0%AF%88%2C%20XWH7%2BW2V%2C%20Medawachchiya-Talaimannar%20Hwy%2C%20Mannar%2041000&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                    title="Urban Council Mannar Location Map"
+                    aria-label="Interactive map showing Urban Council Mannar location"
+                    loading="lazy"
+                >
+                </iframe>
+                {/* Remove or replace the spam link */}
+                <a 
+                    href="https://maps.google.com" 
+                    style={{
+                        fontSize: "2px!important",
+                        color: "gray!important",
+                        position: "absolute",
+                        bottom: "0",
+                        left: "0",
+                        zIndex: "1",
+                        maxHeight: "1px",
+                        overflow: "hidden",
+                        textDecoration: "none"
+                    }}
+                    aria-hidden="true"
+                >
+                    Google Maps
+                </a>
+            </div>
+        </div>
+        
+        {/* Custom CSS for responsive embedding */}
+        <style jsx>{`
+            .embed-map-responsive {
+                position: relative;
+                text-align: right;
+                width: 100%;
+                height: 0;
+                padding-bottom: 66.66666666666666%;
+            }
+            .embed-map-container {
+                overflow: hidden;
+                background: none !important;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .embed-map-frame {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border: 0;
+            }
+        `}</style>
+    </div>
+</div>
                     </div>
                 </div>
 

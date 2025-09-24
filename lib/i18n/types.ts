@@ -328,5 +328,29 @@ galleryPage : {
   }>;
 };
 
+//ad
+AdsSectionTranslations :{
+  topBar: {
+    title: string;
+    viewAll: string;
+  };
+  title: string;
+  subtitle: string;
+  searchPlaceholder: string;
+  allCategories: string;
+  viewAll: string;
+  notices: string;
+  urgent: string;
+  readMore: string;
+  noResults: {
+    title: string;
+    description: string;
+  };
+  modal: {
+    title: string;
+    subtitle: string;
+  };
+}
+
  
 }
