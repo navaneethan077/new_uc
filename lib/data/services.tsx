@@ -1,13 +1,14 @@
 // data/services.ts
 import { ServiceCategories } from '@/lib/data/service';
+import { FaGraduationCap, FaHardHat, FaShieldAlt, FaHeartbeat } from 'react-icons/fa';
 
 export const serviceCategories: ServiceCategories = [
   {
     id: 'education-welfare',
     title: 'Education & Welfare',
     description: 'Programs focused on education, welfare, and community development',
-    icon: '🎓',
-    color: 'bg-blue-50 border-blue-200',
+    icon: <FaGraduationCap className="text-primary" />,
+    color: 'bg-primary/5 border-primary/20',
     subServices: [
       {
         id: 'education-program',
@@ -35,8 +36,8 @@ export const serviceCategories: ServiceCategories = [
     id: 'infrastructure-development',
     title: 'Infrastructure & Development',
     description: 'Urban and rural infrastructure development projects',
-    icon: '🏗️',
-    color: 'bg-green-50 border-green-200',
+    icon: <FaHardHat className="text-primary" />,
+    color: 'bg-primary/5 border-primary/20',
     subServices: [
       {
         id: 'road-renovation',
@@ -84,8 +85,8 @@ export const serviceCategories: ServiceCategories = [
     id: 'safety-protection',
     title: 'Safety & Protection',
     description: 'Community safety and protection services',
-    icon: '🛡️',
-    color: 'bg-red-50 border-red-200',
+    icon: <FaShieldAlt className="text-primary" />,
+    color: 'bg-primary/5 border-primary/20',
     subServices: [
       {
         id: 'alcohol-prohibition',
@@ -118,8 +119,8 @@ export const serviceCategories: ServiceCategories = [
     id: 'health-environment',
     title: 'Health & Environment',
     description: 'Healthcare and environmental conservation programs',
-    icon: '🌿',
-    color: 'bg-teal-50 border-teal-200',
+    icon: <FaHeartbeat className="text-primary" />,
+    color: 'bg-primary/5 border-primary/20',
     subServices: [
       {
         id: 'sanitation',

@@ -1,16 +1,15 @@
-// types/service.ts
 export interface SubService {
   id: string;
   title: string;
   description: string;
-  icon?: string;
+  icon?: React.ReactNode; // Changed from string to React.ReactNode
 }
 
 export interface ServiceCategory {
   id: string;
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode; // Changed from string to React.ReactNode
   color: string;
   subServices: SubService[];
 }
