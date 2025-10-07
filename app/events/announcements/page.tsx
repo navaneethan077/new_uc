@@ -343,7 +343,7 @@ export default function AnnouncementsPage() {
 
       {/* Main Content */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container-x mx-auto  px-4">
           {/* Results Count */}
           <div className="mb-8 flex justify-between items-center">
             <p className="text-gray-600">

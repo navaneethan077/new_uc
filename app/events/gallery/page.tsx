@@ -260,7 +260,7 @@ export default function GalleryPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-primary/5">
+        <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
             {/* Top Navigation */}
             <TopBar />
             <Navigation />
@@ -277,49 +277,53 @@ export default function GalleryPage() {
             />
 
             {/* Hero Section */}
-            <section className="relative py-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 overflow-hidden">
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
-                
-                <div className="container mx-auto px-4 text-center relative z-10">
-                    <div className="flex items-center justify-center mb-8">
-                        <div className="w-24 h-24 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-white/30">
-                            <Camera className="w-12 h-12 text-white" />
-                        </div>
-                    </div>
-                    <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white to-primary/20 bg-clip-text text-transparent">
-                        {currentView === 'albums' ? 'Photo Gallery' : selectedAlbum?.title}
-                    </h1>
-                    <p className="text-xl text-primary/90 max-w-3xl mx-auto leading-relaxed">
-                        {currentView === 'albums' 
-                            ? 'Discover the breathtaking beauty, rich culture, and unique heritage of Mannar through our carefully curated albums'
-                            : selectedAlbum?.description
-                        }
-                    </p>
-                    
-                    {currentView === 'album-detail' && selectedAlbum && (
-                        <div className="flex justify-center gap-8 mt-12">
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-white">{selectedAlbum.mediaCount}</div>
-                                <div className="text-primary/80">Total Media</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-white">{selectedAlbum.photoCount}</div>
-                                <div className="text-primary/80">Photos</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-white">{selectedAlbum.videoCount}</div>
-                                <div className="text-primary/80">Videos</div>
-                            </div>
-                        </div>
-                    )}
+            {/* Hero Section */}
+<section className="relative py-24 bg-gradient-to-br from-[var(--primary)] via-[var(--primary)/0.9] to-[var(--primary)/0.8] overflow-hidden">
+    <div className="absolute inset-0 bg-black/20"></div>
+    <div className="absolute top-0 left-0 w-72 h-72 bg-card/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+    <div className="absolute bottom-0 right-0 w-96 h-96 bg-card/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
+    
+    <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="flex items-center justify-center mb-8">
+            <div className="w-24 h-24 bg-card/20 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-card/30">
+                <Camera className="w-12 h-12 text-card" />
+            </div>
+        </div>
+        
+        <h1 className="text-6xl md:text-7xl font-bold text-card mb-6 bg-gradient-to-r from-card to-[var(--primary)/0.2] bg-clip-text text-transparent">
+            {currentView === 'albums' ? 'Photo Gallery' : selectedAlbum?.title}
+        </h1>
+        
+        <p className="text-xl text-[var(--primary)/0.9] max-w-3xl mx-auto leading-relaxed">
+            {currentView === 'albums' 
+                ? 'Discover the breathtaking beauty, rich culture, and unique heritage of Mannar through our carefully curated albums'
+                : selectedAlbum?.description
+            }
+        </p>
+        
+        {currentView === 'album-detail' && selectedAlbum && (
+            <div className="flex justify-center gap-8 mt-12">
+                <div className="text-center">
+                    <div className="text-3xl font-bold text-card">{selectedAlbum.mediaCount}</div>
+                    <div className="text-[var(--primary)/0.8]">Total Media</div>
                 </div>
-            </section>
+                <div className="text-center">
+                    <div className="text-3xl font-bold text-card">{selectedAlbum.photoCount}</div>
+                    <div className="text-[var(--primary)/0.8]">Photos</div>
+                </div>
+                <div className="text-center">
+                    <div className="text-3xl font-bold text-card">{selectedAlbum.videoCount}</div>
+                    <div className="text-[var(--primary)/0.8]">Videos</div>
+                </div>
+            </div>
+        )}
+    </div>
+</section>
+
 
             {/* Back Button for Album Detail View */}
             {currentView === 'album-detail' && (
-                <section className="bg-white/80 backdrop-blur-xl py-6 border-b border-white/20">
+                <section className="bg-card/80 backdrop-blur-xl py-6 border-b border-card/20">
                     <div className="container mx-auto px-4">
                         <button
                             onClick={handleBackToAlbums}
@@ -332,73 +336,73 @@ export default function GalleryPage() {
                 </section>
             )}
 
-            {/* Controls Section */}
-            <section className="sticky top-16 z-20 bg-white/80 backdrop-blur-xl shadow-xl py-6 border-b border-white/20">
+            {/* Search & Filter Section - Sticky */}
+            <section className="sticky top-16 z-10 bg-card shadow-sm py-6 border-b border-border">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+                    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
                         {/* Search */}
-                        <div className="relative w-full lg:w-2/5">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <div className="relative w-full md:w-2/5">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                             <input
                                 type="text"
                                 placeholder={currentView === 'albums' 
-                                    ? "🔍 Search albums by title, location, or category..." 
-                                    : "🔍 Search media in this album..."
+                                    ? "Search albums by title, location, or category..." 
+                                    : "Search media in this album..."
                                 }
                                 value={search}
                                 onChange={(e) => {
                                     setSearch(e.target.value);
                                     setPage(1);
                                 }}
-                                className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 bg-white/50 focus:ring-3 focus:ring-primary/20 focus:border-primary focus:outline-none transition-all duration-300 shadow-sm"
+                                className="w-full pl-10 pr-4 py-3 rounded-lg border border-input focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none bg-background text-foreground"
                             />
                             {search && (
                                 <button
                                     onClick={() => setSearch("")}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
                             )}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
                             {/* View Mode Toggle */}
-                            <div className="flex bg-gray-100 rounded-xl p-1.5 border border-gray-200">
+                            <div className="flex bg-muted rounded-lg p-1.5 border border-border">
                                 <button
                                     onClick={() => setViewMode("grid")}
-                                    className={`p-3 rounded-lg transition-all duration-300 ${
+                                    className={`p-2 rounded-md transition-all duration-300 ${
                                         viewMode === "grid" 
-                                            ? "bg-white shadow-lg border border-gray-300" 
-                                            : "hover:bg-gray-200/50"
+                                            ? "bg-background shadow-sm border border-border" 
+                                            : "hover:bg-muted/80"
                                     }`}
                                 >
-                                    <Grid3X3 className="w-5 h-5" />
+                                    <Grid3X3 className="w-4 h-4" />
                                 </button>
                                 <button
                                     onClick={() => setViewMode("masonry")}
-                                    className={`p-3 rounded-lg transition-all duration-300 ${
+                                    className={`p-2 rounded-md transition-all duration-300 ${
                                         viewMode === "masonry" 
-                                            ? "bg-white shadow-lg border border-gray-300" 
-                                            : "hover:bg-gray-200/50"
+                                            ? "bg-background shadow-sm border border-border" 
+                                            : "hover:bg-muted/80"
                                     }`}
                                 >
-                                    <List className="w-5 h-5" />
+                                    <List className="w-4 h-4" />
                                 </button>
                             </div>
 
-                            {/* Sort */}
-                            <div className="flex items-center gap-3 bg-gray-100 rounded-xl px-4 py-3 border border-gray-200">
-                                <span className="text-gray-700 font-semibold whitespace-nowrap">Sort by:</span>
+                            {/* Sort By */}
+                            <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">
+                                <span className="text-foreground font-medium whitespace-nowrap">Sort by:</span>
                                 <select
                                     value={sort}
                                     onChange={(e) => {
                                         setSort(e.target.value as "latest" | "popular" | "name");
                                         setPage(1);
                                     }}
-                                    className="bg-transparent border-none focus:ring-0 focus:outline-none font-medium"
+                                    className="bg-transparent border-none focus:ring-0 focus:outline-none text-foreground"
                                 >
-                                    <option value="latest">Newest First</option>
+                                    <option value="latest">Newest</option>
                                     <option value="popular">Most Popular</option>
                                     <option value="name">Alphabetical</option>
                                 </select>
@@ -408,12 +412,12 @@ export default function GalleryPage() {
                             {currentView === 'albums' && (
                                 <button
                                     onClick={() => setShowFilters(!showFilters)}
-                                    className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+                                    className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
                                 >
                                     <Filter className="w-5 h-5" />
-                                    <span>Filters</span>
+                                    <span>Categories</span>
                                     {selectedCategories.length > 0 && (
-                                        <span className="bg-white text-primary text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+                                        <span className="bg-primary text-primary-foreground text-sm rounded-full h-6 w-6 flex items-center justify-center">
                                             {selectedCategories.length}
                                         </span>
                                     )}
@@ -424,7 +428,7 @@ export default function GalleryPage() {
                             {(search || selectedCategories.length > 0) && (
                                 <button
                                     onClick={clearFilters}
-                                    className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-primary transition-all duration-300 font-medium hover:bg-gray-100 rounded-xl"
+                                    className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary transition-colors font-medium"
                                 >
                                     <X className="w-5 h-5" />
                                     <span>Clear All</span>
@@ -435,20 +439,17 @@ export default function GalleryPage() {
 
                     {/* Category Filters (only show for albums view) */}
                     {showFilters && currentView === 'albums' && (
-                        <div className="mt-8 pt-8 border-t border-gray-200/50">
-                            <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                                <Filter className="w-6 h-6 text-primary" />
-                                Filter by Category
-                            </h3>
+                        <div className="mt-6 pt-6 border-t border-border">
+                            <h3 className="text-lg font-medium text-foreground mb-4">Filter by Category</h3>
                             <div className="flex flex-wrap gap-3">
                                 {categories.map((category) => (
                                     <button
                                         key={category}
                                         onClick={() => toggleCategory(category)}
-                                        className={`px-5 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                                        className={`px-4 py-2 rounded-full font-medium transition-all border ${
                                             selectedCategories.includes(category)
-                                                ? "bg-gradient-to-r from-primary to-primary/80 text-white shadow-2xl"
-                                                : "bg-white text-gray-700 shadow-lg hover:shadow-xl border border-gray-200"
+                                                ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                                                : "bg-muted text-foreground border-border hover:bg-muted/80"
                                         }`}
                                     >
                                         {category}
@@ -466,27 +467,27 @@ export default function GalleryPage() {
                     {/* Results Count */}
                     <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg text-muted-foreground">
                                 {currentView === 'albums' ? (
                                     <>
                                         Showing <span className="font-bold text-primary">{visibleAlbums.length}</span> of{" "}
-                                        <span className="font-bold text-gray-800">{filteredAndSortedAlbums.length}</span> curated albums
+                                        <span className="font-bold text-foreground">{filteredAndSortedAlbums.length}</span> curated albums
                                     </>
                                 ) : (
                                     <>
                                         Showing <span className="font-bold text-primary">{mediaItems.length}</span> media items in{" "}
-                                        <span className="font-bold text-gray-800">{selectedAlbum?.title}</span>
+                                        <span className="font-bold text-foreground">{selectedAlbum?.title}</span>
                                     </>
                                 )}
                             </p>
                             {(search || selectedCategories.length > 0) && currentView === 'albums' && (
-                                <p className="text-sm text-gray-500 mt-1">
+                                <p className="text-sm text-muted-foreground mt-1">
                                     Filtered by: {search && `"${search}"`} {selectedCategories.length > 0 && `${selectedCategories.join(", ")}`}
                                 </p>
                             )}
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="text-sm text-gray-500 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-gray-200">
+                            <div className="text-sm text-muted-foreground bg-card px-4 py-2 rounded-lg border border-border">
                                 Page <span className="font-bold text-primary">{page}</span> of <span className="font-bold">{totalPages}</span>
                             </div>
                         </div>
@@ -499,13 +500,13 @@ export default function GalleryPage() {
                                 <div className="w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl flex items-center justify-center mx-auto mb-8">
                                     <Folder className="w-16 h-16 text-primary" />
                                 </div>
-                                <h3 className="text-3xl font-bold text-gray-800 mb-4">No albums found</h3>
-                                <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                                <h3 className="text-3xl font-bold text-foreground mb-4">No albums found</h3>
+                                <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
                                     We couldn't find any albums matching your criteria. Try adjusting your search or filters.
                                 </p>
                                 <button
                                     onClick={clearFilters}
-                                    className="px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white rounded-2xl hover:from-primary/90 hover:to-primary transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+                                    className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl hover:bg-primary/90 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
                                 >
                                     Clear All Filters
                                 </button>
@@ -515,7 +516,7 @@ export default function GalleryPage() {
                                 {visibleAlbums.map((album) => (
                                     <div
                                         key={album.id}
-                                        className="group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer border border-white/20"
+                                        className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
                                         onMouseEnter={() => setHoveredCard(album.id)}
                                         onMouseLeave={() => setHoveredCard(null)}
                                         onClick={() => handleAlbumClick(album)}
@@ -529,23 +530,23 @@ export default function GalleryPage() {
                                             />
                                             
                                             {/* Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                             
                                             {/* Media Type Badges */}
                                             <div className="absolute top-4 left-4 flex gap-2">
-                                                <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                <span className="px-3 py-1 bg-blue-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
                                                     <ImageIcon className="w-3 h-3" />
                                                     {album.photoCount}
                                                 </span>
-                                                <span className="px-3 py-1 bg-red-500 text-white rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                <span className="px-3 py-1 bg-red-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
                                                     <Play className="w-3 h-3" />
                                                     {album.videoCount}
                                                 </span>
                                             </div>
 
                                             {/* Hover Action */}
-                                            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                                <div className="flex items-center gap-2 text-white font-semibold">
+                                            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                <div className="flex items-center gap-2 text-card font-semibold">
                                                     View Album
                                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                 </div>
@@ -554,22 +555,22 @@ export default function GalleryPage() {
                                         
                                         {/* Album Info */}
                                         <div className="p-6">
-                                            <h3 className="font-bold text-gray-800 text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                            <h3 className="font-bold text-foreground text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
                                                 {album.title}
                                             </h3>
-                                            <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+                                            <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
                                                 {album.description}
                                             </p>
                                             <div className="space-y-2">
-                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <Calendar className="w-4 h-4" />
                                                     <span>{album.dateLabel}</span>
                                                 </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <MapPin className="w-4 h-4" />
                                                     <span className="line-clamp-1">{album.location}</span>
                                                 </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <Folder className="w-4 h-4" />
                                                     <span>{album.mediaCount} items</span>
                                                 </div>
@@ -578,12 +579,12 @@ export default function GalleryPage() {
                                             {/* Tags */}
                                             <div className="flex flex-wrap gap-1 mt-4">
                                                 {album.tags.slice(0, 3).map((tag, index) => (
-                                                    <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs">
+                                                    <span key={index} className="px-2 py-1 bg-muted text-muted-foreground rounded-md text-xs">
                                                         #{tag}
                                                     </span>
                                                 ))}
                                                 {album.tags.length > 3 && (
-                                                    <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs">
+                                                    <span className="px-2 py-1 bg-muted text-muted-foreground rounded-md text-xs">
                                                         +{album.tags.length - 3}
                                                     </span>
                                                 )}
@@ -595,11 +596,11 @@ export default function GalleryPage() {
                         )
                     ) : (
                         /* Album Detail View - Media Items */
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {mediaItems.map((item) => (
                                 <div
                                     key={item.id}
-                                    className="group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer border border-white/20"
+                                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
                                     onMouseEnter={() => setHoveredCard(item.id)}
                                     onMouseLeave={() => setHoveredCard(null)}
                                     onClick={() => handleMediaClick(item.id)}
@@ -616,12 +617,12 @@ export default function GalleryPage() {
                                         {item.type === 'video' && (
                                             <>
                                                 <div className="absolute inset-0 bg-black/20"></div>
-                                                <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                                                <div className="absolute top-4 right-4 bg-red-500 text-card px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
                                                     <Play className="w-3 h-3" />
                                                     Video
                                                 </div>
                                                 {item.duration && (
-                                                    <div className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm">
+                                                    <div className="absolute bottom-4 right-4 bg-black/70 text-card px-2 py-1 rounded text-sm">
                                                         {item.duration}
                                                     </div>
                                                 )}
@@ -629,23 +630,23 @@ export default function GalleryPage() {
                                         )}
                                         
                                         {/* Hover Actions */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                                            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                                <Heart className="w-5 h-5 text-white" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                            <button className="w-10 h-10 bg-card/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-card/30 transition-colors">
+                                                <Heart className="w-5 h-5 text-card" />
                                             </button>
-                                            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                                <Download className="w-5 h-5 text-white" />
+                                            <button className="w-10 h-10 bg-card/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-card/30 transition-colors">
+                                                <Download className="w-5 h-5 text-card" />
                                             </button>
                                         </div>
 
                                         {/* Hover Info */}
-                                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                             <div className="flex justify-between items-center mb-3">
-                                                <span className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold backdrop-blur-sm">
+                                                <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold backdrop-blur-sm">
                                                     {item.type === 'video' ? 'Video' : 'Photo'}
                                                 </span>
-                                                <div className="flex items-center gap-3 text-white/90">
+                                                <div className="flex items-center gap-3 text-card/90">
                                                     <div className="flex items-center gap-1 text-sm">
                                                         <Heart className="w-4 h-4" />
                                                         {formatNumber(item.likes)}
@@ -656,7 +657,7 @@ export default function GalleryPage() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-2 text-white font-semibold">
+                                            <div className="flex items-center gap-2 text-card font-semibold">
                                                 View {item.type === 'video' ? 'Video' : 'Photo'}
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                             </div>
@@ -665,18 +666,18 @@ export default function GalleryPage() {
                                     
                                     {/* Media Info */}
                                     <div className="p-6">
-                                        <h3 className="font-bold text-gray-800 text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                        <h3 className="font-bold text-foreground text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
                                             {item.title}
                                         </h3>
-                                        <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+                                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
                                             {item.description}
                                         </p>
                                         <div className="space-y-2">
-                                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <Calendar className="w-4 h-4" />
                                                 <span>{item.dateLabel}</span>
                                             </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <MapPin className="w-4 h-4" />
                                                 <span className="line-clamp-1">{item.location}</span>
                                             </div>
@@ -691,7 +692,7 @@ export default function GalleryPage() {
                     {currentView === 'albums' && totalPages > 1 && (
                         <div className="flex items-center justify-center gap-4 mt-20">
                             <button
-                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
                                 disabled={page === 1}
                                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                             >
@@ -704,10 +705,10 @@ export default function GalleryPage() {
                                     <button
                                         key={p}
                                         onClick={() => setPage(p)}
-                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 transform hover:scale-105 ${
+                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 ${
                                             p === page
-                                                ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-2xl border-primary"
-                                                : "border-gray-300 bg-white hover:bg-gray-50 hover:shadow-lg"
+                                                ? "bg-primary text-primary-foreground shadow-sm border-primary"
+                                                : "border-border bg-card hover:bg-muted hover:shadow-lg"
                                         }`}
                                     >
                                         {p}
@@ -716,7 +717,7 @@ export default function GalleryPage() {
                             </div>
 
                             <button
-                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
                                 disabled={page === totalPages}
                                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                             >

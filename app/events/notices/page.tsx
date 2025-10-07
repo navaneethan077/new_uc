@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { TopBar } from "@/components/top-bar"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
@@ -25,12 +25,28 @@ import {
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 
+// Format date safely for hydration
+const formatDate = (dateString: string) => {
+  try {
+    return new Date(dateString).toLocaleDateString()
+  } catch {
+    return dateString
+  }
+}
+
 export default function AnnouncementsPage() {
   const [timeFilter, setTimeFilter] = useState<"all" | "weekly" | "monthly" | "yearly">("all")
   const [searchTerm, setSearchTerm] = useState("")
   const [showFilters, setShowFilters] = useState(false)
   const [page, setPage] = useState(1)
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<string | null>(null)
+  const [isClient, setIsClient] = useState(false)
+
+  // Set client-side flag to avoid hydration mismatches
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   const pageSize = 6
 
   const announcements = [
@@ -74,7 +90,7 @@ export default function AnnouncementsPage() {
       category: "Meeting",
       priority: "normal",
       validUntil: "2024-01-20",
-      description: "Public consultation meeting for the 2025municipal budget will be held on January 20 at 3:00 PM in the Council Chambers. All residents are invited to participate.",
+      description: "Public consultation meeting for the 2025 municipal budget will be held on January 20 at 3:00 PM in the Council Chambers. All residents are invited to participate.",
       affectedAreas: ["All Wards"],
       contactInfo: "Council Secretary: +94 23 223 5678",
       participants: "All residents",
@@ -238,6 +254,40 @@ export default function AnnouncementsPage() {
   const highPriorityAnnouncements = announcements
     .filter(a => a.priority === "urgent" || a.priority === "high")
     .slice(0, 3)
+
+  // Don't render anything until client-side to avoid hydration mismatch
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-background">
+        <TopBar />
+        <Navigation />
+        <div className="container-x py-4">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Announcements" },
+            ]}
+          />
+        </div>
+        <div className="container-x py-8">
+          <div className="animate-pulse">
+            <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="bg-card rounded-xl p-6">
+                  <div className="h-6 bg-muted rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-muted rounded w-full mb-2"></div>
+                  <div className="h-4 bg-muted rounded w-5/6 mb-4"></div>
+                  <div className="h-6 bg-muted rounded w-1/3"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -462,7 +512,7 @@ export default function AnnouncementsPage() {
                                 <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
-                                    <span>{new Date(announcement.date).toLocaleDateString()}</span>
+                                    <span>{formatDate(announcement.date)}</span>
                                   </div>
                                   <div className="flex items-center gap-1">
                                     <Clock className="w-4 h-4" />
@@ -480,7 +530,7 @@ export default function AnnouncementsPage() {
                                 {announcement.category}
                               </span>
                               <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm border border-border">
-                                Valid until: {new Date(announcement.validUntil).toLocaleDateString()}
+                                Valid until: {formatDate(announcement.validUntil)}
                               </span>
                             </div>
                           </div>
@@ -579,7 +629,7 @@ export default function AnnouncementsPage() {
                                 <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-3 h-3" />
-                                    <span>{new Date(announcement.date).toLocaleDateString()}</span>
+                                    <span>{formatDate(announcement.date)}</span>
                                   </div>
                                 </div>
                               </div>
@@ -683,7 +733,7 @@ export default function AnnouncementsPage() {
                       <h3 className="font-semibold text-foreground mb-2 line-clamp-2">{announcement.title}</h3>
                       <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{announcement.description}</p>
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>{new Date(announcement.date).toLocaleDateString()}</span>
+                        <span>{formatDate(announcement.date)}</span>
                         <span className={`px-2 py-1 rounded-full ${
                           announcement.priority === "urgent" 
                             ? "bg-destructive text-destructive-foreground" 

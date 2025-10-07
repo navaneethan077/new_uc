@@ -14,6 +14,7 @@ export interface TranslationData {
     notices: string
     services: string
     tourism: string
+    ads: string
     
   }
   
@@ -350,7 +351,129 @@ AdsSectionTranslations :{
     title: string;
     subtitle: string;
   };
-}
+};
+ news: {
+    breadcrumb: string;
+    hero: {
+      title: string;
+      description: string;
+    };
+    search: {
+      placeholder: string;
+    };
+    sort: {
+      label: string;
+      newest: string;
+      oldest: string;
+    };
+    filters: {
+      button: string;
+      clearAll: string;
+      category: string;
+      time: {
+        label: string;
+        all: string;
+        day: string;
+        week: string;
+        month: string;
+        year: string;
+      };
+    };
+    noResults: string;
+    learnMore: string;
+    readTime: string;
+    pagination: {
+      previous: string;
+      next: string;
+    };
+    categories: {
+      infrastructure: string;
+      technology: string;
+      environment: string;
+      transport: string;
+      youthPrograms: string;
+      communityOutreach: string;
+      publicSafety: string;
+      education: string;
+      economicDevelopment: string;
+      parksRecreation: string;
+    };
+    articles: {
+      waterTreatment: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      digitalPortal: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      communityGarden: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      transportRoutes: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      youthCouncil: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      floodPrevention: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      wellnessCenter: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      recyclingInitiative: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      roadSafety: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      libraryExpansion: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      businessGrant: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+      parkRenovation: {
+        title: string;
+        excerpt: string;
+        content: string;
+        author: string;
+      };
+    };
+  };
+
 
  
 }
