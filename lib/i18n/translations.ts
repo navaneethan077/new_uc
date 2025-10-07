@@ -14,6 +14,7 @@ export const translations: Record<string, TranslationData> = {
       notices: "Notices",
       services: "Services",
       tourism: "Tourism",
+      ads: "ads"
     },
     common: {
       readMore: "Read More",
@@ -566,6 +567,128 @@ export const translations: Record<string, TranslationData> = {
       modal: {
         title: "All Public Notices",
         subtitle: "Official announcements from Mannar Urban Council"
+      }
+    },
+    //news
+    news: {
+      breadcrumb: "News",
+      hero: {
+        title: "Municipal News",
+        description: "Stay informed with the latest updates, developments, and achievements from the Mannar Urban Council."
+      },
+      search: {
+        placeholder: "Search news by title, category, or author..."
+      },
+      sort: {
+        label: "Sort by",
+        newest: "Newest First",
+        oldest: "Oldest First"
+      },
+      filters: {
+        button: "Filters",
+        clearAll: "Clear All",
+        category: "Filter by Category",
+        time: {
+          label: "Filter by Time",
+          all: "All Time",
+          day: "Last 24 Hours",
+          week: "Past Week",
+          month: "Past Month",
+          year: "Past Year"
+        }
+      },
+      noResults: "No articles found. Try adjusting your search or filters.",
+      learnMore: "Learn More",
+      readTime: "8:00 PM",
+      pagination: {
+        previous: "Previous",
+        next: "Next"
+      },
+      categories: {
+        infrastructure: "Infrastructure",
+        technology: "Technology",
+        environment: "Environment",
+        transport: "Transport",
+        youthPrograms: "Youth Programs",
+        communityOutreach: "Community Outreach",
+        publicSafety: "Public Safety",
+        education: "Education",
+        economicDevelopment: "Economic Development",
+        parksRecreation: "Parks & Recreation"
+      },
+      articles: {
+        waterTreatment: {
+          title: "New Water Treatment Plant Inaugurated",
+          excerpt: "The Mannar Urban Council officially opened a state-of-the-art water treatment facility to serve 15,000 residents with clean, safe drinking water.",
+          content: "In a significant milestone for public health infrastructure, the Mannar Urban Council inaugurated its new water treatment plant yesterday. The facility, built with a budget of Rs. 45 million, incorporates advanced filtration and purification technologies to ensure the highest quality drinking water for our community. This project represents our commitment to improving public health and living standards across Mannar.",
+          author: "Municipal Communications"
+        },
+        digitalPortal: {
+          title: "Digital Services Portal Launched",
+          excerpt: "Citizens can now access municipal services online through our new digital platform, reducing wait times and improving efficiency.",
+          content: "The Mannar Urban Council has launched its comprehensive digital services portal, marking a significant step towards modernizing municipal operations. Citizens can now apply for certificates, pay taxes, and access various services online from the comfort of their homes. The platform features secure payment processing, real-time application tracking, and automated notifications to keep residents informed throughout the process.",
+          author: "IT Department"
+        },
+        communityGarden: {
+          title: "Community Garden Project Success",
+          excerpt: "The pilot community garden project has yielded impressive results, with plans to expand to five more locations across the municipality.",
+          content: "The community garden initiative launched six months ago has exceeded expectations. Located in the heart of Ward 3, the garden has produced over 500kg of fresh vegetables, distributed among participating families. The project has not only provided fresh produce but also fostered community spirit and environmental awareness. Due to its success, we are expanding to five additional locations next quarter.",
+          author: "Environmental Division"
+        },
+        transportRoutes: {
+          title: "New Public Transport Routes Announced",
+          excerpt: "Three new bus routes will connect underserved neighborhoods starting next month, improving accessibility for 8,000 residents.",
+          content: "To enhance public transportation access across Mannar, three new bus routes will commence operations starting next month. These routes specifically target previously underserved neighborhoods, connecting them to essential services, markets, and employment centers. The expansion is expected to benefit approximately 8,000 residents and reduce average commute times by 30% in these areas.",
+          author: "Transport Department"
+        },
+        youthCouncil: {
+          title: "Youth Council Elections Conclude",
+          excerpt: "Over 2,000 young voters participated in the first-ever Youth Council elections, marking a milestone in civic engagement.",
+          content: "In a historic moment for youth participation in local governance, over 2,000 young voters aged 16-24 participated in the inaugural Youth Council elections. The newly elected Youth Council will work alongside municipal leadership to represent the interests and ideas of Mannar's younger generation, focusing on education, employment, and recreational opportunities.",
+          author: "Youth Affairs"
+        },
+        floodPrevention: {
+          title: "Flood Prevention System Upgrade",
+          excerpt: "The council has allocated Rs. 30 million to upgrade drainage systems in flood-prone areas ahead of monsoon season.",
+          content: "In preparation for the upcoming monsoon season, the Municipal Council has approved Rs. 30 million for comprehensive upgrades to drainage systems in historically flood-prone areas. The project includes installing larger capacity drains, clearing existing waterways, and implementing smart water level monitoring systems to provide early flood warnings to residents.",
+          author: "Public Works"
+        },
+        wellnessCenter: {
+          title: "Senior Wellness Center Opens",
+          excerpt: "The new center offers free health screenings, yoga classes, and social activities for Mannar's senior population.",
+          content: "The newly opened Senior Wellness Center provides comprehensive services for our elderly residents, including free health screenings, medication management support, yoga and exercise classes, and various social activities. The center aims to promote active aging and provide a welcoming community space for seniors to connect, learn, and maintain their health and wellbeing.",
+          author: "Health Department"
+        },
+        recyclingInitiative: {
+          title: "Recycling Initiative Surpasses Targets",
+          excerpt: "The city's recycling program collected 40% more materials than projected, thanks to community participation.",
+          content: "Mannar's municipal recycling program has achieved remarkable success, collecting 40% more recyclable materials than initially projected in its first year. This achievement reflects strong community participation and environmental awareness. The program has diverted over 150 tons of waste from landfills, contributing to our sustainability goals and creating new opportunities in the green economy.",
+          author: "Environmental Division"
+        },
+        roadSafety: {
+          title: "Road Safety Campaign Launched",
+          excerpt: "A new road safety awareness campaign aims to reduce accidents by 25% through education and improved signage.",
+          content: "The Municipal Council has launched a comprehensive road safety campaign targeting both drivers and pedestrians. The initiative includes educational programs in schools and communities, installation of new reflective signage at high-risk intersections, and enhanced traffic law enforcement. The campaign aims to reduce road accidents by 25% over the next year through these coordinated efforts.",
+          author: "Public Safety"
+        },
+        libraryExpansion: {
+          title: "Library Expansion Completed",
+          excerpt: "The municipal library has doubled its capacity with new study rooms and a digital learning center.",
+          content: "The Municipal Library expansion project has been successfully completed, doubling the facility's capacity and introducing state-of-the-art amenities. New features include quiet study rooms, a digital learning center with computer workstations, a children's reading area, and an expanded collection of both physical and digital resources. The upgraded library now serves as a modern community learning hub.",
+          author: "Education Department"
+        },
+        businessGrant: {
+          title: "Local Business Grant Program",
+          excerpt: "Small businesses can now apply for grants up to Rs. 500,000 through the new economic development initiative.",
+          content: "To stimulate local economic growth and support entrepreneurship, the Municipal Council has launched a new business grant program offering up to Rs. 500,000 for qualifying small businesses. The program targets startups and existing small enterprises in key sectors including retail, services, and manufacturing. Applications are now open, with priority given to businesses that create local employment opportunities.",
+          author: "Economic Development"
+        },
+        parkRenovation: {
+          title: "Park Renovation Project Begins",
+          excerpt: "The central park will receive new playground equipment, walking paths, and lighting in a 3-month renovation project.",
+          content: "The Central Park renovation project has commenced, bringing comprehensive upgrades to one of Mannar's most beloved public spaces. The 3-month project includes installation of modern, safe playground equipment, construction of new walking and jogging paths, enhanced landscape design, and improved lighting for evening use. The renovated park will provide enhanced recreational opportunities for families and fitness enthusiasts alike.",
+          author: "Parks & Recreation"
+        }
       }
     }
   },
@@ -1148,7 +1271,130 @@ export const translations: Record<string, TranslationData> = {
 
 
 
+    },
+    //news
+    news: {
+  breadcrumb: "செய்திகள்",
+  hero: {
+    title: "நகராட்சி செய்திகள்",
+    description: "மன்னார் நகராட்சியிடமிருந்து சமீபத்திய புதுப்பிப்புகள், முன்னேற்றங்கள் மற்றும் சாதனைகள் பற்றி அறிந்திருங்கள்."
+  },
+  search: {
+    placeholder: "தலைப்பு, வகை அல்லது ஆசிரியர் மூலம் செய்திகள் தேடவும்..."
+  },
+  sort: {
+    label: "முறையேற்க",
+    newest: "புதியவை முதலில்",
+    oldest: "பழையவை முதலில்"
+  },
+  filters: {
+    button: "வடிகட்டிகள்",
+    clearAll: "எல்லாவற்றையும் அழி",
+    category: "வகை மூலம் வடிகட்டி",
+    time: {
+      label: "கால அளவு மூலம் வடிகட்டி",
+      all: "எல்லா காலத்தும்",
+      day: "கடைசி 24 மணிநேரம்",
+      week: "கடந்த வாரம்",
+      month: "கடந்த மாதம்",
+      year: "கடந்த ஆண்டு"
     }
+  },
+  noResults: "எந்த கட்டுரைகளும் காணப்படவில்லை. தேடல் அல்லது வடிகட்டிகளை சரிசெய்ய முயற்சிக்கவும்.",
+  learnMore: "மேலும் படிக்கவும்",
+  readTime: "மாலை 8:00",
+  pagination: {
+    previous: "முந்தையது",
+    next: "அடுத்தது"
+  },
+  categories: {
+    infrastructure: "பண்பாட்டமைப்பு",
+    technology: "தொழில்நுட்பம்",
+    environment: "சூழல்",
+    transport: "போக்குவரத்து",
+    youthPrograms: "இளைஞர் திட்டங்கள்",
+    communityOutreach: "சமுதாய சேவை",
+    publicSafety: "பொது பாதுகாப்பு",
+    education: "கல்வி",
+    economicDevelopment: "பொருளாதார மேம்பாடு",
+    parksRecreation: "பார்க்கள் & تفریح"
+  },
+  articles: {
+    waterTreatment: {
+      title: "புதிய குடிநீர் சுத்திகரிப்பு நிலையம் திறப்பு",
+      excerpt: "மன்னார் நகராட்சி 15,000 குடிமக்களுக்கு சுத்தமான குடிநீரை வழங்க புதிய உயர் தரமான சுத்திகரிப்பு நிலையத்தை திறந்துள்ளது.",
+      content: "பொது சுகாதார கட்டமைப்பில் ஒரு முக்கிய முன்னேற்றமாக, மன்னார் நகராட்சி நேற்று புதிய குடிநீர் சுத்திகரிப்பு நிலையத்தை திறந்துள்ளது. ரூ. 45 மில்லியன் பட்ஜெட்டில் கட்டப்பட்ட இந்த நிலையம், அதிக தரமான குடிநீர் வழங்க முன்னேற்றமான வடிகட்டி மற்றும் சுத்திகரிப்பு தொழில்நுட்பங்களை கொண்டுள்ளது. இந்த திட்டம், மன்னாரில் பொதுச் சுகாதார மற்றும் வாழ்க்கை தரத்தை மேம்படுத்தும் நமது உறுதியை பிரதிபலிக்கிறது.",
+      author: "நகராட்சி தகவல் தொடர்பு"
+    },
+    digitalPortal: {
+      title: "டிஜிட்டல் சேவை போர்டல் அறிமுகம்",
+      excerpt: "பணியாளர்கள் புதிய டிஜிட்டல் தளத்தின் மூலம் ஆன்லைனில் நகராட்சித் சேவைகளை அணுகலாம், காத்திருக்கும் நேரத்தை குறைத்து செயல்திறனை மேம்படுத்துகிறது.",
+      content: "மன்னார் நகராட்சியினால் அதன் முழுமையான டிஜிட்டல் சேவை போர்டல் அறிமுகப்படுத்தப்பட்டுள்ளது. குடிமக்கள் தற்போது வீட்டிலிருந்தே சான்றிதழ் விண்ணப்பிக்க, வரி செலுத்த, மற்றும் பல்வேறு சேவைகளை ஆன்லைனில் பயன்படுத்த முடியும். தளம் பாதுகாப்பான கட்டண செயலாக்கம், நேரடி விண்ணப்ப கண்காணிப்பு மற்றும் தானாக அறிவிப்புகளை வழங்குகிறது.",
+      author: "ஐடி துறை"
+    },
+    communityGarden: {
+      title: "சமூக தோட்ட திட்டம் வெற்றி",
+      excerpt: "திட்டமிட்ட சமூக தோட்ட முயற்சி அதிசயமான விளைவுகளை வழங்கியுள்ளது, மேலும் ஐந்து இடங்களில் விரிவாக்கம் செய்ய திட்டமிடப்பட்டுள்ளது.",
+      content: "ஆறு மாதங்களுக்கு முன் தொடங்கிய சமூக தோட்ட முயற்சி எதிர்பார்ப்பை மீறியுள்ளது. வார்டு 3 மையத்தில் அமைந்துள்ள தோட்டம் 500 கிலோ புதிய காய்கறிகள் உற்பத்தி செய்துள்ளது, பங்கேற்ற குடும்பங்களுக்கு பகிரப்பட்டது. இந்த திட்டம் சத்தான பொருளை மட்டுமல்ல, சமூக உறவையும் மற்றும் சுற்றுச்சூழல் விழிப்புணர்வையும் ஊக்குவித்துள்ளது. வெற்றியால், அடுத்த காலாண்டில் ஐந்து கூடுதல் இடங்களில் விரிவாக்கம் செய்ய திட்டமிடப்பட்டுள்ளது.",
+      author: "சூழல் பிரிவு"
+    },
+    transportRoutes: {
+      title: "புதிய பொது போக்குவரத்து வழிகள் அறிவிப்பு",
+      excerpt: "மூன்று புதிய பேருந்து வழிகள் அடுத்த மாதம் குறைந்த சேவை பெற்ற பகுதிகளை இணைக்கின்றன, 8,000 குடிமக்களுக்கு அணுகலை மேம்படுத்துகின்றன.",
+      content: "மன்னாரில் பொதுப் போக்குவரத்து அணுகலை மேம்படுத்த, மூன்று புதிய பேருந்து வழிகள் அடுத்த மாதம் இயங்க தொடங்குகின்றன. இந்த வழிகள் குறிப்பாக முன்னர் குறைந்த சேவை பெற்ற பகுதிகளை அடைகின்றன மற்றும் அவற்றை முக்கிய சேவைகள், சந்தைகள் மற்றும் வேலை வாய்ப்புகளுடன் இணைக்கின்றன. இந்த விரிவாக்கம் சுமார் 8,000 குடிமக்களுக்கு பயனுள்ளதாக இருக்கும் மற்றும் சராசரி பயண நேரத்தை 30% குறைக்கும்.",
+      author: "போக்குவரத்து துறை"
+    },
+    youthCouncil: {
+      title: "இளைஞர் கவுன்சில் தேர்தல்கள் முடிவடைந்தது",
+      excerpt: "2,000 க்கும் மேலான இளைஞர் வாக்காளர்கள் முதல் இளைஞர் கவுன்சில் தேர்தலில் பங்கேற்றனர், இது சிட்டிசன் பங்குபற்றலில் ஒரு மைல் கல்.",
+      content: "உள்ளூர் ஆட்சியில் இளைஞர் பங்குபற்றலுக்கான வரலாற்று நிகழ்வில், 16-24 வயதுள்ள 2,000 க்கும் மேற்பட்ட இளைஞர் வாக்காளர்கள் முதல் இளைஞர் கவுன்சில் தேர்தலில் பங்கேற்றனர். புதிய தேர்தல் பெற்ற இளைஞர் கவுன்சில் நகரத்தின் இளம் தலைமுறையின் ஆர்வங்களையும் யோசனைகளையும் பிரதிநிதித்துவம் செய்யும், கல்வி, வேலை வாய்ப்புகள் மற்றும் பொழுதுபோக்கு வாய்ப்புகளை கவனிக்கும்.",
+      author: "இளைஞர் விவகாரங்கள்"
+    },
+    floodPrevention: {
+      title: "பெருக்குநீர் தடுப்பு அமைப்பு மேம்பாடு",
+      excerpt: "மாநகர சபை மழை காலத்திற்கு முன்னர் سیரங்குநீர் பாதிக்கப்பட்ட பகுதிகளில் வடிகால் அமைப்புகளை மேம்படுத்த ரூ. 30 மில்லியன் ஒதுக்கியுள்ளது.",
+      content: "எதிர்வரும் மழை பருவத்திற்கு முன்னதாக, நகராட்சியினால் சீர் செய்யப்பட்ட பகுதிகளில் முழுமையான வடிகால் மேம்பாடுகளுக்கு ரூ. 30 மில்லியன் ஒதுக்கப்பட்டுள்ளது. திட்டம் அதிக அளவிலான வடிகால் நிறுவல், உள்ளமைந்த நீர்வழிகளை சுத்தம் செய்யல், மற்றும் முன்னேற்றமான நீர்மட்ட கண்காணிப்பு அமைப்புகளை உள்ளடக்கியுள்ளது, குடிமக்களுக்கு முன்னாள் வெள்ள எச்சரிக்கைகளை வழங்க.",
+      author: "பொது வேலைப்பாடுகள்"
+    },
+    wellnessCenter: {
+      title: "மூத்த நலக்கூடம் திறப்பு",
+      excerpt: "புதிய மையம் மன்னாரின் மூத்த குடிமக்களுக்கு இலவச மருத்துவ சோதனை, யோகா வகைகள் மற்றும் சமூக செயல்பாடுகளை வழங்குகிறது.",
+      content: "புதிய மூத்த நலக்கூடம் நமது மூத்த குடிமக்களுக்கு முழுமையான சேவைகளை வழங்குகிறது, அதில் இலவச மருத்துவ சோதனை, மருந்து மேலாண்மை ஆதரவு, யோகா மற்றும் உடற்பயிற்சி வகைகள், மற்றும் பல சமூக செயல்பாடுகள் அடங்கும். மையம் செயலில் இருப்பதை ஊக்குவிக்கும் மற்றும் மூத்தவர்களுக்கு சமூக உறவுகளை உருவாக்க ஒரு இடமாக அமைகிறது.",
+      author: "சுகாதார துறை"
+    },
+    recyclingInitiative: {
+      title: "மீளச்சுழற்சி முயற்சி இலக்குகளை மீறியது",
+      excerpt: "நகரத்தின் மீளச்சுழற்சி திட்டம் முன்கூட்டியே திட்டமிட்டதைவிட 40% கூடுதல் பொருட்களை சேகரித்துள்ளது, சமூக பங்குபற்றலால்.",
+      content: "மன்னாரின் நகராட்சி மீளச்சுழற்சி திட்டம் அதிசய வெற்றியை அடைந்துள்ளது, ஆரம்ப ஆண்டில் முன்கூட்டியே திட்டமிட்டதைவிட 40% கூடுதல் பொருட்களை சேகரித்துள்ளது. இந்த வெற்றி வலுவான சமூக பங்குபற்றலும் சுற்றுச்சூழல் விழிப்புணர்வையும் பிரதிபலிக்கிறது. திட்டம் 150 டன் கழிவுகளை நிலத்தடி கழிவில் இருந்து மாற்றி நமது நிலைத்தன்மை இலக்குகளை முன்னெடுத்துள்ளது.",
+      author: "சூழல் பிரிவு"
+    },
+    roadSafety: {
+      title: "சாலை பாதுகாப்பு பிரச்சாரத்தொடு தொடங்கப்பட்டது",
+      excerpt: "புதிய சாலை பாதுகாப்பு விழிப்புணர்வு பிரச்சாரம் கல்வி மற்றும் சின்னச்சுடர் மேம்பாட்டின் மூலம் விபத்துகளை 25% குறைக்க முனைக்கிறது.",
+      content: "நகராட்சி சபை வாகன ஓட்டுநர்களுக்கும் நடர்துறை பயணிகளுக்கும் குறி வைத்து முழுமையான சாலை பாதுகாப்பு பிரச்சாரத்தை தொடங்கியுள்ளது. திட்டம் பள்ளிகள் மற்றும் சமூகங்களில் கல்வித் திட்டங்களை, உயர் அபாயம் கொண்ட சந்திப்புகளில் புதிய பிரதிபலிக்கும் அடையாளங்களை நிறுவல் மற்றும் சாலை சட்டங்களை வலுப்படுத்தல் ஆகியவற்றை உள்ளடக்கியுள்ளது. இந்த முயற்சி வரும் ஆண்டில் சாலை விபத்துகளை 25% குறைக்க இலக்காகக் கொண்டுள்ளது.",
+      author: "பொது பாதுகாப்பு"
+    },
+    libraryExpansion: {
+      title: "நூலக விரிவாக்கம் முடிந்தது",
+      excerpt: "நகர நூலகம் புதிய படிப்பு அறைகள் மற்றும் டிஜிட்டல் கற்றல் மையத்துடன் அதன் திறனை இரட்டிப்பு செய்துள்ளது.",
+      content: "நகர நூலக விரிவாக்கம் திட்டம் வெற்றிகரமாக முடிந்துள்ளது, அமைப்பின் திறனை இரட்டிப்பு செய்து புதிய வசதிகளை அறிமுகப்படுத்தியுள்ளது. புதிய அம்சங்களில் அமைதியான படிப்பு அறைகள், கணினி நிலையங்கள் கொண்ட டிஜிட்டல் கற்றல் மையம், குழந்தைகள் படிப்பு பகுதி மற்றும் விரிவடைந்த புத்தகக் கச்சேரி அடங்கும். மேம்படுத்தப்பட்ட நூலகம் நவீன சமுதாய கற்றல் மையமாக அமைகிறது.",
+      author: "கல்வி துறை"
+    },
+    businessGrant: {
+      title: "உள்ளூர் வணிக மானியம் திட்டம்",
+      excerpt: "சிறு வணிகங்கள் புதிய பொருளாதார மேம்பாட்டு முயற்சியில் ரூ. 500,000 வரை மானியத்திற்குத் தகுதி பெறலாம்.",
+      content: "உள்ளூர் பொருளாதார வளர்ச்சியை ஊக்குவிக்க மற்றும் தொழில்முனைவோர்களுக்கு ஆதரவு அளிக்க, நகராட்சி புதிய வணிக மானியம் திட்டத்தை அறிமுகப்படுத்தியுள்ளது, தகுதி வாய்ந்த சிறு வணிகங்களுக்கு ரூ. 500,000 வரை வழங்குகிறது. திட்டம் முக்கியத் துறைகளில் உள்ள ஸ்டார்ட்அப்கள் மற்றும் தற்போதைய சிறு நிறுவனங்களை குறிக்கின்றது. விண்ணப்பங்கள் தற்போது திறந்திருக்கும், குறிப்பாக உள்ளூர் வேலை வாய்ப்புகளை உருவாக்கும் வணிகங்களுக்கு முன்னுரிமை வழங்கப்படுகிறது.",
+      author: "பொருளாதார மேம்பாட்டு துறை"
+    },
+    parkRenovation: {
+      title: "பார்க் புதுப்பிப்பு திட்டம் தொடங்கியது",
+      excerpt: "மையப் பூங்கா புதிய விளையாட்டு உபகரணங்கள், நடைபாதைகள் மற்றும் விளக்குகள் பெற்று 3 மாத புதுப்பிப்பு திட்டத்தில் இருக்கும்.",
+      content: "மன்னாரின் மிகவும் பிரியமான பொது இடங்களில் ஒன்றான மையப் பூங்காவிற்கு விரிவான மேம்பாடுகளை கொண்ட பார்க் புதுப்பிப்பு திட்டம் தொடங்கியுள்ளது. 3 மாத திட்டத்தில் நவீன மற்றும் பாதுகாப்பான விளையாட்டு உபகரணங்கள் நிறுவல், புதிய நடைபாதைகள் மற்றும் ஜாக்கிங் பாதைகள், மேம்பட்ட நிலக்கலை வடிவமைப்பு மற்றும் மாலை நேர பயன்பாட்டிற்கு விளக்குகள் மேம்படுத்தப்படுகின்றன. புதுப்பிக்கப்பட்ட பூங்கா குடும்பங்களுக்கும் உடற்பயிற்சி ஆர்வலர்களுக்கும் மேம்பட்ட பொழுதுபோக்கு வாய்ப்புகளை வழங்கும்.",
+      author: "பார்க்கள் & تفریح"
+    }
+  }
+}
+
   },
 
 
@@ -1691,7 +1937,130 @@ export const translations: Record<string, TranslationData> = {
           title: "සියලු පොදු නිවේදන",
           subtitle: "මන්නාරම් නගර සභාවේ නිල ප්රකාශන"
         }
-      }
+      },
+      //news
+      news: {
+  breadcrumb: "පුවත්",
+  hero: {
+    title: "නගර සභා පුවත්",
+    description: "මන්නාරම නගර සභාවෙන් අවසන් යාවත්කාලීන, සංවර්ධන සහ ජයග්‍රහණ ගැන දැනගන්න."
+  },
+  search: {
+    placeholder: "ශීර්ෂය, වර්ගය හෝ රචකයා අනුව පුවත් සෙවීම..."
+  },
+  sort: {
+    label: "වර්ගීකරණය",
+    newest: "නවතම ප්‍රථම",
+    oldest: "පැරණිතම ප්‍රථම"
+  },
+  filters: {
+    button: "පෙරහන්",
+    clearAll: "සියල්ල මකා දමන්න",
+    category: "වර්ග අනුව පෙරහන් කරන්න",
+    time: {
+      label: "කාලය අනුව පෙරහන් කරන්න",
+      all: "සියලු කාලය",
+      day: "අවසන් 24 පැය",
+      week: "පසුගිය සතිය",
+      month: "පසුගිය මාසය",
+      year: "පසුගිය වසර"
+    }
+  },
+  noResults: "කිසිදු ලිපියක් සොයාගත නොහැක. සෙවුම් හෝ පෙරහන් වෙනස් කරන්න.",
+  learnMore: "වැඩි විස්තර කියවන්න",
+  readTime: "සන්ධ්‍යාව 8:00",
+  pagination: {
+    previous: "පෙර",
+    next: "ඊළඟ"
+  },
+  categories: {
+    infrastructure: "අවමංගල ව්‍යවස්ථා",
+    technology: "තාක්ෂණය",
+    environment: "පරිසරය",
+    transport: "ප්‍රවාහන",
+    youthPrograms: "තරුණ වැඩසටහන්",
+    communityOutreach: "සමාජ සේවාව",
+    publicSafety: "සාමූහික ආරක්ෂාව",
+    education: "අධ්‍යාපන",
+    economicDevelopment: "ආර්ථික සංවර්ධනය",
+    parksRecreation: " උයන සහ විනෝද"
+  },
+  articles: {
+    waterTreatment: {
+      title: "නව ජල සැකසුම් කඳවුර විවෘත කරයි",
+      excerpt: "මන්නාරම නගර සභාව 15,000 නේවාසිකයන්ට පිරිසිදු, ආරක්ෂිත පානය කළ හැකි ජලය ලබා දීමට නව උසස් තාක්ෂණ ජල සැකසුම් කඳවුර විවෘත කර ඇත.",
+      content: "ජන සෞඛ්‍ය අධිස්ථාන සඳහා වැදගත් සංඛ්‍යාතයකි. මන්නාරම නගර සභාව ඊයේ නව ජල සැකසුම් කඳවුර විවෘත කර ඇත. රු. මිලියන් 45 ක අයවැයෙන් ඉදි කරන ලද මෙම පහසුකම උසස් තාක්ෂණික ෆිල්ටරින් සහ පිරිසිදු කිරීමේ ක්‍රමවේදයන් සමඟ පැවැත්වෙන අතර, නගරයේ නේවාසිකයින්ට ඉහළම තත්ත්වයේ ජලය ලබා දීමට කැපවී ඇත. මෙම ව්‍යාපෘතිය මන්නාරයේ ජන සෞඛ්‍ය සහ ජීවන තත්ත්වය උසස් කරගැනීමට අපේ කැපවීම නිරූපණය කරයි.",
+      author: "නගර සභා සන්නිවේදන"
+    },
+    digitalPortal: {
+      title: "ඩිජිටල් සේවා පෝටල් ආරම්භ",
+      excerpt: "නගර සභා සේවාවන් දැන් නේවාසිකයින්ට ඔන්ලයින්ව ලබා ගත හැකි අතර, බලා සිටින කාලය අඩු කර කාර්යක්ෂමතාව වැඩි කරයි.",
+      content: "මන්නාරම නගර සභාව සියලුම ඩිජිටල් සේවා පෝටලය ආරම්භ කර ඇත. නගර සභා සේවාවන් දැන් නේවාසිකයින්ට නිවසේ සිටම සහතිකපත් අයදුම් කිරීම්, බද්ද ගෙවීම් සහ විවිධ සේවා ලබා ගැනීමේ හැකියාව සලසා ඇත. මෙම පෝටලය ආරක්ෂිත ගෙවීම්, සජීවී අයදුම් නිරීක්ෂණ සහ ස්වයංක්‍රීය දැනුම්දීම් ඇතුළත් කර ඇත.",
+      author: "තොරතුරු තාක්ෂණ දෙපාර්තමේන්තුව"
+    },
+    communityGarden: {
+      title: "සමාජ උයන ව්‍යාපෘතියේ සාර්ථකත්වය",
+      excerpt: "පෙරහුරු සමාජ උයන ව්‍යාපෘතිය අපේක්ෂා කරන ලද ප්‍රතිඵල ලබාදී ඇත, නගරය පුරා තවත් ස්ථාන 5 කට විවෘත කිරීමට සැලසුම් කර ඇත.",
+      content: "මාස 6කට පෙර ආරම්භ කළ සමාජ උයන ව්‍යාපෘතිය අපේක්ෂාවන් ඉක්මවා ගොස් ඇත. වාර්ඩ් 3 මධ්‍යයේ පිහිටි උයනෙහි 500kg තවත් නිවසේ කාබනික එළවළු නිපදවා, සහභාගි වූ පවුල් වෙත බෙදා දී ඇත. මෙම ව්‍යාපෘතිය තවත් පිරිසිදු ආහාරයක් ලබා දීම පමණක් නොව, සමාජ ආත්මය සහ පරිසර ව්‍යාපාරිකතාව උදව් කරයි. එහි සාර්ථකත්වය නිසා, එය තවත් ස්ථාන 5ක් සඳහා විවෘත කිරීමට සැලසුම් කර ඇත.",
+      author: "පරිසර අංශය"
+    },
+    transportRoutes: {
+      title: "නව පොදු ප්‍රවාහන මාර්ග නිවේදනය",
+      excerpt: "අඟහරුම් ප්‍රදේශයන්ට සම්බන්ධ වීමට තවත් නව බස් මාර්ග 3 ක් ලබන මාසයේ ආරම්භ වන අතර, 8,000 නේවාසිකයින්ට පහසුව සපයයි.",
+      content: "මන්නාරම නගරය පුරා පොදු ප්‍රවාහන පහසුකම වැඩි දියුණු කිරීම සඳහා, අඩු සේවා ලැබූ ප්‍රදේශයන් සම්බන්ධ කරන නව බස් මාර්ග 3 ක් ලබන මාසයේ ආරම්භ වේ. මෙම විස්තාරය 8,000 නේවාසිකයින්ට ප්‍රයෝජනවත් වන අතර, මෙම ප්‍රදේශවල සාමාන්‍ය ගමන් කාලය 30% කින් අඩු වේ.",
+      author: "ප්‍රවාහන දෙපාර්තමේන්තුව"
+    },
+    youthCouncil: {
+      title: "තරුණ සභා මැතිවරණය අවසන්",
+      excerpt: "2,000කට අධික තරුණ මතය දෙන පිරිස පළමු තරුණ සභා මැතිවරණයට සහභාගීවී, නාගරික සම්බන්ධීකරණයේ මග පෙන්වමින් සිටී.",
+      content: "දේශීය ආණ්ඩුකාරකත්වයේ තරුණ පරිශීලනය සඳහා ඉතිහාසගත අවස්ථාවකදී, වයස 16-24 අතර 2,000කට අධික තරුණ මැතිවරණයට සහභාගීවී ඇත. නව තේරීම් ලැබූ තරුණ සභාව, මන්නාරයේ තරුණ පරපුරේ අදහස් සහ යෝජනා නියෝජනය කරන අතර, අධ්‍යාපන, රැකියා සහ විනෝද අවස්ථා වලට අවධානය යොමු කරයි.",
+      author: "තරුණ කටයුතු"
+    },
+    floodPrevention: {
+      title: "වර්ෂා වාරය පෙර سیරංජ ව්‍යාපෘති නවීකරණය",
+      excerpt: "මහනගර සභාව මුළු ව්‍යාපෘතිය සඳහා රු. 30 මිලියන වෙන් කර ඇත, වර්ෂා කාලයට පෙර වර්ෂාවට මූලාශ්‍ර වූ ප්‍රදේශවල නාලාවන් නවීකරණය කිරීමට.",
+      content: "ඊළඟ වර්ෂා කාලයට සූදානම් වීම සඳහා, නගර සභාව වර්ෂා කාලයට පූර්වව වර්ෂාවට මූලාශ්‍ර වූ ප්‍රදේශවල නාලා පද්ධති නවීකරණ සඳහා රු. 30 මිලියන වෙන් කර ඇත. ව්‍යාපෘතියේ අන්තර්ගතය: විශාල නාලා ස්ථාපනය, පවතින ජල මාර්ග පිරිසිදු කිරීම, නාලා මට්ටම් මෝනිටරින් ක්‍රමවේදයන් ස්ථාපනය කිරීම සහ නේවාසිකයින්ට පෙර වර්ෂා අනතුරු ඇඟවීම් ලබා දීම.",
+      author: "පොදු වැඩ"
+    },
+    wellnessCenter: {
+      title: "ජ්‍යේෂ්ඨ සුභසාධන මධ්‍යස්ථානය විවෘත",
+      excerpt: "නව මධ්‍යස්ථානය මන්නාරයේ ජ්‍යේෂ්ඨ ජනතාව සඳහා නොමිලේ සෞඛ්‍ය පරීක්ෂණ, යෝගා පන්තිය සහ සමාජ ක්‍රියාකාරකම් ලබා දෙයි.",
+      content: "නව විවෘත ජ්‍යේෂ්ඨ සුභසාධන මධ්‍යස්ථානය අපේ ජ්‍යේෂ්ඨ නේවාසිකයින් සඳහා සම්පූර්ණ සේවාවන් ලබා දෙයි, ඒ අතර නොමිලේ සෞඛ්‍ය පරීක්ෂණ, ඖෂධ කළමනාකරණ සහාය, යෝගා හා ව්‍යායාම පන්තියන්, විවිධ සමාජ ක්‍රියාකාරකම් ඇතුළත් වේ. මධ්‍යස්ථානය ක්‍රියාශීලී වයස්ගතවීම උත්තේජනය කරයි, සමාජ සම්බන්ධතා ඇති කිරීමේ ස්ථානයක් සැපයීමේ අරමුණ ඇත.",
+      author: "සෞඛ්‍ය දෙපාර්තමේන්තුව"
+    },
+    recyclingInitiative: {
+      title: "නවීන පුනර්විනිමය ව්‍යාපෘතිය ඉලක්කය ඉක්මවා ගියේය",
+      excerpt: "නගරයේ පුනර්විනිමය වැඩසටහන මුල්කාලයෙහිදී අපේක්ෂා කරන ලද ද්‍රව්‍ය 40% කින් වැඩි ලෙස සංග්‍රහ කර ඇත, සමාජ සහභාගීත්වය නිසා.",
+      content: "මන්නාරමේ නගර සභාවේ පුනර්විනිමය වැඩසටහන විශිෂ්ට සාර්ථකත්වයක් ලබා ඇති අතර, මුල් වසරේදී අපේක්ෂා කරන ද්‍රව්‍ය 40% කින් වැඩි ලෙස සංග්‍රහ කර ඇත. මෙම සාර්ථකත්වය ශක්තිමත් සමාජ සහභාගීත්වය සහ පරිසරවල සැනසිල්ලේ දැක්ම නිරූපණය කරයි. වැඩසටහන 150 ටොන් අපද්‍රව්‍ය තැනිතලා වලින් පිටත ගෙන යාමට සහාය විය.",
+      author: "පරිසර අංශය"
+    },
+    roadSafety: {
+      title: "මාර්ග ආරක්ෂා වැඩසටහන ආරම්භ",
+      excerpt: "නව මාර්ග ආරක්ෂා අධ්‍යාපන වැඩසටහන සහ සලකුණු වැඩි කිරීම මඟින් අනතුරු 25% කින් අඩු කිරීමට අදහස් කරයි.",
+      content: "නගර සභාව මාර්ග ආරක්ෂාව පිළිබඳ පුළුල් වැඩසටහනක් ආරම්භ කර ඇත. මෙම වැඩසටහනේ අන්තර්ගතය: පාසල් සහ සමාජයේ අධ්‍යාපන වැඩසටහන්, ඉහළ අවදානම් තැන්වල නව ප්‍රතිබිම්බ සලකුණු, සහ මාර්ග නීති වඩාත් ක්‍රියාත්මක කිරීම. මෙම වැඩසටහන ලබන වසර තුළ මාර්ග අනතුරු 25% කින් අඩු කිරීමේ අරමුණ ඇත.",
+      author: "පොදු ආරක්ෂාව"
+    },
+    libraryExpansion: {
+      title: "පුස්තකාලය පුළුල් කළා",
+      excerpt: "නගර පුස්තකාලය නව අධ්‍යයන කාමර සහ ඩිජිටල් ඉගෙනුම් මධ්‍යස්ථානය සමඟ එහි හැකියාව දෙගුණ කළා.",
+      content: "නගර පුස්තකාලය පුළුල් කිරීමේ ව්‍යාපෘතිය සාර්ථකව නිම කළ අතර, පහසුකම් දෙගුණ කිරීමට සහ නව පහසුකම් හඳුන්වා දීමට සමත් විය. නව පහසුකම් අතර: නිශ්ශබ්ද අධ්‍යයන කාමර, පරිගණක කාර්යාල සහිත ඩිජිටල් ඉගෙනුම් මධ්‍යස්ථානය, ළමා පාඨක කලාපය, පුස්තකාල ද්‍රව්‍ය එකතු කිරීමේ විශාලන සහ විදුලි පොදු පහසුකම් ඇතුළත් වේ. පුළුල් කළ පුස්තකාලය නවීන සමාජ ඉගෙනුම් මධ්‍යස්ථානයක් ලෙස ක්‍රියාත්මක වේ.",
+      author: "අධ්‍යාපන දෙපාර්තමේන්තුව"
+    },
+    businessGrant: {
+      title: "දේශීය ව්‍යාපාර මාර්ගෝපදේශන වැඩසටහන",
+      excerpt: "සුළු ව්‍යාපාර දැන් රු. 500,000 දක්වා මාර්ගෝපදේශන සඳහා අයදුම් කළ හැක.",
+      content: "දේශීය ආර්ථික වර්ධනය සහ ව්‍යාපාරිකත්වය පිළිබඳ සහාය සපයන්න, නගර සභාව රු. 500,000 දක්වා සුළු ව්‍යාපාර සඳහා මාර්ගෝපදේශන වැඩසටහන ආරම්භ කර ඇත. මෙම වැඩසටහන ආරම්භක සහ පවතින සුළු ව්‍යාපාරවලට සලකුණු කර ඇත, විශේෂයෙන් තැනැත්තාත්මක රැකියා අවස්ථා ඇති කරන ව්‍යාපාරවලට ප්‍රමුඛතා දක්වයි.",
+      author: "ආර්ථික සංවර්ධන දෙපාර්තමේන්තුව"
+    },
+    parkRenovation: {
+      title: "උයන පුනර්නර්මාණ වැඩසටහන ආරම්භ",
+      excerpt: "මධ්‍යම උයන 3 මසක පුනර්නර්මාණ වැඩසටහනකදී නව ක්‍රීඩා උපකරණ, සැරසිලි මාර්ග සහ ආලෝකය ලබා ගනී.",
+      content: "මන්නාරයේ ජනප්‍රියතම පොදු ඉඩමක් වන මධ්‍යම උයන සඳහා පුළුල් නවීකරණ වැඩසටහන ආරම්භ කර ඇත. 3 මසක ව්‍යාපෘතියේ නව, ආරක්ෂිත ක්‍රීඩා උපකරණ, නව සැරසිලි සහ ජොග් මාර්ග, නවීන භූපරිසර සැලසුම් සහ සන්ධ්‍යා වේලාවේ භාවිතයට උත්සන්න ආලෝකය ඇතුළත් වේ. පුනර්නර්මාණය කළ උයන පවුල් සහ ක්‍රීඩා ආසිකයින් සඳහා වඩාත් සුවිශේෂී විනෝද අවස්ථා ලබා දෙයි.",
+      author: "උයන සහ විනෝද"
+    }
+  }
+}
+
     
 
   }
