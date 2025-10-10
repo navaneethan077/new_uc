@@ -1,12 +1,12 @@
 "use client";
 
-import {useMemo, useState} from "react";
-import {useRouter} from "next/navigation";
-import {Camera, Calendar, MapPin, Users, Search, Filter, X, ChevronLeft, ChevronRight, ArrowRight, Grid3X3, List, ZoomIn, Heart, Share2, Download, Folder, Play, Image as ImageIcon} from "lucide-react";
-import {TopBar} from "@/components/top-bar";
-import {Navigation} from "@/components/navigation";
+import { useMemo, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Camera, Calendar, MapPin, Users, Search, Filter, X, ChevronLeft, ChevronRight, ArrowRight, Grid3X3, List, ZoomIn, Heart, Share2, Download, Folder, Play, Image as ImageIcon } from "lucide-react";
+import { TopBar } from "@/components/top-bar";
+import { Navigation } from "@/components/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import {Footer} from "@/components/footer";
+import { Footer } from "@/components/footer";
 import { useLanguage } from "@/lib/i18n/context"
 import { translations } from "@/lib/i18n/translations"
 
@@ -24,7 +24,7 @@ type MediaItem = {
     downloads: number;
     views: number;
     type: 'photo' | 'video';
-    duration?: string; // for videos
+    duration?: string;
 };
 
 type Album = {
@@ -44,132 +44,43 @@ type Album = {
 
 export default function GalleryPage() {
     const router = useRouter();
-    const { t, language } = useLanguage()
-    
-    // Get translated content
-    const galleryContent = translations[language].galleryPage
-    
-    const albums: Album[] = [
-        {
-            id: "coastal-beauty",
-            title: "Coastal Beauty",
-            description: "Stunning coastline views and pristine beaches of Mannar Island",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 45,
-            photoCount: 38,
-            videoCount: 7,
-            dateLabel: "January 2024",
-            dateISO: "2024-01-31",
-            location: "Mannar Coastline",
-            category: "Environment",
-            tags: ["Beaches", "Sunset", "Waves", "Nature"]
-        },
-        {
-            id: "historical-heritage",
-            title: "Historical Heritage",
-            description: "Ancient forts, churches, and colonial architecture",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 32,
-            photoCount: 28,
-            videoCount: 4,
-            dateLabel: "December 2023",
-            dateISO: "2023-12-31",
-            location: "Mannar Town",
-            category: "Heritage",
-            tags: ["Fort", "Church", "Architecture", "History"]
-        },
-        {
-            id: "wildlife-nature",
-            title: "Wildlife & Nature",
-            description: "Flora, fauna, and natural landscapes of Mannar",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 28,
-            photoCount: 25,
-            videoCount: 3,
-            dateLabel: "November 2023",
-            dateISO: "2023-11-30",
-            location: "Mannar Region",
-            category: "Wildlife",
-            tags: ["Birds", "Donkeys", "Baobab", "Nature"]
-        },
-        {
-            id: "cultural-events",
-            title: "Cultural Events",
-            description: "Festivals, traditions, and community celebrations",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 36,
-            photoCount: 30,
-            videoCount: 6,
-            dateLabel: "October 2023",
-            dateISO: "2023-10-31",
-            location: "Mannar Town Center",
-            category: "Culture",
-            tags: ["Festival", "Dance", "Music", "Community"]
-        },
-        {
-            id: "local-life",
-            title: "Local Life",
-            description: "Daily life, markets, and traditional activities",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 41,
-            photoCount: 35,
-            videoCount: 6,
-            dateLabel: "September 2023",
-            dateISO: "2023-09-30",
-            location: "Mannar Villages",
-            category: "Community",
-            tags: ["Market", "Fishing", "Culture", "People"]
-        },
-        {
-            id: "landmarks",
-            title: "Landmarks",
-            description: "Iconic landmarks and significant locations",
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: 22,
-            photoCount: 20,
-            videoCount: 2,
-            dateLabel: "August 2023",
-            dateISO: "2023-08-31",
-            location: "Mannar District",
-            category: "Landmarks",
-            tags: ["Lighthouse", "Monuments", "Significant"]
-        }
-    ];
+    const { t, language } = useLanguage();
 
-    const mediaItems: MediaItem[] = [
-        {
-            id: "1",
-            title: "Mannar Island Beaches",
+    // Get translated content
+    const galleryT = translations[language].GallerylodingPage;
+
+    // Initialize with empty arrays to avoid hydration mismatch
+    const [albums, setAlbums] = useState<Album[]>([]);
+    const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+
+    // Initialize data on client side only
+    useEffect(() => {
+        const initializedAlbums: Album[] = galleryT.albumsData.map(albumData => ({
+            ...albumData,
+            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+            mediaCount: Math.floor(Math.random() * 50) + 20,
+            photoCount: Math.floor(Math.random() * 40) + 15,
+            videoCount: Math.floor(Math.random() * 10) + 2,
+            dateLabel: "January 2024",
+            dateISO: "2024-01-31"
+        }));
+
+        const initializedMediaItems: MediaItem[] = galleryT.mediaItems.map((item, index) => ({
+            ...item,
             dateLabel: "January 15, 2024",
             dateISO: "2024-01-15",
-            location: "Mannar Coastline",
-            category: "Environment",
             participants: "Community Members",
             image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            description: "Pristine coastline of Mannar Island showcasing beautiful beaches with crystal clear waters and golden sands",
-            likes: 124,
-            downloads: 89,
-            views: 1567,
-            type: 'photo'
-        },
-        {
-            id: "2",
-            title: "Historic Fort Mannar Tour",
-            dateLabel: "January 10, 2024",
-            dateISO: "2024-01-10",
-            location: "Mannar Fort",
-            category: "Heritage",
-            participants: "Tourists & Locals",
-            image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            description: "Guided tour through the colonial architecture and historical significance of Mannar Fort",
-            likes: 89,
-            downloads: 45,
-            views: 987,
-            type: 'video',
-            duration: "2:45"
-        },
-        // Add more media items as needed...
-    ];
+            likes: Math.floor(Math.random() * 200) + 50,
+            downloads: Math.floor(Math.random() * 100) + 20,
+            views: Math.floor(Math.random() * 2000) + 500,
+            type: index % 3 === 0 ? 'video' : 'photo',
+            duration: index % 3 === 0 ? "2:45" : undefined
+        }));
+
+        setAlbums(initializedAlbums);
+        setMediaItems(initializedMediaItems);
+    }, [galleryT.albumsData, galleryT.mediaItems]);
 
     // State for current view
     const [currentView, setCurrentView] = useState<'albums' | 'album-detail'>('albums');
@@ -179,7 +90,7 @@ export default function GalleryPage() {
     const categories = useMemo(() => {
         const uniqueCategories = [...new Set(albums.map(album => album.category))];
         return uniqueCategories;
-    }, []);
+    }, [albums]);
 
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState<"latest" | "popular" | "name">("latest");
@@ -219,7 +130,7 @@ export default function GalleryPage() {
             }
         });
         return filtered;
-    }, [search, sort, selectedCategories]);
+    }, [albums, search, sort, selectedCategories]);
 
     const totalPages = Math.ceil(filteredAndSortedAlbums.length / pageSize);
     const start = (page - 1) * pageSize;
@@ -259,6 +170,24 @@ export default function GalleryPage() {
         return num.toString();
     };
 
+    // Show loading state while data is being initialized
+    if (albums.length === 0 && currentView === 'albums') {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
+                <TopBar />
+                <Navigation />
+                <div className="container mx-auto px-4 py-16">
+                    <div className="flex items-center justify-center h-64">
+                        <div className="text-center">
+                            <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                            <p className="text-muted-foreground">Loading gallery...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
             {/* Top Navigation */}
@@ -269,7 +198,7 @@ export default function GalleryPage() {
             <Breadcrumbs
                 items={[
                     { label: t.nav.home, href: "/" },
-                    { label: t.nav.gallery, href: "/gallery" },
+                    { label: galleryT.breadcrumb, href: "/gallery" },
                     ...(currentView === 'album-detail' && selectedAlbum ? [
                         { label: selectedAlbum.title, href: `#` }
                     ] : [])
@@ -277,49 +206,47 @@ export default function GalleryPage() {
             />
 
             {/* Hero Section */}
-            {/* Hero Section */}
-<section className="relative py-24 bg-gradient-to-br from-[var(--primary)] via-[var(--primary)/0.9] to-[var(--primary)/0.8] overflow-hidden">
-    <div className="absolute inset-0 bg-black/20"></div>
-    <div className="absolute top-0 left-0 w-72 h-72 bg-card/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-    <div className="absolute bottom-0 right-0 w-96 h-96 bg-card/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
-    
-    <div className="container mx-auto px-4 text-center relative z-10">
-        <div className="flex items-center justify-center mb-8">
-            <div className="w-24 h-24 bg-card/20 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-card/30">
-                <Camera className="w-12 h-12 text-card" />
-            </div>
-        </div>
-        
-        <h1 className="text-6xl md:text-7xl font-bold text-card mb-6 bg-gradient-to-r from-card to-[var(--primary)/0.2] bg-clip-text text-transparent">
-            {currentView === 'albums' ? 'Photo Gallery' : selectedAlbum?.title}
-        </h1>
-        
-        <p className="text-xl text-[var(--primary)/0.9] max-w-3xl mx-auto leading-relaxed">
-            {currentView === 'albums' 
-                ? 'Discover the breathtaking beauty, rich culture, and unique heritage of Mannar through our carefully curated albums'
-                : selectedAlbum?.description
-            }
-        </p>
-        
-        {currentView === 'album-detail' && selectedAlbum && (
-            <div className="flex justify-center gap-8 mt-12">
-                <div className="text-center">
-                    <div className="text-3xl font-bold text-card">{selectedAlbum.mediaCount}</div>
-                    <div className="text-[var(--primary)/0.8]">Total Media</div>
-                </div>
-                <div className="text-center">
-                    <div className="text-3xl font-bold text-card">{selectedAlbum.photoCount}</div>
-                    <div className="text-[var(--primary)/0.8]">Photos</div>
-                </div>
-                <div className="text-center">
-                    <div className="text-3xl font-bold text-card">{selectedAlbum.videoCount}</div>
-                    <div className="text-[var(--primary)/0.8]">Videos</div>
-                </div>
-            </div>
-        )}
-    </div>
-</section>
+            <section className="relative py-24 bg-gradient-to-br from-[var(--primary)] via-[var(--primary)/0.9] to-[var(--primary)/0.8] overflow-hidden">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-0 left-0 w-72 h-72 bg-card/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-card/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
 
+                <div className="container mx-auto px-4 text-center relative z-10">
+                    <div className="flex items-center justify-center mb-8">
+                        <div className="w-24 h-24 bg-card/20 rounded-2xl flex items-center justify-center backdrop-blur-lg border border-card/30">
+                            <Camera className="w-12 h-12 text-card" />
+                        </div>
+                    </div>
+
+                    <h1 className="text-6xl md:text-7xl font-bold text-card mb-6 bg-gradient-to-r from-card to-[var(--primary)/0.2] bg-clip-text text-transparent">
+                        {currentView === 'albums' ? galleryT.hero.title : selectedAlbum?.title}
+                    </h1>
+
+                    <p className="text-xl text-[var(--primary)/0.9] max-w-3xl mx-auto leading-relaxed">
+                        {currentView === 'albums'
+                            ? galleryT.hero.description
+                            : selectedAlbum?.description
+                        }
+                    </p>
+
+                    {currentView === 'album-detail' && selectedAlbum && (
+                        <div className="flex justify-center gap-8 mt-12">
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-card">{selectedAlbum.mediaCount}</div>
+                                <div className="text-[var(--primary)/0.8]">{galleryT.albums.mediaCount}</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-card">{selectedAlbum.photoCount}</div>
+                                <div className="text-[var(--primary)/0.8]">{galleryT.albums.photoCount}</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-card">{selectedAlbum.videoCount}</div>
+                                <div className="text-[var(--primary)/0.8]">{galleryT.albums.videoCount}</div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </section>
 
             {/* Back Button for Album Detail View */}
             {currentView === 'album-detail' && (
@@ -330,7 +257,7 @@ export default function GalleryPage() {
                             className="flex items-center gap-3 px-6 py-3 text-primary hover:text-primary/80 font-semibold transition-all duration-300 hover:bg-primary/10 rounded-2xl"
                         >
                             <ChevronLeft className="w-5 h-5" />
-                            Back to Albums
+                            {galleryT.albumDetail.backToAlbums}
                         </button>
                     </div>
                 </section>
@@ -345,9 +272,9 @@ export default function GalleryPage() {
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                             <input
                                 type="text"
-                                placeholder={currentView === 'albums' 
-                                    ? "Search albums by title, location, or category..." 
-                                    : "Search media in this album..."
+                                placeholder={currentView === 'albums'
+                                    ? galleryT.search.albums
+                                    : galleryT.search.media
                                 }
                                 value={search}
                                 onChange={(e) => {
@@ -371,21 +298,21 @@ export default function GalleryPage() {
                             <div className="flex bg-muted rounded-lg p-1.5 border border-border">
                                 <button
                                     onClick={() => setViewMode("grid")}
-                                    className={`p-2 rounded-md transition-all duration-300 ${
-                                        viewMode === "grid" 
-                                            ? "bg-background shadow-sm border border-border" 
+                                    className={`p-2 rounded-md transition-all duration-300 ${viewMode === "grid"
+                                            ? "bg-background shadow-sm border border-border"
                                             : "hover:bg-muted/80"
-                                    }`}
+                                        }`}
+                                    title={galleryT.viewMode.grid}
                                 >
                                     <Grid3X3 className="w-4 h-4" />
                                 </button>
                                 <button
                                     onClick={() => setViewMode("masonry")}
-                                    className={`p-2 rounded-md transition-all duration-300 ${
-                                        viewMode === "masonry" 
-                                            ? "bg-background shadow-sm border border-border" 
+                                    className={`p-2 rounded-md transition-all duration-300 ${viewMode === "masonry"
+                                            ? "bg-background shadow-sm border border-border"
                                             : "hover:bg-muted/80"
-                                    }`}
+                                        }`}
+                                    title={galleryT.viewMode.masonry}
                                 >
                                     <List className="w-4 h-4" />
                                 </button>
@@ -393,7 +320,7 @@ export default function GalleryPage() {
 
                             {/* Sort By */}
                             <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">
-                                <span className="text-foreground font-medium whitespace-nowrap">Sort by:</span>
+                                <span className="text-foreground font-medium whitespace-nowrap">{galleryT.sort.label}:</span>
                                 <select
                                     value={sort}
                                     onChange={(e) => {
@@ -402,9 +329,9 @@ export default function GalleryPage() {
                                     }}
                                     className="bg-transparent border-none focus:ring-0 focus:outline-none text-foreground"
                                 >
-                                    <option value="latest">Newest</option>
-                                    <option value="popular">Most Popular</option>
-                                    <option value="name">Alphabetical</option>
+                                    <option value="latest">{galleryT.sort.newest}</option>
+                                    <option value="popular">{galleryT.sort.popular}</option>
+                                    <option value="name">{galleryT.sort.name}</option>
                                 </select>
                             </div>
 
@@ -415,7 +342,7 @@ export default function GalleryPage() {
                                     className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
                                 >
                                     <Filter className="w-5 h-5" />
-                                    <span>Categories</span>
+                                    <span>{galleryT.filters.button}</span>
                                     {selectedCategories.length > 0 && (
                                         <span className="bg-primary text-primary-foreground text-sm rounded-full h-6 w-6 flex items-center justify-center">
                                             {selectedCategories.length}
@@ -431,7 +358,7 @@ export default function GalleryPage() {
                                     className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary transition-colors font-medium"
                                 >
                                     <X className="w-5 h-5" />
-                                    <span>Clear All</span>
+                                    <span>{galleryT.filters.clearAll}</span>
                                 </button>
                             )}
                         </div>
@@ -440,17 +367,16 @@ export default function GalleryPage() {
                     {/* Category Filters (only show for albums view) */}
                     {showFilters && currentView === 'albums' && (
                         <div className="mt-6 pt-6 border-t border-border">
-                            <h3 className="text-lg font-medium text-foreground mb-4">Filter by Category</h3>
+                            <h3 className="text-lg font-medium text-foreground mb-4">{galleryT.filters.category}</h3>
                             <div className="flex flex-wrap gap-3">
                                 {categories.map((category) => (
                                     <button
                                         key={category}
                                         onClick={() => toggleCategory(category)}
-                                        className={`px-4 py-2 rounded-full font-medium transition-all border ${
-                                            selectedCategories.includes(category)
+                                        className={`px-4 py-2 rounded-full font-medium transition-all border ${selectedCategories.includes(category)
                                                 ? "bg-primary text-primary-foreground border-primary shadow-sm"
                                                 : "bg-muted text-foreground border-border hover:bg-muted/80"
-                                        }`}
+                                            }`}
                                     >
                                         {category}
                                     </button>
@@ -470,12 +396,14 @@ export default function GalleryPage() {
                             <p className="text-lg text-muted-foreground">
                                 {currentView === 'albums' ? (
                                     <>
-                                        Showing <span className="font-bold text-primary">{visibleAlbums.length}</span> of{" "}
-                                        <span className="font-bold text-foreground">{filteredAndSortedAlbums.length}</span> curated albums
+                                        {galleryT.albums.resultsCount
+                                            .replace("{count}", visibleAlbums.length.toString())
+                                            .replace("{total}", filteredAndSortedAlbums.length.toString())
+                                        }
                                     </>
                                 ) : (
                                     <>
-                                        Showing <span className="font-bold text-primary">{mediaItems.length}</span> media items in{" "}
+                                        Showing <span className="font-bold text-primary">{mediaItems.length}</span> {galleryT.albumDetail.mediaItems}{" "}
                                         <span className="font-bold text-foreground">{selectedAlbum?.title}</span>
                                     </>
                                 )}
@@ -500,15 +428,15 @@ export default function GalleryPage() {
                                 <div className="w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl flex items-center justify-center mx-auto mb-8">
                                     <Folder className="w-16 h-16 text-primary" />
                                 </div>
-                                <h3 className="text-3xl font-bold text-foreground mb-4">No albums found</h3>
+                                <h3 className="text-3xl font-bold text-foreground mb-4">{galleryT.albums.noResults.title}</h3>
                                 <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
-                                    We couldn't find any albums matching your criteria. Try adjusting your search or filters.
+                                    {galleryT.albums.noResults.description}
                                 </p>
                                 <button
                                     onClick={clearFilters}
                                     className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl hover:bg-primary/90 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
                                 >
-                                    Clear All Filters
+                                    {galleryT.albums.noResults.clearFilters}
                                 </button>
                             </div>
                         ) : (
@@ -528,10 +456,10 @@ export default function GalleryPage() {
                                                 alt={album.title}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
-                                            
+
                                             {/* Gradient Overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            
+
                                             {/* Media Type Badges */}
                                             <div className="absolute top-4 left-4 flex gap-2">
                                                 <span className="px-3 py-1 bg-blue-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
@@ -547,12 +475,12 @@ export default function GalleryPage() {
                                             {/* Hover Action */}
                                             <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                                 <div className="flex items-center gap-2 text-card font-semibold">
-                                                    View Album
+                                                    {galleryT.albums.viewAlbum}
                                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         {/* Album Info */}
                                         <div className="p-6">
                                             <h3 className="font-bold text-foreground text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
@@ -572,10 +500,10 @@ export default function GalleryPage() {
                                                 </div>
                                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <Folder className="w-4 h-4" />
-                                                    <span>{album.mediaCount} items</span>
+                                                    <span>{album.mediaCount} {galleryT.albums.items}</span>
                                                 </div>
                                             </div>
-                                            
+
                                             {/* Tags */}
                                             <div className="flex flex-wrap gap-1 mt-4">
                                                 {album.tags.slice(0, 3).map((tag, index) => (
@@ -612,14 +540,14 @@ export default function GalleryPage() {
                                             alt={item.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        
+
                                         {/* Video Overlay */}
                                         {item.type === 'video' && (
                                             <>
                                                 <div className="absolute inset-0 bg-black/20"></div>
                                                 <div className="absolute top-4 right-4 bg-red-500 text-card px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
                                                     <Play className="w-3 h-3" />
-                                                    Video
+                                                    {galleryT.albumDetail.video}
                                                 </div>
                                                 {item.duration && (
                                                     <div className="absolute bottom-4 right-4 bg-black/70 text-card px-2 py-1 rounded text-sm">
@@ -628,7 +556,7 @@ export default function GalleryPage() {
                                                 )}
                                             </>
                                         )}
-                                        
+
                                         {/* Hover Actions */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
@@ -644,7 +572,7 @@ export default function GalleryPage() {
                                         <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                             <div className="flex justify-between items-center mb-3">
                                                 <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold backdrop-blur-sm">
-                                                    {item.type === 'video' ? 'Video' : 'Photo'}
+                                                    {item.type === 'video' ? galleryT.albumDetail.video : galleryT.albumDetail.photo}
                                                 </span>
                                                 <div className="flex items-center gap-3 text-card/90">
                                                     <div className="flex items-center gap-1 text-sm">
@@ -658,12 +586,12 @@ export default function GalleryPage() {
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2 text-card font-semibold">
-                                                View {item.type === 'video' ? 'Video' : 'Photo'}
+                                                {item.type === 'video' ? galleryT.albumDetail.viewVideo : galleryT.albumDetail.viewPhoto}
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     {/* Media Info */}
                                     <div className="p-6">
                                         <h3 className="font-bold text-foreground text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
@@ -697,19 +625,18 @@ export default function GalleryPage() {
                                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                             >
                                 <ChevronLeft className="w-5 h-5" />
-                                Previous
+                                {galleryT.pagination.previous}
                             </button>
 
                             <div className="flex gap-2">
-                                {Array.from({length: totalPages}, (_, i) => i + 1).map((p) => (
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                                     <button
                                         key={p}
                                         onClick={() => setPage(p)}
-                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 ${
-                                            p === page
+                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 ${p === page
                                                 ? "bg-primary text-primary-foreground shadow-sm border-primary"
                                                 : "border-border bg-card hover:bg-muted hover:shadow-lg"
-                                        }`}
+                                            }`}
                                     >
                                         {p}
                                     </button>
@@ -721,7 +648,7 @@ export default function GalleryPage() {
                                 disabled={page === totalPages}
                                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                             >
-                                Next
+                                {galleryT.pagination.next}
                                 <ChevronRight className="w-5 h-5" />
                             </button>
                         </div>
