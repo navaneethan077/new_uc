@@ -64,6 +64,7 @@ export function Navigation() {
     { name: t.nav.services, href: "/info/services" },
     { name: t.nav.tourism, href: "/info/tourism" },
      { name: t.nav.ads, href: "/info/ads" },
+     { name: t.nav.socialWork, href: "/info/social-work" },
    
   ]
 

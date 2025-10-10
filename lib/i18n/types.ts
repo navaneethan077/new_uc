@@ -15,9 +15,10 @@ export interface TranslationData {
     services: string
     tourism: string
     ads: string
-    
+    socialWork: string
+
   }
-  
+
   // Common
   common: {
     readMore: string
@@ -38,7 +39,7 @@ export interface TranslationData {
     close: string
     menu: string
   }
-  
+
   // Home page
   home: {
     hero: {
@@ -101,84 +102,84 @@ export interface TranslationData {
       notices: string
     }
     contact: {
-  title: string
-  description: string
-  getInTouch: string
-  quickContact: string
-  findUs: string
-  faqsTitle: string
-  faqs: {
-    question: string
-    answer: string
-  }[]
-}
+      title: string
+      description: string
+      getInTouch: string
+      quickContact: string
+      findUs: string
+      faqsTitle: string
+      faqs: {
+        question: string
+        answer: string
+      }[]
+    }
     gallery: {
-  visualShowcase: string
-  title: string
-  description: string
-  carouselView: string
-  gridView: string
-  clickToView: string
-  active: string
-  viewAllImages: string
-  seeCollection: string
-  exploreFullGallery: string
-  imageCount: string
-  ariaLabels: {
-    carousel: string
-    previous: string
-    next: string
-    goToSlide: string
-    view: string
-    viewMore: string
-    close: string
-  }
-  images: {
-    beaches: {
-      alt: string
-    }
-    fort: {
-      alt: string
-    }
-    baobab: {
-      alt: string
-    }
-    lighthouse: {
-      alt: string
-    }
-    church: {
-      alt: string
-    }
-  }
-  }
- tourism: {
-        title: string
-        description: string
-        media: {
-          title: string
-          description: string
-          moreVideos: string
-          about: {
-            title: string
-            para1: string
-            para2: string
-          }
-          travelTips: {
-            title: string
-            tip1: string
-            tip2: string
-            tip3: string
-          }
-          videos: Array<{
-            id: string
-            title: string
-            description: string
-          }>
+      visualShowcase: string
+      title: string
+      description: string
+      carouselView: string
+      gridView: string
+      clickToView: string
+      active: string
+      viewAllImages: string
+      seeCollection: string
+      exploreFullGallery: string
+      imageCount: string
+      ariaLabels: {
+        carousel: string
+        previous: string
+        next: string
+        goToSlide: string
+        view: string
+        viewMore: string
+        close: string
+      }
+      images: {
+        beaches: {
+          alt: string
+        }
+        fort: {
+          alt: string
+        }
+        baobab: {
+          alt: string
+        }
+        lighthouse: {
+          alt: string
+        }
+        church: {
+          alt: string
         }
       }
+    }
+    tourism: {
+      title: string
+      description: string
+      media: {
+        title: string
+        description: string
+        moreVideos: string
+        about: {
+          title: string
+          para1: string
+          para2: string
+        }
+        travelTips: {
+          title: string
+          tip1: string
+          tip2: string
+          tip3: string
+        }
+        videos: Array<{
+          id: string
+          title: string
+          description: string
+        }>
+      }
+    }
 
   }
-  
+
   // Footer
   footer: {
     about: string
@@ -191,7 +192,7 @@ export interface TranslationData {
     copyright: string
     builtWith: string
   }
-  
+
   // Contact page
   contactPage: {
     title: string
@@ -222,10 +223,10 @@ export interface TranslationData {
 
   //events page
   // notices 
- // Events page
- eventsPage: {
+  // Events page
+  eventsPage: {
 
-    event:Array<{
+    event: Array<{
       id: number;
       title: string;
       slug: string;
@@ -235,124 +236,124 @@ export interface TranslationData {
       image?: string;
       description: string;
     }>;
-  
-  notice: Array<{
-    id: number;
-    title: string;
-    date: string;
-    image: string;
-    description: string;
-  }>;
 
-  announcement: Array<{
-    id: number;
-    title: string;
-    date: string;
-    icon: string;
-    description: string;
-  }>;
+    notice: Array<{
+      id: number;
+      title: string;
+      date: string;
+      image: string;
+      description: string;
+    }>;
+
+    announcement: Array<{
+      id: number;
+      title: string;
+      date: string;
+      icon: string;
+      description: string;
+    }>;
   }
-  ChairmanPage :{
-  hero: {
-    name: string;
+  ChairmanPage: {
+    hero: {
+      name: string;
+      description: string;
+      cta: string;
+    };
+    whoIsBalen: {
+      title: string;
+      paragraphs: string[];
+    };
+    academics: {
+      title: string;
+      imageAlt: string;
+      qualifications: Array<{
+        degree: string;
+        institution: string;
+      }>;
+    };
+    awards: {
+      title: string;
+      imageAlt: string;
+      items: Array<{
+        title: string;
+        details: string;
+      }>;
+    };
+    leadership: {
+      title: string;
+      mayorSection: {
+        title: string;
+        description: string;
+        initiatives: string[];
+      };
+      cultureSection: {
+        title: string;
+        description: string;
+        quote: string;
+      };
+    };
+  }
+  galleryPage: {
+    title: string;
     description: string;
-    cta: string;
-  };
-  whoIsBalen: {
-    title: string;
-    paragraphs: string[];
-  };
-  academics: {
-    title: string;
-    imageAlt: string;
-    qualifications: Array<{
-      degree: string;
-      institution: string;
+    heroImage: string;
+    searchPlaceholder: string;
+    sortBy: string;
+    sortOptions: {
+      newest: string;
+      oldest: string;
+    };
+    filters: string;
+    clearFilters: string;
+    filterByCategory: string;
+    showing: string;
+    noEvents: string;
+    tryAdjusting: string;
+    clearAllFilters: string;
+    viewDetails: string;
+    previous: string;
+    next: string;
+    categories: {
+      environment: string;
+      youth: string;
+      events: string;
+      council: string;
+      community: string;
+      business: string;
+    };
+    photos: Array<{
+      title: string;
+      dateLabel: string;
+      location: string;
+      participants: string;
+      description: string;
     }>;
   };
-  awards: {
-    title: string;
-    imageAlt: string;
-    items: Array<{
-      title: string;
-      details: string;
-    }>;
-  };
-  leadership: {
-    title: string;
-    mayorSection: {
-      title: string;
-      description: string;
-      initiatives: string[];
-    };
-    cultureSection: {
-      title: string;
-      description: string;
-      quote: string;
-    };
-  };
-}
-galleryPage : {
-  title: string;
-  description: string;
-  heroImage: string;
-  searchPlaceholder: string;
-  sortBy: string;
-  sortOptions: {
-    newest: string;
-    oldest: string;
-  };
-  filters: string;
-  clearFilters: string;
-  filterByCategory: string;
-  showing: string;
-  noEvents: string;
-  tryAdjusting: string;
-  clearAllFilters: string;
-  viewDetails: string;
-  previous: string;
-  next: string;
-  categories: {
-    environment: string;
-    youth: string;
-    events: string;
-    council: string;
-    community: string;
-    business: string;
-  };
-  photos: Array<{
-    title: string;
-    dateLabel: string;
-    location: string;
-    participants: string;
-    description: string;
-  }>;
-};
 
-//ad
-AdsSectionTranslations :{
-  topBar: {
-    title: string;
-    viewAll: string;
-  };
-  title: string;
-  subtitle: string;
-  searchPlaceholder: string;
-  allCategories: string;
-  viewAll: string;
-  notices: string;
-  urgent: string;
-  readMore: string;
-  noResults: {
-    title: string;
-    description: string;
-  };
-  modal: {
+  //ad
+  AdsSectionTranslations: {
+    topBar: {
+      title: string;
+      viewAll: string;
+    };
     title: string;
     subtitle: string;
+    searchPlaceholder: string;
+    allCategories: string;
+    viewAll: string;
+    notices: string;
+    urgent: string;
+    readMore: string;
+    noResults: {
+      title: string;
+      description: string;
+    };
+    modal: {
+      title: string;
+      subtitle: string;
+    };
   };
-};
- news: {
+  news: {
     breadcrumb: string;
     hero: {
       title: string;
@@ -474,6 +475,85 @@ AdsSectionTranslations :{
     };
   };
 
+  GallerylodingPage: {
+    breadcrumb: string;
+    hero: {
+      title: string;
+      description: string;
+    };
+    search: {
+      albums: string;
+      media: string;
+    };
+    sort: {
+      label: string;
+      newest: string;
+      popular: string;
+      name: string;
+    };
+    filters: {
+      button: string;
+      clearAll: string;
+      category: string;
+    };
+    viewMode: {
+      grid: string;
+      masonry: string;
+    };
+    pagination: {
+      previous: string;
+      next: string;
+    };
+    albums: {
+      resultsCount: string;
+      noResults: {
+        title: string;
+        description: string;
+        clearFilters: string;
+      };
+      viewAlbum: string;
+      items: string;
+      tags: string;
+      mediaCount: string;
+      photoCount: string;
+      videoCount: string;
+    };
+    albumDetail: {
+      backToAlbums: string;
+      mediaItems: string;
+      viewPhoto: string;
+      viewVideo: string;
+      photo: string;
+      video: string;
+      likes: string;
+      views: string;
+      downloads: string;
+    };
+    categories: {
+      environment: string;
+      heritage: string;
+      wildlife: string;
+      culture: string;
+      community: string;
+      landmarks: string;
+    };
+    albumsData: Array<{
+      id: string;
+      title: string;
+      description: string;
+      location: string;
+      category: string;
+      tags: string[];
+    }>;
+    mediaItems: Array<{
+      id: string;
+      title: string;
+      description: string;
+      location: string;
+      category: string;
+    }>;
+  };
 
- 
+
+
 }
