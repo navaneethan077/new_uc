@@ -223,7 +223,7 @@ export default function SocialWorkPage() {
         </section>
 
         {/* Events Section */}
-        <section className="section-x bg-gray-50">
+        {/* <section className="section-x bg-gray-50">
           <div className="container-x">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-primary mb-4">
@@ -250,7 +250,7 @@ export default function SocialWorkPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />
