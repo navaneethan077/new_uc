@@ -27,6 +27,7 @@ export default function NewsPage() {
 
   const { t, language } = useLanguage();
   const newsContent = translations[language].news;
+  const navContent = translations[language].nav;
 
   const [timeFilter, setTimeFilter] = useState<"all" | "day" | "week" | "month" | "year">("all")
   const [search, setSearch] = useState("")
@@ -260,7 +261,7 @@ export default function NewsPage() {
       <main className="relative pt-6">
         <div className="container-x py-4">
           <Breadcrumbs items={[
-            { label: t.home.title, href: "/" }, 
+            { label: navContent.home, href: "/" }, 
             { label: newsContent.breadcrumb }
           ]} />
         </div>
