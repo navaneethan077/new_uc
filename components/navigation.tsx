@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, AlertCircle } from "lucide-react"
 import Image from "next/image"
 import { useLanguage } from "@/lib/i18n/context"
 
@@ -63,13 +63,17 @@ export function Navigation() {
   const infoDropdown = [
     { name: t.nav.services, href: "/info/services" },
     { name: t.nav.tourism, href: "/info/tourism" },
-     { name: t.nav.ads, href: "/info/ads" },
-     { name: t.nav.socialWork, href: "/info/social-work" },
-   
+    { name: t.nav.ads, href: "/info/ads" },
+    { name: t.nav.socialWork, href: "/info/social-work" },
   ]
 
   const isEventsActive = eventsDropdown.some(item => isActive(item.href))
   const isInfoActive = infoDropdown.some(item => isActive(item.href))
+
+  // Theme colors - using your main blue theme
+  const themeColor = "#1C2B78"
+  const themeLight = "#f0f4ff" // Light blue background
+  const themeHover = "#15225c" // Darker blue for hover
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -92,15 +96,15 @@ export function Navigation() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 relative">
+        <div className="hidden md:flex items-center gap-4 relative">
           {baseItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className={`font-medium hover:underline underline-offset-4 transition-all px-2 py-1 rounded ${
+              className={`font-medium hover:underline underline-offset-4 transition-all px-3 py-2 rounded flex items-center gap-1 ${
                 isActive(item.href)
                   ? 'bg-[#1C2B78] text-white'
-                  : 'text-primary hover:text-primary'
+                  : 'text-primary hover:text-primary hover:bg-gray-50'
               }`}
               onClick={() => setOpenDropdown(null)}
             >
@@ -115,10 +119,10 @@ export function Navigation() {
             onMouseLeave={handleDropdownLeave}
           >
             <button
-              className={`inline-flex items-center gap-1 font-medium hover:underline underline-offset-4 px-2 py-1 rounded transition-colors ${
+              className={`inline-flex items-center gap-1 font-medium hover:underline underline-offset-4 px-3 py-2 rounded transition-colors ${
                 openDropdown === "events" || isEventsActive
                   ? 'bg-[#1C2B78] text-white'
-                  : 'text-primary'
+                  : 'text-primary hover:bg-gray-50'
               }`}
               aria-haspopup="menu"
               aria-expanded={openDropdown === "events"}
@@ -170,10 +174,10 @@ export function Navigation() {
             onMouseLeave={handleDropdownLeave}
           >
             <button
-              className={`inline-flex items-center gap-1 font-medium hover:underline underline-offset-4 px-2 py-1 rounded transition-colors ${
+              className={`inline-flex items-center gap-1 font-medium hover:underline underline-offset-4 px-3 py-2 rounded transition-colors ${
                 openDropdown === "info" || isInfoActive
                   ? 'bg-[#1C2B78] text-white'
-                  : 'text-primary'
+                  : 'text-primary hover:bg-gray-50'
               }`}
               aria-haspopup="menu"
               aria-expanded={openDropdown === "info"}
@@ -220,15 +224,49 @@ export function Navigation() {
 
           <a
             href="/contact"
-            className={`font-medium hover:underline underline-offset-4 transition-all px-2 py-1 rounded ${
+            className={`font-medium hover:underline underline-offset-4 transition-all px-3 py-2 rounded ${
               isActive("/contact")
                 ? 'bg-[#1C2B78] text-white'
-                : 'text-primary hover:text-primary'
+                : 'text-primary hover:text-primary hover:bg-gray-50'
             }`}
             onClick={() => setOpenDropdown(null)}
           >
             {t.nav.contact}
           </a>
+
+          {/* Complaints - Updated with theme colors */}
+<a
+  href="/complaints"
+  className={`relative font-bold py-2 px-6 rounded-2xl flex items-center gap-3 overflow-hidden transition-transform duration-300 hover:scale-110 ${
+    isActive("/complaints")
+      ? 'bg-[#1C2B78] shadow-xl'
+      : 'bg-[#f0f4ff] text-[#1C2B78] hover:bg-[#1C2B78] hover:text-white'
+  }`}
+  onClick={() => setOpenDropdown(null)}
+>
+  {/* Moving Spotlight */}
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute w-24 h-24 rounded-full bg-[#FACC15] opacity-40 blur-4xl animate-spotlight" />
+  </div>
+
+  {/* Text with Moving Light */}
+  <span className={`${isActive("/complaints") ? 'animate-text-light' : 'text-[#1C2B78]'}`}>
+    {t.nav.complaints}
+  </span>
+
+  {/* Big Glowing Dot */}
+  <span className="absolute -top-3 -right-3">
+    <span className="relative flex h-5 w-5">
+      <span className="animate-pulse-scale absolute inline-flex h-full w-full rounded-full bg-[#FACC15] opacity-80"></span>
+      <span className="relative inline-flex rounded-full h-5 w-5 bg-[#FACC15]"></span>
+    </span>
+  </span>
+</a>
+
+
+
+
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -249,10 +287,10 @@ export function Navigation() {
               <a
                 key={item.name}
                 href={item.href}
-                className={`block font-medium py-2 px-3 rounded ${
+                className={`block font-medium py-3 px-4 rounded-lg transition-colors ${
                   isActive(item.href)
                     ? 'bg-[#1C2B78] text-white'
-                    : 'text-primary'
+                    : 'text-primary hover:bg-gray-50'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -262,8 +300,8 @@ export function Navigation() {
 
             <details className="group border rounded-lg">
               <summary
-                className={`flex justify-between items-center py-2 px-3 cursor-pointer font-medium rounded ${
-                  isEventsActive ? 'bg-[#1C2B78] text-white' : 'text-primary'
+                className={`flex justify-between items-center py-3 px-4 cursor-pointer font-medium rounded-lg transition-colors ${
+                  isEventsActive ? 'bg-[#1C2B78] text-white' : 'text-primary hover:bg-gray-50'
                 }`}
               >
                 {t.nav.events}
@@ -276,10 +314,10 @@ export function Navigation() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`block py-1 px-2 rounded ${
+                    className={`block py-2 px-3 rounded-lg transition-colors ${
                       isActive(item.href)
                         ? 'bg-[#1C2B78] text-white font-medium'
-                        : 'text-primary'
+                        : 'text-primary hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -291,8 +329,8 @@ export function Navigation() {
 
             <details className="group border rounded-lg">
               <summary
-                className={`flex justify-between items-center py-2 px-3 cursor-pointer font-medium rounded ${
-                  isInfoActive ? 'bg-[#1C2B78] text-white' : 'text-primary'
+                className={`flex justify-between items-center py-3 px-4 cursor-pointer font-medium rounded-lg transition-colors ${
+                  isInfoActive ? 'bg-[#1C2B78] text-white' : 'text-primary hover:bg-gray-50'
                 }`}
               >
                 {t.nav.information}
@@ -305,10 +343,10 @@ export function Navigation() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`block py-1 px-2 rounded ${
+                    className={`block py-2 px-3 rounded-lg transition-colors ${
                       isActive(item.href)
                         ? 'bg-[#1C2B78] text-white font-medium'
-                        : 'text-primary'
+                        : 'text-primary hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -320,14 +358,38 @@ export function Navigation() {
 
             <a
               href="/contact"
-              className={`block font-medium py-2 px-3 rounded ${
+              className={`block font-medium py-3 px-4 rounded-lg transition-colors ${
                 isActive("/contact")
                   ? 'bg-[#1C2B78] text-white'
-                  : 'text-primary'
+                  : 'text-primary hover:bg-gray-50'
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {t.nav.contact}
+            </a>
+
+            {/* Complaints - Mobile version with theme colors */}
+            <a
+              href="/complaints"
+              className={`relative block font-medium py-3 px-4 rounded-lg flex items-center gap-2 transition-colors border-2 ${
+                isActive("/complaints")
+                  ? 'bg-[#1C2B78] text-white border-[#1C2B78] shadow-md'
+                  : 'text-[#1C2B78] border-[#1C2B78] bg-[#f0f4ff] hover:bg-[#1C2B78] hover:text-white'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+             
+              {t.nav.complaints}
+
+              {/* Active indicator for mobile */}
+              {isActive("/complaints") && (
+                <span className="absolute -top-1 -right-1">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                  </span>
+                </span>
+              )}
             </a>
           </div>
         </div>
