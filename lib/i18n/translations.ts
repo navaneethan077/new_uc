@@ -16,6 +16,7 @@ export const translations: Record<string, TranslationData> = {
       tourism: "Tourism",
       ads: "ads",
       socialWork: "Social Work",
+      complaints: "Complain",
     },
     common: {
       readMore: "Read More",
@@ -969,6 +970,7 @@ This development is expected to serve as a model for other municipalities lookin
       tourism: "சுற்றுலா",
       ads: "விளம்பரங்கள்",
       socialWork: "சமூக வேலை",
+      complaints: "புகார்கள்",
     },
     common: {
       readMore: "மேலும் படிக்க",
@@ -1926,6 +1928,7 @@ This development is expected to serve as a model for other municipalities lookin
       tourism: "සංචාරක",
       ads: "ප්‍රචාරණ",
       socialWork: "සමාජ සේවය",
+      complaints: "පැමිණිලි",
     },
     common: {
       readMore: "තව කියවන්න",

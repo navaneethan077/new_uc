@@ -16,6 +16,7 @@ export interface TranslationData {
     tourism: string;
     ads: string;
     socialWork: string;
+    complaints: string;
     
   };
 
