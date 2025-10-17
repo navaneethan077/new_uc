@@ -125,7 +125,7 @@ export default function SocialWorkPage() {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
-            { label: "Initiatives", href: "/initiatives" },
+            
             { label: "Social Work" },
           ]}
         />
@@ -222,35 +222,7 @@ export default function SocialWorkPage() {
           </div>
         </section>
 
-        {/* Events Section */}
-        {/* <section className="section-x bg-gray-50">
-          <div className="container-x">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                Upcoming Events & Campaigns
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {events.map((event, index) => (
-                <div key={index} className="card-x">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Calendar className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-primary">{event.name}</h3>
-                      <p className="text-sm text-primary">{event.date}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {event.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
+       
       </main>
 
       <Footer />

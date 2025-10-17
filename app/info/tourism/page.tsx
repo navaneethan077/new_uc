@@ -133,7 +133,7 @@ export default function TourismPage() {
       <Navigation />
 
       <main>
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Information", href: "/info" }, { label: "Tourism" }]} />
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tourism" }]} />
 
         {/* Hero Section */}
         <section className="section-x relative from-primary">
@@ -340,7 +340,7 @@ export default function TourismPage() {
         </section>
 
         {/* Cultural Events */}
-        <section className="section-x bg-gray-50">
+        {/* <section className="section-x bg-gray-50">
           <div className="container-x">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-primary mb-4">Cultural Events & Festivals</h2>
@@ -366,7 +366,7 @@ export default function TourismPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Visitor Information */}
         <section className="section-x">

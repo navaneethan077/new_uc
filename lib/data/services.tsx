@@ -316,13 +316,15 @@
 
 import { FaRecycle, FaWater, FaTree, FaLightbulb, FaGraduationCap, FaHardHat, FaShieldAlt, FaHeartbeat } from "react-icons/fa";
 
+
 export const serviceCategories = [
   {
     id: "environmental-services",
     title: "Environmental Services",
     description:
       "Protecting and improving the environment across Mannar through sustainable and community-driven initiatives.",
-    icon: FaTree,
+   icon: <FaTree  className="text-primary" />,
+    
     subServices: [
       {
         id: "solid-waste-management",
@@ -505,7 +507,7 @@ Our ultimate goal is to transform waste into a resource, empower citizens to act
     id: "infrastructure-development",
     title: "Infrastructure & Development",
     description: "Urban and rural infrastructure development projects",
-    icon: FaHardHat,
+    icon: <FaHardHat  className="text-primary" />,
     color: "bg-primary/5 border-primary/20",
     subServices: [
       {
@@ -769,7 +771,7 @@ Our ultimate goal is to transform waste into a resource, empower citizens to act
     id: "safety-protection",
     title: "Safety & Protection",
     description: "Community safety and protection services",
-    icon: FaShieldAlt,
+    icon: <FaShieldAlt  className="text-primary" />,
     color: "bg-primary/5 border-primary/20",
     subServices: [
       {
@@ -938,7 +940,7 @@ Our ultimate goal is to transform waste into a resource, empower citizens to act
     id: "health-environment",
     title: "Health & Environment",
     description: "Healthcare and environmental conservation programs",
-    icon: FaHeartbeat,
+    icon: <FaHeartbeat  className="text-primary" />,
     color: "bg-primary/5 border-primary/20",
     subServices: [
       {

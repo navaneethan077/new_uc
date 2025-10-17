@@ -9,6 +9,8 @@ import ComplaintForm from '@/components/forms/complaintForm';
 import PersonalInfoForm from '@/components/forms/personalInfoForm';
 import ServiceForm from '@/components/forms/serviceForm';
 import ReviewForm from '@/components/forms/reviewForm';
+import { serviceCategories } from '@/lib/data/services';
+
 import { ComplaintFormData } from '@/lib/data/complaint';
 import { 
   FaExclamationTriangle, 
@@ -33,7 +35,7 @@ import {
   FaTimes,
   FaMapMarkerAlt,
   FaIdCard,
-  FaListAlt
+  FaListAlt,FaExclamationCircle 
 } from 'react-icons/fa';
 
 const ComplaintsPage = () => {
@@ -159,18 +161,25 @@ const ComplaintsPage = () => {
       
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
-            <FaBullhorn className="text-3xl text-primary" />
+        <section className="bg-primary relative py-16">
+          <div className="container-x text-center">
+            {/* Icon */}
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-6 mx-auto">
+              <FaBullhorn className="text-3xl text-white" />
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Public <span className="text-white/90">Complaints</span> & Feedback
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Your voice matters. Help us serve you better by sharing your concerns, 
+              suggestions, and feedback with our municipal council.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Public <span className="text-primary">Complaints</span> & Feedback
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Your voice matters. Help us serve you better by sharing your concerns, 
-            suggestions, and feedback with our municipal council.
-          </p>
-        </div>
+        </section>
 
         {/* Quick Actions */}
         {!showForm && (
@@ -217,7 +226,7 @@ const ComplaintsPage = () => {
                   onClick={startNewComplaint}
                   className="bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 mx-auto"
                 >
-                  <FaRocket className="text-lg" />
+                  <FaExclamationCircle className="text-lg" />
                   Start Your Submission
                 </button>
                 <p className="text-gray-500 mt-3 text-sm">
@@ -231,7 +240,7 @@ const ComplaintsPage = () => {
         {/* Process Guide */}
         {!showForm && (
           <div className="max-w-6xl mx-auto mb-12">
-            <div className="bg-gradient-to-r from-primary/5 to-blue-50 rounded-2xl p-8 border border-primary/10">
+            <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
               <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
                 Simple 4-Step Process
               </h2>
@@ -382,10 +391,11 @@ const ComplaintsPage = () => {
           <div className="max-w-6xl mx-auto space-y-8">
             {/* What to Expect */}
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-green-200">
+              {/* After You Submit Card */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-primary/20">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                    <FaClipboardList className="text-xl text-green-600" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaClipboardList className="text-xl text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">After You Submit</h3>
                 </div>
@@ -400,7 +410,7 @@ const ComplaintsPage = () => {
                     const IconComponent = item.icon;
                     return (
                       <div key={index} className="flex items-center space-x-3">
-                        <IconComponent className="text-green-500 text-lg" />
+                        <IconComponent className="text-primary text-lg" />
                         <span className="text-gray-700">{item.text}</span>
                       </div>
                     );
@@ -408,11 +418,11 @@ const ComplaintsPage = () => {
                 </div>
               </div>
 
-              {/* Contact Information */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-200">
+              {/* Contact Information Card */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-primary/20">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                    <FaPhone className="text-xl text-blue-600" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                    <FaPhone className="text-xl text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">Contact Us</h3>
                 </div>
@@ -425,9 +435,9 @@ const ComplaintsPage = () => {
                   ].map((item, index) => {
                     const IconComponent = item.icon;
                     return (
-                      <div key={index} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                      <div key={index} className="flex items-center justify-between p-3 bg-primary/5 rounded-lg">
                         <div className="flex items-center space-x-3">
-                          <IconComponent className="text-blue-500" />
+                          <IconComponent className="text-primary" />
                           <span className="font-medium text-gray-700">{item.label}</span>
                         </div>
                         <span className="text-gray-900 font-semibold">{item.value}</span>
@@ -439,7 +449,7 @@ const ComplaintsPage = () => {
             </div>
 
             {/* Services Overview */}
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 border border-purple-200">
+            <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
                   Services We Provide
@@ -449,38 +459,21 @@ const ComplaintsPage = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {[
-                  {
-                    icon: FaHome,
-                    title: 'Property Services',
-                    services: ['Property Title Deeds', 'Building Permits', 'Land Documentation', 'Boundary Certificates']
-                  },
-                  {
-                    icon: FaTint,
-                    title: 'Public Utilities',
-                    services: ['Water Supply Issues', 'Sanitation Services', 'Road Maintenance', 'Street Lighting']
-                  },
-                  {
-                    icon: FaFileContract,
-                    title: 'Licenses & Permits',
-                    services: ['Business Licenses', 'Event Permits', 'Environmental Permits', 'Tax Services']
-                  }
-                ].map((category, index) => {
-                  const IconComponent = category.icon;
+              <div className="grid md:grid-cols-2 gap-6">
+                {serviceCategories.map((category) => {
                   return (
-                    <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                    <div key={category.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
                       <div className="flex items-center mb-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                          <IconComponent className="text-xl text-primary" />
+                          {category.icon}
                         </div>
                         <h3 className="font-bold text-gray-900 text-lg">{category.title}</h3>
                       </div>
                       <ul className="space-y-2">
-                        {category.services.map((service, idx) => (
-                          <li key={idx} className="flex items-center text-gray-700">
+                        {category.subServices.map((service) => (
+                          <li key={service.id} className="flex items-center text-gray-700">
                             <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
-                            {service}
+                            {service.title}
                           </li>
                         ))}
                       </ul>

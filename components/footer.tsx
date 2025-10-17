@@ -8,7 +8,7 @@ export function Footer() {
   const quickLinks = [
     { name: t.nav.home, href: "/" },
     { name: t.nav.services, href: "/info/services" },
-    { name: t.nav.events, href: "/about" },
+    { name: t.nav.aboutUs, href: "/about" },
     { name: t.nav.news, href: "/events/news" },
     { name: t.nav.contact, href: "/contact" },
     { name: "Privacy Policy", href: "#privacy" },
