@@ -203,15 +203,14 @@ export default function GalleryPage() {
             <Navigation />
 
             {/* Breadcrumbs */}
-            <Breadcrumbs
-                items={[
-                    { label: t.nav.home, href: "/" },
-                    { label: galleryT.breadcrumb, href: "/gallery" },
-                    ...(currentView === 'album-detail' && selectedAlbum ? [
-                        { label: selectedAlbum.title, href: `#` }
-                    ] : [])
-                ]}
-            />
+            
+           <div className="container-x py-4">
+          <Breadcrumbs items={[
+            { label: t.nav.home, href: "/" },
+            { label: galleryT.breadcrumb, href: "/events/gallery" },
+           
+          ]} />
+        </div>
 
             {/* Hero Section */}
             <section className="relative py-24 bg-gradient-to-br from-[var(--primary)] via-[var(--primary)/0.9] to-[var(--primary)/0.8] overflow-hidden">
@@ -271,13 +270,7 @@ export default function GalleryPage() {
                 </section>
             )}
              <main className="relative pt-6">
-                  <div className="container-x py-4">
-          <Breadcrumbs items={[
-            { label: t.nav.home, href: "/" },
-            { label: galleryT.breadcrumb, href: "/gallery" },
-           
-          ]} />
-        </div>
+                 
         <section className=" py-16">
           <div className="container-x text-center">
 
@@ -315,7 +308,7 @@ export default function GalleryPage() {
 
                         <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
                             {/* View Mode Toggle */}
-                            <div className="flex bg-muted rounded-lg p-1.5 border border-border">
+                            {/* <div className="flex bg-muted rounded-lg p-1.5 border border-border">
                                 <button
                                     onClick={() => setViewMode("grid")}
                                     className={`p-2 rounded-md transition-all duration-300 ${viewMode === "grid"
@@ -336,7 +329,7 @@ export default function GalleryPage() {
                                 >
                                     <List className="w-4 h-4" />
                                 </button>
-                            </div>
+                            </div> */}
 
                             {/* Sort By */}
                             <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">

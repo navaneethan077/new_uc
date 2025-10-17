@@ -6,6 +6,10 @@ import {ChevronDown, ChevronUp, MapPin, Phone, Mail, ArrowRight} from "lucide-re
 import {GoogleMap, useJsApiLoader, Marker} from "@react-google-maps/api";
 import {useLanguage} from "@/lib/i18n/context";
 import {translations} from "@/lib/i18n/translations";
+import toast from "react-hot-toast";
+
+
+
 
 const containerStyle = {
     width: "100%",
@@ -37,19 +41,30 @@ export function ContactSection() {
         });
     };
 
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     setIsSubmitting(true);
+
+    //     console.log("Form submitted:", formData);
+
+    //     // Simulate API call
+    //     setTimeout(() => {
+    //         setFormData({name: "", email: "", message: ""});
+    //         setIsSubmitting(false);
+    //         alert("Thank you! Your message has been sent.");
+    //     }, 1500);
+    // };
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-        console.log("Form submitted:", formData);
-
-        // Simulate API call
-        setTimeout(() => {
-            setFormData({name: "", email: "", message: ""});
-            setIsSubmitting(false);
-            alert("Thank you! Your message has been sent.");
-        }, 1500);
-    };
+  // simulate API call
+  setTimeout(() => {
+    setIsSubmitting(false);
+    setFormData({ name: "", email: "", message: "" });
+    toast.success("Thank you! Your message has been sent successfully.");
+  }, 1500);
+};
 
     // ✅ Get translated FAQ content
     const faqs = translations[language].home.contact.faqs;

@@ -4,6 +4,8 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { ArrowRight, Play, Pause } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/context"
+import Link from "next/link";
+
 
 type Slide =
   | { type: "video"; src: string; poster?: string }
@@ -86,13 +88,13 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <a 
-              href="#services" 
-              className="btn-primary gap-3 font-semibold text-lg px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
-            >
-              {t.home.hero.exploreServices}
-              <ArrowRight className="w-5 h-5" />
-            </a>
+           <Link
+  href="/info/services"
+  className="btn-primary gap-3 font-semibold text-lg px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center"
+>
+  {t.home.hero.exploreServices}
+  <ArrowRight className="w-5 h-5" />
+</Link>
             <a 
               href="#contact" 
               className="btn-outline border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary font-medium text-lg px-8 py-4 rounded-xl transition-all duration-300"
@@ -134,13 +136,13 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:block">
+      {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:block">
         <div className="animate-bounce">
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

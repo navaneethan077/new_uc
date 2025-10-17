@@ -108,12 +108,33 @@ export default function AdsPage(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
+    <div className="min-h-screen">
       <TopBar />
       <Navigation />
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main >
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Community Ads" }]} />
+
+        {/* Hero Section */}
+        <section className="section-x relative from-primary">
+          <div className="absolute inset-0">
+            <img
+              src="/social-hero.jpg"
+              alt="Mannar Community Marketplace"
+              className="w-full h-full object-cover opacity-90"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+          <div className="relative text-center z-10 py-20 px-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Mannar Community Marketplace
+            </h1>
+            <p className="text-xl text-teal-100 max-w-3xl mx-auto leading-relaxed">
+              Buy, sell, find services, and connect with your neighbors. A trusted platform for Mannar residents to share opportunities and build community.
+            </p>
+          </div>
+        </section>
 
         {/* Sticky Filter Section */}
         <section className="sticky top-16 z-10 bg-card shadow-sm py-6 border-b border-border">
@@ -195,87 +216,90 @@ export default function AdsPage(): JSX.Element {
           </div>
         </section>
 
-        {/* Ads Grid */}
-        <section className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <div className={`grid ${viewMode === "grid" ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"} gap-6`}>
-              {pageItems.length === 0 && (
-                <div className="col-span-full bg-card p-6 rounded-2xl shadow text-center">No ads found.</div>
-              )}
-              {pageItems.map((ad) => (
-                <article key={ad.id} className="bg-card rounded-2xl shadow overflow-hidden border border-border">
-                  <button onClick={() => openAd(ad)} className="w-full text-left">
-                    <div className="h-44 bg-muted overflow-hidden relative">
-                      {/* Use default image when ad.image is missing */}
-                      <Image src={ad.image ?? DEFAULT_IMAGE} alt={ad.title} fill className="object-cover" />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold">{ad.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-2">{ad.description.slice(0, 120)}{ad.description.length > 120 ? '...' : ''}</p>
-                      <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
-                        <span className="capitalize">{ad.category.replace('-', ' ')}</span>
-                        <span>{formatDate(ad.date)}</span>
+        {/* Main Content */}
+        <div className="px-4 py-8 container-x">
+          {/* Ads Grid */}
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <div className={`grid ${viewMode === "grid" ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"} gap-6`}>
+                {pageItems.length === 0 && (
+                  <div className="col-span-full bg-card p-6 rounded-2xl shadow text-center">No ads found.</div>
+                )}
+                {pageItems.map((ad) => (
+                  <article key={ad.id} className="bg-card rounded-2xl shadow overflow-hidden border border-border">
+                    <button onClick={() => openAd(ad)} className="w-full text-left">
+                      <div className="h-44 bg-muted overflow-hidden relative">
+                        {/* Use default image when ad.image is missing */}
+                        <Image src={ad.image ?? DEFAULT_IMAGE} alt={ad.title} fill className="object-cover" />
                       </div>
-                    </div>
-                  </button>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-6 flex justify-center">
-              <nav className="inline-flex items-center gap-2">
-                {Array.from({ length: totalPages }).map((_, i) => (
-                  <button key={i} onClick={() => setPage(i + 1)} className={`px-3 py-1 rounded ${page === i + 1 ? 'bg-[oklch(0.2_0.08_250)] text-white' : 'border'}`}>{i + 1}</button>
+                      <div className="p-4">
+                        <h3 className="font-semibold">{ad.title}</h3>
+                        <p className="text-sm text-muted-foreground mt-2">{ad.description.slice(0, 120)}{ad.description.length > 120 ? '...' : ''}</p>
+                        <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                          <span className="capitalize">{ad.category.replace('-', ' ')}</span>
+                          <span>{formatDate(ad.date)}</span>
+                        </div>
+                      </div>
+                    </button>
+                  </article>
                 ))}
-              </nav>
-            </div>
-          </div>
-
-          <aside className="space-y-4">
-            <div className="bg-card p-4 rounded-2xl shadow">
-              <h4 className="font-semibold">Advert Guidelines</h4>
-              <ol className="mt-2 text-sm text-muted-foreground list-decimal list-inside">
-                <li>Keep text clear & truthful.</li>
-                <li>No illegal or harmful content.</li>
-                <li>Prefer local contact info.</li>
-              </ol>
-            </div>
-
-            <div className="bg-card p-4 rounded-2xl shadow text-center">
-              <h4 className="font-semibold">Need help?</h4>
-              <p className="text-sm text-muted-foreground mt-2">Call: +94 76 482 2492</p>
-              <button onClick={() => document.getElementById("post-form")?.scrollIntoView({ behavior: 'smooth' })} className="mt-3 inline-block px-4 py-2 rounded-lg bg-[oklch(0.2_0.08_250)] text-white">Post an Ad</button>
-            </div>
-          </aside>
-        </section>
-
-        {/* Post Form */}
-        <section id="post-form" className="max-w-3xl mx-auto mt-8">
-          <div className="bg-card p-6 rounded-2xl shadow">
-            <h2 className="text-xl font-semibold">Post a Community Ad</h2>
-            <p className="text-sm text-muted-foreground mt-1">Ads are reviewed by Mannar UC before publishing.</p>
-
-            <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-1 gap-3">
-              <input id="title" name="title" required placeholder="Title (e.g., 'Bike for sale')" className="p-3 rounded-md border" />
-              <select id="categorySelect" name="category" className="p-3 rounded-md border">
-                <option value="for-sale">For Sale</option>
-                <option value="services">Services</option>
-                <option value="jobs">Jobs</option>
-                <option value="notices">Notices</option>
-              </select>
-              <textarea id="description" name="description" rows={4} required placeholder="Description" className="p-3 rounded-md border"></textarea>
-              <input id="contact" name="contact" placeholder="Contact info (phone or email)" className="p-3 rounded-md border" />
-              <input id="imageUrl" name="imageUrl" placeholder="Image URL (optional)" className="p-3 rounded-md border" />
-
-              <div className="flex gap-3">
-                <button type="submit" disabled={posting} className="px-4 py-2 rounded-lg bg-[oklch(0.2_0.08_250)] text-white">{posting ? 'Posting…' : 'Submit for Review'}</button>
-                <button type="reset" className="px-4 py-2 rounded-lg border">Reset</button>
               </div>
 
-              {message && <p className="text-sm text-emerald-600">{message}</p>}
-            </form>
-          </div>
-        </section>
+              <div className="mt-6 flex justify-center">
+                <nav className="inline-flex items-center gap-2">
+                  {Array.from({ length: totalPages }).map((_, i) => (
+                    <button key={i} onClick={() => setPage(i + 1)} className={`px-3 py-1 rounded ${page === i + 1 ? 'bg-[oklch(0.2_0.08_250)] text-white' : 'border'}`}>{i + 1}</button>
+                  ))}
+                </nav>
+              </div>
+            </div>
+
+            <aside className="space-y-4">
+              <div className="bg-card p-4 rounded-2xl shadow">
+                <h4 className="font-semibold">Advert Guidelines</h4>
+                <ol className="mt-2 text-sm text-muted-foreground list-decimal list-inside">
+                  <li>Keep text clear & truthful.</li>
+                  <li>No illegal or harmful content.</li>
+                  <li>Prefer local contact info.</li>
+                </ol>
+              </div>
+
+              <div className="bg-card p-4 rounded-2xl shadow text-center">
+                <h4 className="font-semibold">Need help?</h4>
+                <p className="text-sm text-muted-foreground mt-2">Call: +94 76 482 2492</p>
+                <button onClick={() => document.getElementById("post-form")?.scrollIntoView({ behavior: 'smooth' })} className="mt-3 inline-block px-4 py-2 rounded-lg bg-[oklch(0.2_0.08_250)] text-white">Post an Ad</button>
+              </div>
+            </aside>
+          </section>
+
+          {/* Post Form */}
+          {/* <section id="post-form" className="max-w-3xl mx-auto mt-8">
+            <div className="bg-card p-6 rounded-2xl shadow">
+              <h2 className="text-xl font-semibold">Post a Community Ad</h2>
+              <p className="text-sm text-muted-foreground mt-1">Ads are reviewed by Mannar UC before publishing.</p>
+
+              <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-1 gap-3">
+                <input id="title" name="title" required placeholder="Title (e.g., 'Bike for sale')" className="p-3 rounded-md border" />
+                <select id="categorySelect" name="category" className="p-3 rounded-md border">
+                  <option value="for-sale">For Sale</option>
+                  <option value="services">Services</option>
+                  <option value="jobs">Jobs</option>
+                  <option value="notices">Notices</option>
+                </select>
+                <textarea id="description" name="description" rows={4} required placeholder="Description" className="p-3 rounded-md border"></textarea>
+                <input id="contact" name="contact" placeholder="Contact info (phone or email)" className="p-3 rounded-md border" />
+                <input id="imageUrl" name="imageUrl" placeholder="Image URL (optional)" className="p-3 rounded-md border" />
+
+                <div className="flex gap-3">
+                  <button type="submit" disabled={posting} className="px-4 py-2 rounded-lg bg-[oklch(0.2_0.08_250)] text-white">{posting ? 'Posting…' : 'Submit for Review'}</button>
+                  <button type="reset" className="px-4 py-2 rounded-lg border">Reset</button>
+                </div>
+
+                {message && <p className="text-sm text-emerald-600">{message}</p>}
+              </form>
+            </div>
+          </section> */}
+        </div>
       </main>
 
       <Footer />

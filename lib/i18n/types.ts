@@ -17,6 +17,7 @@ export interface TranslationData {
     ads: string;
     socialWork: string;
     complaints: string;
+    aboutUs: string;
     
   };
 

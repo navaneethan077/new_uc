@@ -4,6 +4,7 @@ import { TopBar } from "@/components/top-bar";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Mail, Phone } from "lucide-react";
+import { ContactSection } from "@/components/contact-section"
 
 // Updated members data with description / bio
 const HIGHLIGHTED_MEMBERS = [
@@ -50,7 +51,7 @@ const HIGHLIGHTED_MEMBERS = [
     tel: "+94 23 222 2230",
     profile: "/images.jfif",
     description:
-      "Mr. Bandara manages the council’s finances, budgeting, and financial reporting.",
+      "Mr. Bandara manages the council's finances, budgeting, and financial reporting.",
   },
   {
     name: "Mr. W.A.S. Kumara",
@@ -81,6 +82,14 @@ const HIGHLIGHTED_MEMBERS = [
   },
 ];
 
+// Hero section content
+const teamContent = {
+  hero: {
+    title: "Meet Our Team",
+    description: "Get to know the dedicated professionals serving the Mannar Municipal Council. Our team is committed to excellence in governance and public service for the community."
+  }
+};
+
 // Generate avatar fallback
 const generateAvatar = (name: string) => {
   const initials = name
@@ -105,11 +114,29 @@ export default function TeamPage() {
     <div className="min-h-screen bg-gray-50 text-gray-900">
       <TopBar />
       <Navigation />
+      
+      {/* Hero Section */}
+      <section 
+        className="relative py-16"
+        style={{
+          background: "linear-gradient(135deg, var(--primary) 0%, oklch(0.25 0.08 250) 100%)"
+        }}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            {teamContent.hero.title}
+          </h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            {teamContent.hero.description}
+          </p>
+        </div>
+      </section>
+
       <main className="py-12">
         <div className="container mx-auto px-4 max-w-7xl">
-          <h1 className="text-4xl font-bold text-center mb-12">
-            Mannar Municipal Council - Key Members
-          </h1>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Key Members of Our Council
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {HIGHLIGHTED_MEMBERS.map((person, idx) => (
               <div
@@ -133,7 +160,8 @@ export default function TeamPage() {
                     {person.email && (
                       <button
                         onClick={() => handleEmailClick(person.email)}
-                        className="flex items-center gap-2 text-primary hover:underline text-sm"
+                        className="flex items-center gap-2 hover:underline text-sm transition-colors"
+                        style={{ color: "var(--primary)" }}
                       >
                         <Mail className="w-4 h-4" /> {person.email}
                       </button>
@@ -141,7 +169,8 @@ export default function TeamPage() {
                     {person.tel && (
                       <button
                         onClick={() => handlePhoneClick(person.tel)}
-                        className="flex items-center gap-2 text-primary hover:underline text-sm"
+                        className="flex items-center gap-2 hover:underline text-sm transition-colors"
+                        style={{ color: "var(--primary)" }}
                       >
                         <Phone className="w-4 h-4" /> {person.tel}
                       </button>
@@ -152,6 +181,7 @@ export default function TeamPage() {
             ))}
           </div>
         </div>
+          <ContactSection />
       </main>
       <Footer />
     </div>
