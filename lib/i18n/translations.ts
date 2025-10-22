@@ -426,107 +426,56 @@ This development is expected to serve as a model for other municipalities lookin
     },
     ChairmanPage: {
       hero: {
-        name: "Balen Shah",
-        description:
-          "Engineer, Rapper, and Mayor of Kathmandu. Champion of urban reform and transparent governance.",
-        cta: "Get Involved",
+        name: "Hon. Rajesh Perera",
+        cta: "Contact the Chairman",
       },
-      whoIsBalen: {
-        title: "Who is Balen?",
-        paragraphs: [
-          "Balen Shah (Balendra Shah) is a prominent figure in Nepal, known for his roles as an engineer, rapper, and politician. He gained widespread recognition as an independent candidate and was elected the mayor of Kathmandu in May 2022. His unexpected victory, without the backing of any political party, was a landmark event in Nepalese politics, signaling a shift towards more independent leadership.",
-          "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. He is also a civil engineer by profession. As mayor, he has been vocal about issues like urban planning, waste management, and corruption, and has earned praise for his straightforward approach to addressing challenges in the capital city.",
-          "Balen has also become a polarizing figure due to his unconventional style of governance and willingness to challenge the status quo, which has sparked both admiration and criticism.",
+      messageSection: {
+        title: "Chairman’s Message",
+        welcome: "A warm welcome to all our valued citizens, partners, and team members.",
+        mission: "Our mission is to lead with vision, build with integrity, and deliver innovation that matters.",
+        unity: "Together, we are shaping the future of our community with transparency and purpose.",
+      },
+      profile: {
+        title: "Chairman’s Profile",
+        education: {
+          title: "Education",
+          content: "MBA in Business Leadership – Oxford University",
+        },
+        experience: {
+          title: "Experience",
+          content: "20+ Years in Corporate Leadership and Innovation",
+        },
+        awards: {
+          title: "Awards",
+          content: "Best Business Leader (2021), Visionary Entrepreneur (2023)",
+        },
+        years: {
+          title: "Years of Service",
+          content: "15 years as Chairman & Founder of DEAL PARTNER",
+        },
+        vision: {
+          title: "Vision",
+          quote: "Empowering teams to deliver excellence with passion and purpose.",
+        },
+      },
+      goals: {
+        title: "Future Goals",
+        para: "Our goal is to continue leading innovation, expand global reach, and ensure sustainable growth.",
+        list: [
+          "Strengthen digital transformation initiatives",
+          "Foster eco-friendly and sustainable business models",
+          "Develop global partnerships for innovation",
         ],
+        quote: "Our goal is to inspire change and empower every citizen to succeed.",
       },
-      academics: {
-        title: "Academics & Qualifications",
-        imageAlt: "Balen Shah - Engineer and Politician",
-        qualifications: [
-          {
-            degree:
-              "Master of Science (Mechanical Engineering, Production Technology)",
-            institution:
-              "Magdeburg Technical School & Otto-Von-Guericke University Magdeburg, Germany",
-          },
-          {
-            degree: "Certificate in Senior Management",
-            institution: "Kenya Institute of Management, Kenya",
-          },
-          {
-            degree: "Certificate in Standardization & Quality Control",
-            institution: "University of Denver, Colorado, USA",
-          },
-          {
-            degree:
-              "Certificate in Establishment of Natural Physical Standards",
-            institution:
-              "National Bureau of Standards & Technology, Gaithersburg, MD, USA",
-          },
-          {
-            degree: "Certificate in Standards Specification Writing",
-            institution: "British Standards Institution (BSI Group)",
-          },
-        ],
-      },
-      awards: {
-        title: "Honours, Awards & Publications",
-        imageAlt: "Balen Shah's awards and publications",
+      values: {
+        title: "Values & Philosophy",
         items: [
-          {
-            title: "Greater Good Award",
-            details: "Mazari Africa, Istanbul, Kenya, May 2021",
-          },
-          {
-            title: "Doctor Of Sciences (Honoris Causa)",
-            details:
-              "Jurumegh Opriga Obriga University of Science & Technology, Siyap, Kenya, December 2010",
-          },
-          {
-            title: "The Quest For Nationhood Roadmap To Our Future",
-            details: "Nairobi Mountainsho Publishers, 2017",
-          },
-          {
-            title: "The Flame of Freedom",
-            details: "Nairobi Mountainsho Publishers, 2019",
-          },
-          {
-            title:
-              "Doctorate of Leadership in Social Development (Honoris Causa)",
-            details:
-              "Lambalong University of Creative Technology, Kuala Lumpur, July 2012",
-          },
-          {
-            title: "Honorary Doctorate",
-            details: "Florida Agricultural Mechanical University, USA, 2009",
-          },
-          {
-            title: "Doctor of Laws (LLD) (Honoris Causa)",
-            details: "The University of Nairobi, Kenya, October 2008",
-          },
+          { title: "Integrity", desc: "We believe honesty builds trust and lasting partnerships." },
+          { title: "Innovation", desc: "We embrace creativity and cutting-edge solutions." },
+          { title: "Teamwork", desc: "Collaboration fuels our success and growth." },
+          { title: "Growth", desc: "We strive for continuous learning and excellence." },
         ],
-      },
-      leadership: {
-        title: "Leadership & Impact",
-        mayorSection: {
-          title: "As Mayor of Kathmandu",
-          description:
-            "Since being elected in 2022, Balen Shah has focused on critical urban issues including:",
-          initiatives: [
-            "Urban planning and development",
-            "Waste management solutions",
-            "Anti-corruption initiatives",
-            "Infrastructure improvement",
-            "Cultural preservation",
-          ],
-        },
-        cultureSection: {
-          title: "Cultural Influence",
-          description:
-            "Before entering politics, Balen was already well-known in Nepal's hip-hop community as a rapper and lyricist. His music often addresses social issues, which aligns with his political approach of challenging the status quo and advocating for transparency.",
-          quote:
-            "Balen has become a polarizing figure due to his unconventional style of governance and willingness to challenge established systems, sparking both admiration and criticism.",
-        },
       },
     },
     galleryPage: {
@@ -953,6 +902,56 @@ This development is expected to serve as a model for other municipalities lookin
       print: "Print",
       readMore: "Read More",
     },
+    TeamContent: {
+      hero: {
+    title: "Meet Our Team",
+    description: "Get to know the dedicated professionals serving the Mannar Municipal Council. Our team is committed to excellence in governance and public service for the community."
+  },
+  members: {
+    title: "Key Members of Our Council",
+    commissioner: {
+      name: "Mr. A.B. Perera",
+      position: "Municipal Commissioner",
+      description: "Mr. Perera leads the municipal council, ensuring smooth governance and effective implementation of policies."
+    },
+    deputyCommissioner: {
+      name: "Ms. S.T. Fernando",
+      position: "Deputy Commissioner",
+      description: "Ms. Fernando supports the commissioner in administrative duties and supervises council operations."
+    },
+    adminOfficer: {
+      name: "Mr. R.S. Jayasinghe",
+      position: "Chief Administrative Officer",
+      description: "Mr. Jayasinghe manages all administrative functions and coordinates between departments."
+    },
+    hrManager: {
+      name: "Mrs. L.M. Silva",
+      position: "Human Resources Manager",
+      description: "Mrs. Silva oversees HR policies, employee welfare, and recruitment for the municipal council."
+    },
+    cfo: {
+      name: "Mr. K.L. Bandara",
+      position: "Chief Financial Officer",
+      description: "Mr. Bandara manages the council's finances, budgeting, and financial reporting."
+    },
+    chiefEngineer: {
+      name: "Mr. W.A.S. Kumara",
+      position: "Chief Engineer",
+      description: "Mr. Kumara supervises municipal infrastructure projects and engineering works."
+    },
+    medicalOfficer: {
+      name: "Dr. S.M. Fonseka",
+      position: "Chief Medical Officer",
+      description: "Dr. Fonseka leads public health initiatives and medical services across the municipality."
+    },
+    townPlanner: {
+      name: "Mr. P.G. Amarasinghe",
+      position: "Town Planner",
+      description: "Mr. Amarasinghe is responsible for urban planning, zoning, and sustainable city development."
+    }
+  }
+      
+    }
    
   },
 
@@ -1380,106 +1379,58 @@ This development is expected to serve as a model for other municipalities lookin
 
     ChairmanPage: {
       hero: {
-        name: "பாலென் ஷா",
-        description:
-          "இன்ஜினீயர், ராப்பர் மற்றும் காத்த்மாண்டு மேயர். நகர அபிவிருத்தி மற்றும் திறந்த நிர்வாகத்தின் முன்னோடி.",
-        cta: "பங்கேற்கவும்",
+        name: "மாண்புமிகு ராஜேஷ் பெரேரா",
+        cta: "தலைவரை தொடர்பு கொள்ளவும்",
       },
-      whoIsBalen: {
-        title: "பாலென் யார்?",
-        paragraphs: [
-          "பாலென் ஷா (பாலென்றா ஷா) நேபாளில் ஒரு புகழ்பெற்ற நபர், இன்ஜினீயர், ராப்பர் மற்றும் அரசியல்வாதியாகப் பரிச்சயமானவர். அவர் சுதந்திர வேட்பாளராக வெற்றி பெற்றபோது, 2022 மே மாதத்தில் காத்த்மாண்டு மேயராக தேர்வாயினர். எந்த அரசியல் கட்சியின் ஆதரவும் இல்லாமல் வந்த இந்த எதிர்பாராத வெற்றி, நேபாள அரசியலில் ஒரு முக்கியமான நிகழ்வாகும், சுயாதீன தலைமையின் மாற்றத்தை வெளிப்படுத்தியது.",
-          "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராகப் பிரபலமாக இருந்தார். அவர் ஒரு சிவில் இன்ஜினீயராகவும் உள்ளார். மேயராக இருக்கையில், நகர திட்டமிடல், கழிவு மேலாண்மை மற்றும் ஊழல் போன்ற பிரச்சினைகள் தொடர்பில் அவர் வெளிப்படையாக கருத்து கூறியுள்ளார்.",
-          "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியாலும் நிலையான முறைகளுக்கு எதிராக முன்வந்ததாலும், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்.",
+      messageSection: {
+        title: "தலைவரின் உரை",
+        welcome: "எங்கள் மதிப்புமிக்க குடிமக்கள், பங்குதாரர்கள் மற்றும் குழு உறுப்பினர்களுக்கு இதயம் கனிந்த வரவேற்பு.",
+        mission: "தெளிவான நோக்கத்துடன் வழிநடத்தி, நேர்மையுடன் உருவாக்கி, புதுமையுடன் வழங்குவதே எங்கள் பணி.",
+        unity: "ஒன்றிணைந்து, நம் சமூகத்தின் எதிர்காலத்தை நோக்கத்துடனும் திறந்த மனதுடனும் வடிவமைக்கிறோம்.",
+      },
+      profile: {
+        title: "தலைவரின் சுயவிவரம்",
+        education: {
+          title: "கல்வி",
+          content: "வணிகத் தலைமைத்துவத்தில் எம்பிஏ – ஆக்ஸ்போர்டு பல்கலைக்கழகம்",
+        },
+        experience: {
+          title: "அனுபவம்",
+          content: "நிறுவனத் தலைமைத்துவம் மற்றும் புதுமையில் 20+ ஆண்டுகள் அனுபவம்",
+        },
+        awards: {
+          title: "விருதுகள்",
+          content: "சிறந்த வணிகத் தலைவர் (2021), நோக்கமுள்ள தொழில் முனைவோர் (2023)",
+        },
+        years: {
+          title: "சேவை ஆண்டுகள்",
+          content: "15 ஆண்டுகள் DEAL PARTNER நிறுவனத்தின் தலைவர் மற்றும் நிறுவனர்",
+        },
+        vision: {
+          title: "தொழில்நோக்கு",
+          quote: "அணி ஒருங்கிணைப்பை ஊக்குவித்து, சிறப்பை உறுதியாக வழங்குவது எங்கள் நோக்கம்.",
+        },
+      },
+      goals: {
+        title: "எதிர்கால இலக்குகள்",
+        para: "புதுமையை முன்னெடுத்து, உலகளாவிய விரிவாக்கத்தை உறுதிசெய்து, நிலையான வளர்ச்சியை அடைவதே எங்கள் இலக்கு.",
+        list: [
+          "டிஜிட்டல் மாற்ற முயற்சிகளை வலுப்படுத்துதல்",
+          "சூழலுக்கு உகந்த, நிலையான வணிக மாதிரிகளை ஊக்குவித்தல்",
+          "புதுமைக்கு உலகளாவிய கூட்டாண்மைகளை மேம்படுத்துதல்",
         ],
+        quote: "மாற்றத்தைக் கவர்ந்து, ஒவ்வொரு குடிமகனையும் வெற்றியடையச் செய்வதே எங்கள் குறிக்கோள்.",
       },
-      academics: {
-        title: "கல்வி & தகுதிகள்",
-        imageAlt: "பாலென் ஷா - இன்ஜினீயர் மற்றும் அரசியல்வாதி",
-        qualifications: [
-          {
-            degree:
-              "மெக்கானிக்கல் இன்ஜினீயரிங், தயாரிப்பு தொழில்நுட்பம் - எம்.எஸ்.",
-            institution:
-              "Magdeburg தொழில்நுட்ப பள்ளி & Otto-Von-Guericke பல்கலைக்கழகம், ஜெர்மனி",
-          },
-          {
-            degree: "சீனியர் மேலாண்மை சான்றிதழ்",
-            institution: "Kenya மேலாண்மை நிறுவனம், கென்யா",
-          },
-          {
-            degree: "தரநிலை & தர கட்டுப்பாடு சான்றிதழ்",
-            institution: "University of Denver, கொலராடோ, அமெரிக்கா",
-          },
-          {
-            degree: "இயற்கை உடல் தரநிலைகள் நிறுவல் சான்றிதழ்",
-            institution:
-              "National Bureau of Standards & Technology, Gaithersburg, MD, USA",
-          },
-          {
-            degree: "தர விவரக்குறிப்பு எழுதும் சான்றிதழ்",
-            institution: "British Standards Institution (BSI Group)",
-          },
-        ],
-      },
-      awards: {
-        title: "பட்டங்கள், விருதுகள் & பதிப்புரைகள்",
-        imageAlt: "பாலென் ஷாவின் விருதுகள் மற்றும் பதிப்புரைகள்",
+      values: {
+        title: "மதிப்புகள் மற்றும் தத்துவம்",
         items: [
-          {
-            title: "மிகச்சிறந்த நன்மை விருது",
-            details: "Mazari Africa, Istanbul, கென்யா, மே 2021",
-          },
-          {
-            title: "அறிவியல் டாக்டர் (மாண்புமிகு) (Honoris Causa)",
-            details:
-              "Jurumegh Opriga Obriga University of Science & Technology, Siyap, கென்யா, டிசம்பர் 2010",
-          },
-          {
-            title: "தேசியத்தின் பாதை: எங்கள் எதிர்கால திட்டம்",
-            details: "Nairobi Mountainsho Publishers, 2017",
-          },
-          {
-            title: "சுதந்திரத்தின் தீ",
-            details: "Nairobi Mountainsho Publishers, 2019",
-          },
-          {
-            title: "சமூக மேம்பாட்டில் தலைமைக் கல்வி டாக்டர் (Honoris Causa)",
-            details:
-              "Lambalong University of Creative Technology, குவாலாலம்பூர், ஜூலை 2012",
-          },
-          {
-            title: "கௌரவ பட்டம்",
-            details: "Florida Agricultural Mechanical University, USA, 2009",
-          },
-          {
-            title: "சட்டங்களில் டாக்டர் (LLD) (Honoris Causa)",
-            details: "The University of Nairobi, கென்யா, அக்டோபர் 2008",
-          },
+          { title: "நேர்மை", desc: "நேர்மையே நம்பிக்கையையும் நீடித்த உறவுகளையும் உருவாக்கும்." },
+          { title: "புதுமை", desc: "புதிய சிந்தனைகளையும் தீர்வுகளையும் எங்கள் பணியில் ஏற்றுக்கொள்கிறோம்." },
+          { title: "குழுப்பணி", desc: "ஒற்றுமை மற்றும் ஒத்துழைப்பே எங்கள் வெற்றியின் அடிப்படை." },
+          { title: "வளர்ச்சி", desc: "தொடர்ந்த கற்றல் மற்றும் சிறப்பை நோக்கி செயல்படுகிறோம்." },
         ],
       },
-      leadership: {
-        title: "நிர்வாகம் & தாக்கம்",
-        mayorSection: {
-          title: "காத்த்மாண்டு மேயராக",
-          description:
-            "2022ல் தேர்வாய்ந்தபின்னர், பாலென் ஷா முக்கிய நகர பிரச்சினைகளில் கவனம் செலுத்தியுள்ளார்:",
-          initiatives: [
-            "நகர திட்டமிடல் மற்றும் அபிவிருத்தி",
-            "கழிவு மேலாண்மை தீர்வுகள்",
-            "ஊழல் எதிர்ப்பு முயற்சிகள்",
-            "அமைப்பு மேம்பாடு",
-            "கலை மற்றும் பண்பாட்டு பாதுகாப்பு",
-          ],
-        },
-        cultureSection: {
-          title: "பண்பாட்டு தாக்கம்",
-          description:
-            "அரசியலில் நுழைந்ததற்கு முன், பாலென் நேபாள ஹிப்-ஹாப் சமூகத்தில் ராப்பர் மற்றும் கவிஞராக பிரபலமாக இருந்தார். அவரது இசை சமூக பிரச்சினைகளை அடிக்கடி உரைக்கும், இது அரசியல் முறையின் வெளிப்படையான அணுகுமுறையுடன் இணைக்கப்பட்டுள்ளது.",
-          quote:
-            "பாலென் அவரது வழக்கத்திற்கு மாறான நிர்வாக பாணியால் மற்றும் நிலையான முறைகளை சவால் செய்வதில் முன்வந்ததனால், புகழும் விமர்சனமும் இரண்டும் பெற்றுள்ளார்.",
-        },
-      },
+    
     },
     galleryPage: {
       title: "நிகழ்வு கேலரி",
@@ -1913,6 +1864,56 @@ This development is expected to serve as a model for other municipalities lookin
       print: "அச்சிடு",
       readMore: "மேலும் படிக்க",
     },
+     TeamContent: {
+      hero: {
+    title: "எங்கள் குழுவை சந்திக்கவும்",
+    description: "மன்னார் முனிசிபல் கவுன்சிலில் பணியாற்றும் அர்ப்பணிப்பான வல்லுநர்களை அறிந்து கொள்ளுங்கள். சமூகத்திற்கான ஆட்சி மற்றும் பொது சேவையில் சிறந்து விளங்க எங்கள் குழு உறுதிபூண்டுள்ளது."
+  },
+  members: {
+    title: "எங்கள் கவுன்சிலின் முக்கிய உறுப்பினர்கள்",
+    commissioner: {
+      name: "திரு. ஏ.பி. பெரேரா",
+      position: "முனிசிபல் கமிஷனர்",
+      description: "திரு. பெரேரா முனிசிபல் கவுன்சிலை வழிநடத்துகிறார், மென்மையான ஆட்சி மற்றும் கொள்கைகளின் பயனுள்ள அமலாக்கத்தை உறுதி செய்கிறார்."
+    },
+    deputyCommissioner: {
+      name: "திருமதி. எஸ்.டி. ஃபெர்னாண்டோ",
+      position: "துணை ஆணையர்",
+      description: "திருமதி. ஃபெர்னாண்டோ நிர்வாக கடமைகளில் கமிஷனருக்கு ஆதரவாகவும், கவுன்சில் செயல்பாடுகளை மேற்பார்வையிடவும் உள்ளார்."
+    },
+    adminOfficer: {
+      name: "திரு. ஆர்.எஸ். ஜயசிங்க",
+      position: "தலைமை நிர்வாக அதிகாரி",
+      description: "திரு. ஜயசிங்க அனைத்து நிர்வாக செயல்பாடுகளையும் நிர்வகிக்கிறார் மற்றும் துறைகளுக்கு இடையே ஒருங்கிணைக்கிறார்."
+    },
+    hrManager: {
+      name: "திருமதி. எல்.எம். சில்வா",
+      position: "மனிதவள மேலாளர்",
+      description: "திருமதி. சில்வா முனிசிபல் கவுன்சிலுக்கான மனிதவளக் கொள்கைகள், பணியாளர் நலன் மற்றும் ஆட்சேர்ப்பை மேற்பார்வையிடுகிறார்."
+    },
+    cfo: {
+      name: "திரு. கே.எல். பண்டார",
+      position: "தலைமை நிதி அதிகாரி",
+      description: "திரு. பண்டாரா கவுன்சிலின் நிதி, பட்ஜெட் மற்றும் நிதி அறிக்கையிடலை நிர்வகிக்கிறார்."
+    },
+    chiefEngineer: {
+      name: "திரு. டபிள்யூ.ஏ.எஸ். குமார",
+      position: "தலைமை பொறியாளர்",
+      description: "திரு. குமாரா முனிசிபல் உள்கட்டமைப்புத் திட்டங்கள் மற்றும் பொறியியல் பணிகளை மேற்பார்வையிடுகிறார்."
+    },
+    medicalOfficer: {
+      name: "டாக்டர். எஸ்.எம். ஃபோன்சேகா",
+      position: "தலைமை மருத்துவ அதிகாரி",
+      description: "டாக்டர். ஃபோன்சேகா நகராட்சி முழுவதும் பொது சுகாதார முயற்சிகள் மற்றும் மருத்துவ சேவைகளை வழிநடத்துகிறார்."
+    },
+    townPlanner: {
+      name: "திரு. பி.ஜி. அமரசிங்க",
+      position: "நகர திட்டமிடுபவர்",
+      description: "திரு. அமரசிங்க நகரத் திட்டமிடல், மண்டலமயமாக்கல் மற்றும் நிலையான நகர வளர்ச்சிக்கு பொறுப்பாக உள்ளார்."
+    }
+  }
+      
+    }
   },
 
   si: {
@@ -2335,107 +2336,59 @@ This development is expected to serve as a model for other municipalities lookin
     },
     ChairmanPage: {
       hero: {
-        name: "බාලෙන් ෂා",
-        description:
-          "ඉංජිනේරු, රැප් ගායකයෙකු සහ කට්මණ්ඩු නගරයේ මහමැති. නගර සංවර්ධනය සහ විවෘත පාලනය පිළිබඳ පුරෝගාමී.",
-        cta: "ඇතුළු වන්න",
+        name: "මානනීය රාජේෂ් පෙරේරා",
+        cta: "සභාපතිව අමතන්න",
       },
-      whoIsBalen: {
-        title: "බාලෙන් කවුරුද?",
-        paragraphs: [
-          "බාලෙන් ෂා (බාලෙන්ද්‍ර ෂා) නෙපාලයේ ප්‍රසිද්ධ පුද්ගලයෙකි, ඉංජිනේරු, රැප් ගායක සහ රාජ්‍ය නිලධාරියා ලෙස හැඳින්වෙයි. ඔහු ස්වාධීන අපේක්ෂකයෙකු ලෙස ජනප්‍රියත්වය ලැබූ අතර 2022 මැයි මාසයේ කට්මණ්ඩු නගරයේ මහමැති ලෙස විභාගයට ලක්විය. ඕනෑම දේශපාලන පක්ෂයක ආධාරයක් නොමැතිව ලැබූ මේ අනපේක්ෂිත ජයග්‍රහණය නෙපාල රාජ්‍ය විද්‍යාවේ ලක්ෂ්‍යමය සිදුවීමක් වන අතර ස්වාධීන නායකත්වයට පිවිසීමේ මාර්ගයක් සලසයි.",
-          "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස නම් දායකව තිබුණි. ඔහු පුරවැසි ඉංජිනේරුවරයෙකු ලෙසද කටයුතු කරයි. මහමැති ලෙස, නගර සැලසුම් කිරීම, අපද්‍රව්‍ය කළමනාකරණය සහ අධිෂ්ඨානික කටයුතු පිළිබඳව ඔහු විවෘතව කතා කරමින් ඇත.",
-          "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා බාලෙන් අගය හා විවේචන දෙකටම ලක්වී ඇත.",
+      messageSection: {
+        title: "සභාපතිගේ පණිවුඩය",
+        welcome: "අපගේ අගනුවර පුරවැසියන්ට, හවුල්කරුවන්ට සහ කණ්ඩායම් සාමාජිකයින්ට උණුසුම් පිළිගැනීමක්.",
+        mission: "දැක්මක් සහිතව නායකත්වය දියත් කරමින්, විශ්වාසය සහ නවෝත්පාදනය මගින් ගොඩනගා ගැනීම.",
+        unity: "එක්ව, අපගේ සමාජයේ අනාගතය විවෘතව හා අරමුණකින් මග පෙන්වමු.",
+      },
+      profile: {
+        title: "සභාපතිගේ විස්තරය",
+        education: {
+          title: "අධ්‍යාපනය",
+          content: "ව්‍යාපාර නායකත්ව MBA – ඔක්ස්ෆර්ඩ් විශ්වවිද්‍යාලය",
+        },
+        experience: {
+          title: "අත්දැකීම්",
+          content: "පොදු නායකත්වය සහ නවෝත්පාදනයේ වසර 20 කට වැඩි අත්දැකීම්",
+        },
+        awards: {
+          title: "සම්මාන",
+          content: "වෙළඳ නායක (2021), දැක්මක් ඇති ව්‍යාපාරික (2023)",
+        },
+        years: {
+          title: "සේවා වසර",
+          content: "DEAL PARTNER සභාපති ලෙස වසර 15 ක සේවය",
+        },
+        vision: {
+          title: "දැක්ම",
+          quote: "ජනතාවට උනන්දුවෙන් සහ අරමුණකින් පරිපූර්ණතාව ලබාදීම අපගේ දැක්මයි.",
+        },
+      },
+      goals: {
+        title: "අනාගත අරමුණු",
+        para: "අපගේ අරමුණ වන්නේ නවෝත්පාදනය නායකත්වය දියත් කරමින්, විශ්ව පරාසය විහිදුවා, තිරසාර වර්ධනයක් ලබාදීමයි.",
+        list: [
+          "ඩිජිටල් පරිවර්තන වැඩපිළිවෙළ ශක්තිමත් කිරීම",
+          "පාරිසරිකව හිතකාමී ව්‍යාපාර ආකෘති ප්‍රවර්ධනය කිරීම",
+          "නවෝත්පාදනය සඳහා ගෝලීය හවුල්කාරිත්වයන් සංවර්ධනය කිරීම",
         ],
+        quote: "අපගේ අරමුණ වන්නේ වෙනසක් ප්‍රේරණය කරමින්, සියලු පුරවැසියන්ට සාර්ථකත්වය ලබාදීමයි.",
       },
-      academics: {
-        title: "අධ්‍යාපන සහ සුදුසුකම්",
-        imageAlt: "බාලෙන් ෂා - ඉංජිනේරු සහ රාජ්‍ය නිලධාරියා",
-        qualifications: [
-          {
-            degree:
-              "සංයුක්ත විද්‍යාත්මක පීඨය (මැකැනිකල් ඉංජිනේරු, නිෂ්පාදන තාක්ෂණය)",
-            institution:
-              "Magdeburg තාක්ෂණ පාසල සහ Otto-Von-Guericke විශ්ව විද්‍යාලය, ජර්මනිය",
-          },
-          {
-            degree: "ජ්‍යේෂ්ඨ කළමනාකරණ සහතිකය",
-            institution: "Kenya කළමනාකරණ ආයතනය, කෙන්යා",
-          },
-          {
-            degree: "සම්මතීකරණ සහ ගුණාත්මක පාලන සහතිකය",
-            institution: "Denver විශ්ව විද්‍යාලය, කොලරැඩෝ, ඇමරිකාව",
-          },
-          {
-            degree: "ස්වාභාවික භෞතික සම්මතයන් පිහිටුවීමේ සහතිකය",
-            institution:
-              "ජාතික සම්මත හා තාක්ෂණ කාර්යාලය, Gaithersburg, MD, ඇමරිකාව",
-          },
-          {
-            degree: "සම්මත විශේෂණ ලිවීමේ සහතිකය",
-            institution: "බ්‍රිතාන්‍ය සම්මත ආයතනය (BSI Group)",
-          },
-        ],
-      },
-      awards: {
-        title: "ගෞරව, සම්මාන සහ ප්‍රකාශන",
-        imageAlt: "බාලෙන් ෂාගේ සම්මාන සහ ප්‍රකාශන",
+      values: {
+        title: "ගුණාංග සහ දර්ශනය",
         items: [
-          {
-            title: "ග්‍රීටර් ගුඩ් සම්මාන",
-            details: "Mazari Africa, Istanbul, කෙන්යා, මැයි 2021",
-          },
-          {
-            title: "විද්‍යා ඩොක්ටරේට් (ගෞරවමාන)",
-            details:
-              "Jurumegh Opriga Obriga විද්‍යා සහ තාක්ෂණ විශ්ව විද්‍යාලය, Siyap, කෙන්යා, දෙසැම්බර් 2010",
-          },
-          {
-            title: "ජාතිකත්වය සඳහා පසුබැසීමේ මාර්ගය",
-            details: "Nairobi Mountainsho Publishers, 2017",
-          },
-          {
-            title: "සැහැල්ලු නිදහස් ඇගිලි",
-            details: "Nairobi Mountainsho Publishers, 2019",
-          },
-          {
-            title: "සමාජ සංවර්ධනයේ නායකත්ව ඩොක්ටරේට් (ගෞරවමාන)",
-            details:
-              "Lambalong Creative Technology විශ්ව විද්‍යාලය, Kuala Lumpur, ජූලි 2012",
-          },
-          {
-            title: "ගෞරවමාන ඩොක්ටරේට්",
-            details: "Florida Agricultural Mechanical University, USA, 2009",
-          },
-          {
-            title: "නීති ඩොක්ටරේට් (LLD) (ගෞරවමාන)",
-            details: "නෙරොබි විශ්ව විද්‍යාලය, කෙන්යා, ඔක්තෝබර් 2008",
-          },
+          { title: "ආචාරශීලීත්වය", desc: "ආදර්ශය විශ්වාසය සහ ශක්තිමත් සම්බන්ධතා ගොඩනගයි." },
+          { title: "නවෝත්පාදනය", desc: "අප නව සෙවීම සහ නිර්මාණශීලීත්වය පිළිගන්නෙමු." },
+          { title: "සමූහ වැඩ", desc: "සහයෝගය අපගේ වර්ධනයේ මූලිකයයි." },
+          { title: "වර්ධනය", desc: "අප නිරන්තර අධ්‍යාපනය සහ උසස්භාවය සඳහා උත්සාහ කරමු." },
         ],
-      },
-      leadership: {
-        title: "නායකත්වය සහ බලපෑම්",
-        mayorSection: {
-          title: "කට්මණ්ඩු මහමැති ලෙස",
-          description:
-            "2022 තේරීම් වුනා පසු, බාලෙන් ෂා අවධානය යොමු කළ ප්‍රධාන නගර ගැටළු:",
-          initiatives: [
-            "නගර සැලසුම් කිරීම සහ සංවර්ධනය",
-            "අපද්‍රව්‍ය කළමනාකරණ විසඳුම්",
-            "අධිෂ්ඨානික කටයුතු මර්දන උත්සාහ",
-            "ආධාර හා ව්‍යූහ මධ්‍යමගීකරණය",
-            "සංස්කෘතික හා උරුම සංරක්ෂණය",
-          ],
-        },
-        cultureSection: {
-          title: "සංස්කෘතික බලපෑම්",
-          description:
-            "රාජ්‍ය සේවයට පිවිසීමට පෙර, බාලෙන් නෙපාලයේ හිප්-හොප් සමාජයේ ප්‍රසිද්ධ රැප් ගායකයෙකු සහ ගායන ලේඛකයෙකු ලෙස හිටියා. ඔහුගේ සංගීතය සාමාජික ගැටලු කතා කරයි, එය ඔහුගේ රාජ්‍ය ක්‍රමවේදයේ විවෘත සහිතත්වය සමඟ සම්බන්ධ වේ.",
-          quote:
-            "ඔහුගේ අමුතු පාලන රීතිය සහ සම්ප්‍රදායික ක්‍රමවලට අභියෝග දැක්වීම නිසා, බාලෙන් අගය සහ විවේචන දෙකටම ලක්වී ඇත.",
-        },
       },
     },
+    
     galleryPage: {
       title: "සිදුවීම් ගැලරිය",
       description:
@@ -2833,6 +2786,56 @@ This development is expected to serve as a model for other municipalities lookin
       print: " මුද්‍රණය ",
       readMore: "වැඩිදුර කියවන්න",
     },
+     TeamContent: {
+      hero: {
+    title: "අපගේ කණ්ඩායම හමුවන්න",
+    description: "මන්නාරම් නගර සභාවේ සේවය කරන කැපවූ වෘත්තිකයින් හමුවන්න. අපගේ කණ්ඩායම ප්‍රජාව සඳහා පාලනය සහ පොදු සේවාවේ උසස් තත්ත්වයට කැපවී සිටී."
+  },
+  members: {
+    title: "අපගේ සභාවේ ප්‍රධාන සාමාජිකයන්",
+    commissioner: {
+      name: "ශ්‍රීමත් ඒ.බී. පෙරේරා",
+      position: "නගරාධිකාරී",
+      description: "ශ්‍රීමත් පෙරේරා නගර සභාව මෙහෙයවන අතර, සුමට පාලනය සහ ප්‍රතිපත්තිවල ඵලදායී ක්‍රියාත්මක කිරීම සහතික කරයි."
+    },
+    deputyCommissioner: {
+      name: "කුමාරි එස්.ටී. ප්‍රනාන්දු",
+      position: "උප නගරාධිකාරී",
+      description: "කුමාරි ප්‍රනාන්දු පරිපාලන රාජකාරිවලදී නගරාධිකාරීවරයාට සහාය වන අතර සභා ක්‍රියාකාරකම් පරීක්ෂා කරයි."
+    },
+    adminOfficer: {
+      name: "ශ්‍රීමත් ආර්.එස්. ජයසිංහ",
+      position: "ප්‍රධාන පරිපාලන නිලධාරී",
+      description: "ශ්‍රීමත් ජයසිංහ සියලුම පරිපාලන කාර්යයන් කළමනාකරණය කරන අතර දෙපාර්තමේන්තු අතර සම්බන්ධීකරණය කරයි."
+    },
+    hrManager: {
+      name: "ශ්‍රීමත් එල්.එම්. සිල්වා",
+      position: "මානව සම්පත් කළමනාකරු",
+      description: "ශ්‍රීමත් සිල්වා නගර සභාව සඳහා මානව සම්පත් ප්‍රතිපත්ති, සේවක යහපත සහ පත්වීම් පරීක්ෂා කරයි."
+    },
+    cfo: {
+      name: "ශ්‍රීමත් කේ.එල්. බණ්ඩාර",
+      position: "ප්‍රධාන මූල්ය නිලධාරී",
+      description: "ශ්‍රීමත් බණ්ඩාර සභාවේ මූල්ය, අයවැය සහ මූල්ය වාර්තාකරණය කළමනාකරණය කරයි."
+    },
+    chiefEngineer: {
+      name: "ශ්‍රීමත් ඩබ්ලිව්.ඒ.එස්. කුමාර",
+      position: "ප්‍රධාන ඉංජිනේරු",
+      description: "ශ්‍රීමත් කුමාර නගර යටිතල පහසුකම් ව්‍යාපෘති සහ ඉංජිනේරු කටයුතු පරීක්ෂා කරයි."
+    },
+    medicalOfficer: {
+      name: "බෞද්ධ එස්.එම්. ෆොන්සේකා",
+      position: "ප්‍රධාන වෛද්ය නිලධාරී",
+      description: "බෞද්ධ ෆොන්සේකා නගර සභාව පුරාම පොදු සෞඛ්‍ය මූලිකත්වයන් සහ වෛද්ය සේවා මෙහෙයවයි."
+    },
+    townPlanner: {
+      name: "ශ්‍රීමත් පී.ජී. අමරසිංහ",
+      position: "නගර සැලසුම්කරු",
+      description: "ශ්‍රීමත් අමරසිංහ නගර සැලසුම්කරණය, කලාපගත කිරීම සහ තිරසාර නගර සංවර්ධනය සඳහා වගකිව යුතුය."
+    }
+  }
+      
+    }
    
   },
 };

@@ -304,46 +304,71 @@ export default function NewsPage() {
             </div>
 
             {/* Sort & Filters */}
-            <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-              <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">
-                <span className="text-foreground font-medium whitespace-nowrap">
-                  {newsContent.sort.label}:
-                </span>
-                <select
-                  value={sort}
-                  onChange={(e) => {
-                    setSort(e.target.value as "latest" | "oldest")
-                    setPage(1)
-                  }}
-                  className="bg-transparent border-none focus:ring-0 focus:outline-none text-foreground"
-                >
-                  <option value="latest">{newsContent.sort.newest}</option>
-                  <option value="oldest">{newsContent.sort.oldest}</option>
-                </select>
-              </div>
+       <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+  <div className="relative flex items-center gap-2 bg-muted/60 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-primary/20 hover:border-primary/40 transition-all shadow-sm">
+    <span className="text-foreground font-medium whitespace-nowrap">
+      {newsContent.sort.label}:
+    </span>
 
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
-              >
-                <Filter className="w-5 h-5" />
-                <span>{newsContent.filters.button}</span>
-              </button>
+    <select
+      value={sort}
+      onChange={(e) => {
+        setSort(e.target.value as "latest" | "oldest")
+        setPage(1)
+      }}
+      className="appearance-none bg-transparent border-none focus:ring-0 focus:outline-none text-foreground font-medium cursor-pointer pr-8"
+    >
+      <option
+        value="latest"
+        className="bg-background text-foreground hover:bg-primary/10 cursor-pointer"
+      >
+        {newsContent.sort.newest}
+      </option>
+      <option
+        value="oldest"
+        className="bg-background text-foreground hover:bg-primary/10 cursor-pointer"
+      >
+        {newsContent.sort.oldest}
+      </option>
+    </select>
 
-              {(search || selectedCategories.length > 0 || timeFilter !== "all" || sort !== "latest") && (
-                <button
-                  onClick={clearFilters}
-                  className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary font-medium"
-                >
-                  <X className="w-5 h-5" /> {newsContent.filters.clearAll}
-                </button>
-              )}
-            </div>
+    {/* custom dropdown arrow */}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="absolute right-4 w-4 h-4 text-primary pointer-events-none transition-transform duration-200"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+
+  <button
+    onClick={() => setShowFilters(!showFilters)}
+    className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
+  >
+    <Filter className="w-5 h-5" />
+    <span>{newsContent.filters.button}</span>
+  </button>
+
+  {(search || selectedCategories.length > 0 || timeFilter !== "all" || sort !== "latest") && (
+    <button
+      onClick={clearFilters}
+      className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary font-medium"
+    >
+      <X className="w-5 h-5" /> {newsContent.filters.clearAll}
+    </button>
+  )}
+</div>
+
+
           </div>
 
           {/* Expanded Filters */}
           {showFilters && (
-            <div className="mt-6 pt-6 border-t border-border">
+            <div className="m-6 p-6 border-t border-border ">
               <h3 className="text-lg font-medium text-foreground mb-4">
                 {newsContent.filters.category}
               </h3>

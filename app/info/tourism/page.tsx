@@ -158,7 +158,7 @@ export default function TourismPage() {
 
         {/* Search & Filter Section - Sticky */}
         <section className="sticky top-16 z-10 bg-white shadow-sm py-6">
-          <div className="container-x">
+          <div className="container-x  mx-auto px-4">
             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
               {/* Search */}
               <div className="relative w-full md:w-2/5">

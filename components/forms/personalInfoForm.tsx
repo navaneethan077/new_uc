@@ -2,7 +2,6 @@
 
 import { ComplaintFormData } from '@/lib/data/complaint';
 
-
 interface PersonalInfoFormProps {
   data: ComplaintFormData;
   updateData: (data: Partial<ComplaintFormData>) => void;
@@ -26,12 +25,14 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 px-4 sm:px-0">
       <div>
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">Personal Information</h2>
-        <p className="text-gray-600 mb-6">Please provide your contact details</p>
-        
-        <div className="grid md:grid-cols-2 gap-6">
+        <p className="text-gray-600 mb-6">
+          Please provide your contact details
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
               Full Name *
@@ -42,7 +43,7 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
               required
               value={data.personalInfo.name}
               onChange={(e) => updatePersonalInfo('name', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
               placeholder="Enter your full name"
             />
           </div>
@@ -57,7 +58,7 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
               required
               value={data.personalInfo.phone}
               onChange={(e) => updatePersonalInfo('phone', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
               placeholder="Enter your phone number"
             />
           </div>
@@ -72,7 +73,7 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
               rows={3}
               value={data.personalInfo.address}
               onChange={(e) => updatePersonalInfo('address', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
               placeholder="Enter your complete address"
             />
           </div>
@@ -86,7 +87,7 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
               id="nic"
               value={data.personalInfo.nic}
               onChange={(e) => updatePersonalInfo('nic', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
               placeholder="Enter your NIC number"
             />
           </div>
@@ -100,14 +101,14 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
               id="gramaDivision"
               value={data.personalInfo.gramaDivision}
               onChange={(e) => updatePersonalInfo('gramaDivision', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
               placeholder="Enter your Grama Niladhari Division"
             />
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between pt-6 border-t">
+      <div className="flex flex-col sm:flex-row justify-between pt-6 border-t gap-3">
         <button
           type="button"
           onClick={onBack}
@@ -117,7 +118,7 @@ const PersonalInfoForm = ({ data, updateData, onNext, onBack }: PersonalInfoForm
         </button>
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          className="bg-[var(--primary)] text-white px-6 py-2 rounded-lg hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 transition-all"
         >
           Next: Service Details
         </button>
