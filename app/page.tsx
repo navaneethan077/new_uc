@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/contact-section"
 import { HomeGallerySection } from "@/components/home-gallery-section"
 import { TourismMediaSection } from "@/components/tourism-media-section"
 import { Footer } from "@/components/footer"
+import { SocialWorkPage } from "@/components/social-work"
 import { LanguageAwareWrapper } from "@/components/language-aware-wrapper"
 
 export default function HomePage() {
@@ -26,6 +27,8 @@ export default function HomePage() {
          
           <HomeGallerySection />
           <TourismMediaSection />
+          <SocialWorkPage />
+
            <ContactSection />
         </main>
         <Footer />
