@@ -265,44 +265,52 @@ export interface TranslationData {
     }>;
   };
   ChairmanPage: {
-    hero: {
-      name: string;
-      description: string;
-      cta: string;
-    };
-    whoIsBalen: {
+   hero: {
+    name: string;
+    cta: string;
+  };
+  messageSection: {
+    title: string;
+    welcome: string;
+    mission: string;
+    unity: string;
+  };
+  profile: {
+    title: string;
+    education: {
       title: string;
-      paragraphs: string[];
+      content: string;
     };
-    academics: {
+    experience: {
       title: string;
-      imageAlt: string;
-      qualifications: Array<{
-        degree: string;
-        institution: string;
-      }>;
+      content: string;
     };
     awards: {
       title: string;
-      imageAlt: string;
-      items: Array<{
-        title: string;
-        details: string;
-      }>;
+      content: string;
     };
-    leadership: {
+    years: {
       title: string;
-      mayorSection: {
-        title: string;
-        description: string;
-        initiatives: string[];
-      };
-      cultureSection: {
-        title: string;
-        description: string;
-        quote: string;
-      };
+      content: string;
     };
+    vision: {
+      title: string;
+      quote: string;
+    };
+  };
+  goals: {
+    title: string;
+    para: string;
+    list: string[];
+    quote: string;
+  };
+  values: {
+    title: string;
+    items: Array<{
+      title: string;
+      desc: string;
+    }>;
+  };
   };
   galleryPage: {
     title: string;
@@ -580,4 +588,54 @@ export interface TranslationData {
     print: string;
     readMore: string;
   };
+
+  TeamContent :{
+  hero: {
+    title: string;
+    description: string;
+  };
+  members: {
+    title: string;
+    commissioner: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    deputyCommissioner: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    adminOfficer: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    hrManager: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    cfo: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    chiefEngineer: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    medicalOfficer: {
+      name: string;
+      position: string;
+      description: string;
+    };
+    townPlanner: {
+      name: string;
+      position: string;
+      description: string;
+    };
+  };
+}
 }

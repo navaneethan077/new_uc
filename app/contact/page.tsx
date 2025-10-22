@@ -4,91 +4,9 @@ import { TopBar } from "@/components/top-bar";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Mail, Phone } from "lucide-react";
-import { ContactSection } from "@/components/contact-section"
-
-// Updated members data with description / bio
-const HIGHLIGHTED_MEMBERS = [
-  {
-    name: "Mr. A.B. Perera",
-    position: "Municipal Commissioner",
-    email: "commissioner@mannarmc.gov.lk",
-    tel: "+94 23 222 2201",
-    profile: "/images.jfif",
-    description:
-      "Mr. Perera leads the municipal council, ensuring smooth governance and effective implementation of policies.",
-  },
-  {
-    name: "Ms. S.T. Fernando",
-    position: "Deputy Commissioner",
-    email: "deputy@mannarmc.gov.lk",
-    tel: "+94 23 222 2203",
-    profile: "/images.jfif",
-    description:
-      "Ms. Fernando supports the commissioner in administrative duties and supervises council operations.",
-  },
-  {
-    name: "Mr. R.S. Jayasinghe",
-    position: "Chief Administrative Officer",
-    email: "admin@mannarmc.gov.lk",
-    tel: "+94 23 222 2210",
-    profile: "/images.jfif",
-    description:
-      "Mr. Jayasinghe manages all administrative functions and coordinates between departments.",
-  },
-  {
-    name: "Mrs. L.M. Silva",
-    position: "Human Resources Manager",
-    email: "hr@mannarmc.gov.lk",
-    tel: "+94 23 222 2212",
-    profile: "/images.jfif",
-    description:
-      "Mrs. Silva oversees HR policies, employee welfare, and recruitment for the municipal council.",
-  },
-  {
-    name: "Mr. K.L. Bandara",
-    position: "Chief Financial Officer",
-    email: "finance@mannarmc.gov.lk",
-    tel: "+94 23 222 2230",
-    profile: "/images.jfif",
-    description:
-      "Mr. Bandara manages the council's finances, budgeting, and financial reporting.",
-  },
-  {
-    name: "Mr. W.A.S. Kumara",
-    position: "Chief Engineer",
-    email: "engineering@mannarmc.gov.lk",
-    tel: "+94 23 222 2240",
-    profile: "/images.jfif",
-    description:
-      "Mr. Kumara supervises municipal infrastructure projects and engineering works.",
-  },
-  {
-    name: "Dr. S.M. Fonseka",
-    position: "Chief Medical Officer",
-    email: "health@mannarmc.gov.lk",
-    tel: "+94 23 222 2250",
-    profile: "/images.jfif",
-    description:
-      "Dr. Fonseka leads public health initiatives and medical services across the municipality.",
-  },
-  {
-    name: "Mr. P.G. Amarasinghe",
-    position: "Town Planner",
-    email: "planning@mannarmc.gov.lk",
-    tel: "+94 23 222 2260",
-    profile: "/images.jfif",
-    description:
-      "Mr. Amarasinghe is responsible for urban planning, zoning, and sustainable city development.",
-  },
-];
-
-// Hero section content
-const teamContent = {
-  hero: {
-    title: "Meet Our Team",
-    description: "Get to know the dedicated professionals serving the Mannar Municipal Council. Our team is committed to excellence in governance and public service for the community."
-  }
-};
+import { ContactSection } from "@/components/contact-section";
+import { useLanguage } from "@/lib/i18n/context";
+import { translations } from "@/lib/i18n/translations";
 
 // Generate avatar fallback
 const generateAvatar = (name: string) => {
@@ -102,6 +20,76 @@ const generateAvatar = (name: string) => {
 };
 
 export default function TeamPage() {
+  const { language } = useLanguage();
+  const t = translations[language].TeamContent;
+
+  const HIGHLIGHTED_MEMBERS = [
+    {
+      name: t.members.commissioner.name,
+      position: t.members.commissioner.position,
+      email: "commissioner@mannarmc.gov.lk",
+      tel: "+94 23 222 2201",
+      profile: "/images.jfif",
+      description: t.members.commissioner.description,
+    },
+    {
+      name: t.members.deputyCommissioner.name,
+      position: t.members.deputyCommissioner.position,
+      email: "deputy@mannarmc.gov.lk",
+      tel: "+94 23 222 2203",
+      profile: "/images.jfif",
+      description: t.members.deputyCommissioner.description,
+    },
+    {
+      name: t.members.adminOfficer.name,
+      position: t.members.adminOfficer.position,
+      email: "admin@mannarmc.gov.lk",
+      tel: "+94 23 222 2210",
+      profile: "/images.jfif",
+      description: t.members.adminOfficer.description,
+    },
+    {
+      name: t.members.hrManager.name,
+      position: t.members.hrManager.position,
+      email: "hr@mannarmc.gov.lk",
+      tel: "+94 23 222 2212",
+      profile: "/images.jfif",
+      description: t.members.hrManager.description,
+    },
+    {
+      name: t.members.cfo.name,
+      position: t.members.cfo.position,
+      email: "finance@mannarmc.gov.lk",
+      tel: "+94 23 222 2230",
+      profile: "/images.jfif",
+      description: t.members.cfo.description,
+    },
+    {
+      name: t.members.chiefEngineer.name,
+      position: t.members.chiefEngineer.position,
+      email: "engineering@mannarmc.gov.lk",
+      tel: "+94 23 222 2240",
+      profile: "/images.jfif",
+      description: t.members.chiefEngineer.description,
+    },
+    {
+      name: t.members.medicalOfficer.name,
+      position: t.members.medicalOfficer.position,
+      email: "health@mannarmc.gov.lk",
+      tel: "+94 23 222 2250",
+      profile: "/images.jfif",
+      description: t.members.medicalOfficer.description,
+    },
+    {
+      name: t.members.townPlanner.name,
+      position: t.members.townPlanner.position,
+      email: "planning@mannarmc.gov.lk",
+      tel: "+94 23 222 2260",
+      profile: "/images.jfif",
+      description: t.members.townPlanner.description,
+    },
+  ];
+
   const handleEmailClick = (email: string) => {
     if (email) window.location.href = `mailto:${email}`;
   };
@@ -124,10 +112,10 @@ export default function TeamPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {teamContent.hero.title}
+            {t.hero.title}
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            {teamContent.hero.description}
+            {t.hero.description}
           </p>
         </div>
       </section>
@@ -135,7 +123,7 @@ export default function TeamPage() {
       <main className="py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Key Members of Our Council
+            {t.members.title}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {HIGHLIGHTED_MEMBERS.map((person, idx) => (
@@ -181,7 +169,7 @@ export default function TeamPage() {
             ))}
           </div>
         </div>
-          <ContactSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>

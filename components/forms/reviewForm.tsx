@@ -25,11 +25,11 @@ const ReviewForm = ({ data, updateData, onSubmit, onBack }: ReviewFormProps) => 
   )?.label;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 px-4 sm:px-0">
       <div>
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">Review Your Submission</h2>
         <p className="text-gray-600 mb-6">Please review all information before submitting</p>
-        
+
         <div className="bg-gray-50 rounded-lg p-6 space-y-6">
           {/* Submission Type */}
           <div>
@@ -82,13 +82,13 @@ const ReviewForm = ({ data, updateData, onSubmit, onBack }: ReviewFormProps) => 
         </div>
 
         {/* Confirmation */}
-        <div className="flex items-start space-x-3 mt-6 p-4 bg-blue-50 rounded-lg">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 mt-6 p-4 bg-[var(--primary)]/10 rounded-lg">
           <input
             type="checkbox"
             id="confirmation"
             checked={data.confirmation}
             onChange={(e) => updateData({ confirmation: e.target.checked })}
-            className="mt-1 text-blue-600 focus:ring-blue-500"
+            className="mt-1 text-[var(--primary)] focus:ring-[var(--primary)]"
             required
           />
           <label htmlFor="confirmation" className="text-sm text-gray-700">
@@ -97,7 +97,8 @@ const ReviewForm = ({ data, updateData, onSubmit, onBack }: ReviewFormProps) => 
         </div>
       </div>
 
-      <div className="flex justify-between pt-6 border-t">
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row justify-between pt-6 border-t gap-3">
         <button
           type="button"
           onClick={onBack}
@@ -108,7 +109,7 @@ const ReviewForm = ({ data, updateData, onSubmit, onBack }: ReviewFormProps) => 
         <button
           type="submit"
           disabled={!data.confirmation}
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="bg-[var(--primary)] text-white px-6 py-2 rounded-lg hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
           Submit Complaint
         </button>

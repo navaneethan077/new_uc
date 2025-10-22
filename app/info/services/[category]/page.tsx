@@ -83,17 +83,7 @@ export default function CategoryDetailPage() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <select
-                    value={selectedFilter}
-                    onChange={(e) => setSelectedFilter(e.target.value)}
-                    className="border border-gray-300 rounded-lg px-4 py-3 bg-white cursor-pointer"
-                  >
-                    {filterOptions.map((option) => (
-                      <option key={option} value={option.toLowerCase()}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                 
                 </div>
               </div>
 

@@ -155,11 +155,12 @@ export default function NoticesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 ">
       <TopBar />
       <Navigation />
 
       {/* Breadcrumbs */}
+    
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -189,6 +190,7 @@ export default function NoticesPage() {
           </p>
         </div>
       </section>
+         <main className="container-x  py-4"> 
 
       {/* Search & Filter Section (controls notices view) */}
       <section className="sticky top-16 z-10 bg-white shadow-sm py-4 md:py-6">
@@ -292,7 +294,7 @@ export default function NoticesPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
             {/* Left - Notices (col-span-9) */}
-            <div className="lg:col-span-9 space-y-6">
+            <div className="lg:col-span-8 space-y-6">
               {visibleNotices.length === 0 ? (
                 <div className="text-center py-12 md:py-16">
                   <AlertTriangle className="w-12 h-12 md:w-16 md:h-16 text-gray-300 mx-auto mb-4" />
@@ -412,7 +414,7 @@ export default function NoticesPage() {
             </div>
 
             {/* Right - High Priority Announcements (col-span-3) */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-4">
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 sticky top-28 md:top-32">
                 <div className="flex items-center justify-between mb-4 md:mb-6">
                   <h2 className="text-xl md:text-2xl font-bold text-[oklch(0.2_0.08_250)] flex items-center gap-2">
@@ -474,6 +476,8 @@ export default function NoticesPage() {
           </div>
         </div>
       </section>
+      </main>
+      
 
       <Footer />
     </div>
