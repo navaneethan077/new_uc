@@ -1,16 +1,19 @@
+// app/events/gallery/submit/page.tsx
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { TopBar } from "@/components/top-bar"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Camera } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { galleryService } from "@/app/services/gallery"
 
 export default function SubmitPhotosPage() {
   const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const categories = [
     "Environment",
@@ -23,18 +26,51 @@ export default function SubmitPhotosPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-
+    
     setSubmitting(true)
+    setError(null)
+    
     try {
-      const payload = Object.fromEntries(formData.entries())
-      // Persist locally so the action "works" without a backend
-      const existing = JSON.parse(localStorage.getItem("submittedPhotos") || "[]")
-      existing.push({ ...payload, submittedAt: new Date().toISOString() })
-      localStorage.setItem("submittedPhotos", JSON.stringify(existing))
-      setSuccess("Thank you! Your photos were submitted for review.")
-      setTimeout(() => router.push("/events/gallery"), 1600)
+      const payload = {
+        title: formData.get('title') as string,
+        description: formData.get('description') as string,
+        location: formData.get('location') as string,
+        category: formData.get('category') as string,
+        dateLabel: new Date(formData.get('date') as string).toLocaleDateString(),
+        dateISO: new Date(formData.get('date') as string).toISOString(),
+        participants: formData.get('name') as string,
+        type: 'photo' as const,
+        image: "/placeholder-image.jpg", // In real app, you'd upload this
+        likes: 0,
+        downloads: 0,
+        views: 0,
+        tags: [formData.get('category') as string]
+      }
+
+      // Submit to API
+      const response = await galleryService.createMediaItem(payload)
+      
+      if (response.success) {
+        setSuccess("Thank you! Your photos were submitted for review.")
+        setTimeout(() => router.push("/events/gallery"), 1600)
+      } else {
+        setError(response.message || "Failed to submit photos. Please try again.")
+      }
     } catch (err) {
-      console.error(err)
+      console.error('Error submitting photos:', err)
+      setError("An error occurred while submitting. Please try again.")
+      
+      // Fallback: persist locally
+      try {
+        const existing = JSON.parse(localStorage.getItem("submittedPhotos") || "[]")
+        const formDataObj = Object.fromEntries(formData.entries())
+        existing.push({ ...formDataObj, submittedAt: new Date().toISOString() })
+        localStorage.setItem("submittedPhotos", JSON.stringify(existing))
+        setSuccess("Thank you! Your photos were submitted for review (offline).")
+        setTimeout(() => router.push("/events/gallery"), 1600)
+      } catch (fallbackErr) {
+        setError("Failed to submit photos. Please check your connection and try again.")
+      }
     } finally {
       setSubmitting(false)
     }
@@ -64,7 +100,12 @@ export default function SubmitPhotosPage() {
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Name
                   </label>
-                  <input id="name" name="name" required className="w-full rounded-xl border border-gray-300 px-4 py-3" />
+                  <input 
+                    id="name" 
+                    name="name" 
+                    required 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3" 
+                  />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -83,26 +124,47 @@ export default function SubmitPhotosPage() {
                   <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
                     Event Title
                   </label>
-                  <input id="title" name="title" required className="w-full rounded-xl border border-gray-300 px-4 py-3" />
+                  <input 
+                    id="title" 
+                    name="title" 
+                    required 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3" 
+                  />
                 </div>
                 <div>
                   <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
                     Event Date
                   </label>
-                  <input id="date" name="date" type="date" required className="w-full rounded-xl border border-gray-300 px-4 py-3" />
+                  <input 
+                    id="date" 
+                    name="date" 
+                    type="date" 
+                    required 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3" 
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
                     Location
                   </label>
-                  <input id="location" name="location" required className="w-full rounded-xl border border-gray-300 px-4 py-3" />
+                  <input 
+                    id="location" 
+                    name="location" 
+                    required 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3" 
+                  />
                 </div>
                 <div>
                   <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
                     Category
                   </label>
-                  <select id="category" name="category" required className="w-full rounded-xl border border-gray-300 px-4 py-3">
+                  <select 
+                    id="category" 
+                    name="category" 
+                    required 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3"
+                  >
                     <option value="">Select category</option>
                     {categories.map((c) => (
                       <option key={c} value={c}>
@@ -116,19 +178,37 @@ export default function SubmitPhotosPage() {
                   <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
                     Description
                   </label>
-                  <textarea id="description" name="description" rows={4} className="w-full rounded-xl border border-gray-300 px-4 py-3" />
+                  <textarea 
+                    id="description" 
+                    name="description" 
+                    rows={4} 
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3" 
+                  />
                 </div>
 
                 <div className="md:col-span-2">
                   <label htmlFor="photos" className="block text-sm font-medium text-gray-700 mb-1">
                     Upload Photos
                   </label>
-                  <input id="photos" name="photos" type="file" accept="image/*" multiple className="block w-full text-sm" />
+                  <input 
+                    id="photos" 
+                    name="photos" 
+                    type="file" 
+                    accept="image/*" 
+                    multiple 
+                    className="block w-full text-sm" 
+                  />
                   <p className="text-xs text-gray-500 mt-1">JPEG/PNG, up to 10 files.</p>
                 </div>
 
                 <div className="md:col-span-2 flex items-center gap-3">
-                  <input id="consent" name="consent" type="checkbox" required className="rounded border-gray-300" />
+                  <input 
+                    id="consent" 
+                    name="consent" 
+                    type="checkbox" 
+                    required 
+                    className="rounded border-gray-300" 
+                  />
                   <label htmlFor="consent" className="text-sm text-gray-700">
                     I confirm I have the right to share these photos and agree to the terms.
                   </label>
@@ -147,6 +227,12 @@ export default function SubmitPhotosPage() {
                 {success && (
                   <div className="md:col-span-2 text-green-700 bg-green-50 border border-green-200 rounded-xl px-4 py-3">
                     {success}
+                  </div>
+                )}
+
+                {error && (
+                  <div className="md:col-span-2 text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    {error}
                   </div>
                 )}
               </form>

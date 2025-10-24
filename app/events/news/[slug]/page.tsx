@@ -1,10 +1,9 @@
-// app/events/news/[slug]/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 
 import { TopBar } from "@/components/top-bar";
 import { Navigation } from "@/components/navigation";
@@ -26,105 +25,77 @@ import {
   Linkedin,
   Mail,
   Check,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 
 import { useLanguage } from "@/lib/i18n/context";
 import { translations } from "@/lib/i18n/translations";
-
-type NewsEvent = {
-  id: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  readTime?: string;
-  image?: string;
-  category?: string;
-  slug: string;
-  shares?: number;
-};
-
-// const newsevents: NewsEvent[] = [
-//   {
-//     id: 1,
-//     title: "New Water Treatment Plant Inaugurated",
-//     excerpt:
-//       "The Mannar Urban Council officially opened a state-of-the-art water treatment facility to serve 15,000 residents with clean, safe drinking water.",
-//     content: `In a significant milestone for public health infrastructure, the Mannar Urban Council inaugurated its new water treatment plant yesterday.
-// The facility, built with a budget of Rs. 45 million, incorporates advanced filtration and purification technologies, including reverse osmosis, UV sterilization, and sedimentation processes, ensuring clean and safe water for all residents.
-
-// Mayor Mr. S. Perera highlighted that this project will not only improve water quality but also significantly reduce waterborne diseases in the region. He emphasized the council's commitment to sustainable development and modern infrastructure.
-
-// The plant has a capacity to process up to 10,000 liters of water per hour, catering to households, schools, and local businesses. In addition, the facility includes an automated monitoring system to ensure continuous quality checks and maintenance alerts.
-
-// Environmental experts praised the project for integrating energy-efficient systems, including solar-powered pumps and rainwater harvesting mechanisms. Local community leaders expressed appreciation for the council’s efforts in prioritizing public health and long-term sustainability.
-
-// Residents attending the inauguration ceremony were given guided tours of the plant and educational sessions on water conservation practices. The council has also planned workshops for schools in Mannar to raise awareness on responsible water usage.
-
-// This development is expected to serve as a model for other municipalities looking to upgrade their water treatment infrastructure while maintaining environmental and operational efficiency.`,
-//     author: "Municipal Communications",
-//     date: "2024-01-15",
-//     readTime: "8:00 PM",
-//     image: "/new.png",
-//     category: "Infrastructure",
-//     slug: "new-water-treatment-plant-inaugurated",
-//     shares: 12,
-//   },
-//   {
-//     id: 2,
-//     title: "Digital Services Portal Launched",
-//     excerpt:
-//       "Citizens can now access municipal services online through our new digital platform, reducing wait times and improving efficiency.",
-//     content:
-//       "The Mannar Urban Council has launched its comprehensive digital services portal, marking a significant step towards modernizing municipal operations. Citizens can now apply for certificates, pay taxes, and access various services online...",
-//     author: "IT Department",
-//     date: "2024-01-12",
-//     readTime: "8:00 PM",
-//     image: "/new.png",
-//     category: "Technology",
-//     slug: "digital-services-portal-launched",
-//     shares: 3,
-//   },
-//   {
-//     id: 3,
-//     title: "Community Garden Project Success",
-//     excerpt:
-//       "The pilot community garden project has yielded impressive results, with plans to expand to five more locations across the municipality.",
-//     content:
-//       "The community garden initiative launched six months ago has exceeded expectations. Located in the heart of Ward 3, the garden has produced over 500kg of fresh vegetables, distributed among participating families...",
-//     author: "Environmental Division",
-//     date: "2024-01-10",
-//     readTime: "8:00 PM",
-//     image: "/new.png",
-//     category: "Environment",
-//     slug: "community-garden-project-success",
-//     shares: 7,
-//   },
-//   // ... other items omitted for brevity (keep the same data set you already have)
-// ];
+import { newsService, NewsArticle } from "@/services/newsService";
 
 export default function NewsDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const { t: _, language } = useLanguage(); // keep compatibility if hook returns a t helper
+  const { t: _, language } = useLanguage();
   const lang = language || "en";
   const navContent = translations[lang].nav;
   const labels = translations[lang].NewsLabels;
-  const newsevents = translations[lang].eventsPage.NewsEventPage;
-
-  const event = newsevents.find((e) => e.slug === params.slug);
+  
+  const [event, setEvent] = useState<NewsArticle | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [relatedNews, setRelatedNews] = useState<NewsArticle[]>([]);
+  
   const [showShareModal, setShowShareModal] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [saveNotification, setSaveNotification] = useState(false);
-  const [shareCount, setShareCount] = useState(event?.shares || 0);
+  const [shareCount, setShareCount] = useState(0);
 
-  if (!event) return notFound();
+  const router = useRouter();
+
+  // Fetch news article
+  useEffect(() => {
+    const fetchNewsArticle = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await newsService.getNewsBySlug(params.slug);
+        
+        if (response.success) {
+          const newsData = response.data as NewsArticle;
+          setEvent(newsData);
+          setShareCount(newsData.shares || 0);
+          
+          // Fetch related news
+          const relatedResponse = await newsService.getAllNews({
+            category: newsData.category ? [newsData.category] : [],
+            limit: 4
+          });
+          
+          if (relatedResponse.success) {
+            const allRelated = Array.isArray(relatedResponse.data) ? relatedResponse.data : [relatedResponse.data];
+            setRelatedNews(allRelated.filter(item => item.slug !== params.slug).slice(0, 4));
+          }
+        } else {
+          setError(response.message || 'News article not found');
+        }
+      } catch (err) {
+        setError('An error occurred while fetching the news article');
+        console.error('Error fetching news article:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNewsArticle();
+  }, [params.slug]);
 
   // Load saved state from localStorage
   useEffect(() => {
+    if (!event) return;
+    
     try {
       const savedRaw = localStorage.getItem("savedNews");
       const savedItems = savedRaw ? JSON.parse(savedRaw) : [];
@@ -132,46 +103,43 @@ export default function NewsDetailPage({
     } catch (err) {
       setIsSaved(false);
     }
-  }, [event.id]);
+  }, [event]);
 
   // Share functionality
-  const handleShare = (platform: string) => {
+  const handleShare = async (platform: string) => {
+    if (!event) return;
+    
     const url = window.location.href;
     const title = event.title;
     const text = event.excerpt;
     const shareUrls: Record<string, string> = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        url
-      )}`,
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        title
-      )}&url=${encodeURIComponent(url)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        url
-      )}`,
-      email: `mailto:?subject=${encodeURIComponent(
-        title
-      )}&body=${encodeURIComponent(text + "\n\n" + url)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + "\n\n" + url)}`,
     };
 
-    if (platform === "email") window.location.href = shareUrls.email;
-    else
-      window.open(
-        shareUrls[platform],
-        "_blank",
-        "width=600,height=400,noopener,noreferrer"
-      );
+    if (platform === "email") {
+      window.location.href = shareUrls.email;
+    } else {
+      window.open(shareUrls[platform], "_blank", "width=600,height=400,noopener,noreferrer");
+    }
 
-    setShareCount((prev) => prev + 1);
+    // Increment share count in backend
+    try {
+      await newsService.incrementShares(event.id);
+      setShareCount(prev => prev + 1);
+    } catch (err) {
+      console.error('Error updating share count:', err);
+    }
+    
     setShowShareModal(false);
   };
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      // small accessible feedback
       setShowShareModal(false);
-      // show a temporary toast using saveNotification slot for feedback reuse
       setSaveNotification(true);
       setTimeout(() => setSaveNotification(false), 2000);
     } catch (err) {
@@ -180,9 +148,11 @@ export default function NewsDetailPage({
   };
 
   const handleSave = () => {
+    if (!event) return;
+    
     try {
       const savedRaw = localStorage.getItem("savedNews");
-      const savedItems: number[] = savedRaw ? JSON.parse(savedRaw) : [];
+      const savedItems: string[] = savedRaw ? JSON.parse(savedRaw) : [];
       if (isSaved) {
         const updatedItems = savedItems.filter((id) => id !== event.id);
         localStorage.setItem("savedNews", JSON.stringify(updatedItems));
@@ -200,6 +170,8 @@ export default function NewsDetailPage({
   };
 
   const handlePrint = () => {
+    if (!event) return;
+    
     const printContent = `
       <!DOCTYPE html>
       <html>
@@ -215,13 +187,8 @@ export default function NewsDetailPage({
       </head>
       <body>
         <div class="title">${escapeHtml(event.title)}</div>
-        <div class="meta">Published: ${new Date(
-          event.date
-        ).toLocaleDateString()} | Author: ${escapeHtml(event.author)}</div>
-        <div class="content">${event.content
-          .split("\n")
-          .map((p) => `<p>${escapeHtml(p)}</p>`)
-          .join("")}</div>
+        <div class="meta">Published: ${new Date(event.date).toLocaleDateString()} | Author: ${escapeHtml(event.author)}</div>
+        <div class="content">${event.content.split("\n").map((p) => `<p>${escapeHtml(p)}</p>`).join("")}</div>
       </body>
       </html>
     `;
@@ -237,9 +204,25 @@ export default function NewsDetailPage({
     }
   };
 
-  const relatedNews = newsevents
-    .filter((e) => e.slug !== event.slug)
-    .slice(0, 4);
+  const historyBackSafely = () => {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/events/news');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error || !event) {
+    return notFound();
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -308,9 +291,7 @@ export default function NewsDetailPage({
             <div className="flex gap-2">
               <input
                 type="text"
-                value={
-                  typeof window !== "undefined" ? window.location.href : ""
-                }
+                value={typeof window !== "undefined" ? window.location.href : ""}
                 readOnly
                 className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50"
                 aria-label="Share link"
@@ -339,7 +320,7 @@ export default function NewsDetailPage({
           </div>
 
           <button
-            onClick={() => historyBackSafely()}
+            onClick={historyBackSafely}
             className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors mb-6 group"
             aria-label={labels.backToAllNews}
           >
@@ -361,21 +342,23 @@ export default function NewsDetailPage({
                       })}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-sm font-medium">
-                      {event.readTime}
-                    </span>
-                  </div>
+                  {event.readTime && (
+                    <div className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                      <Clock className="w-4 h-4" />
+                      <span className="text-sm font-medium">{event.readTime}</span>
+                    </div>
+                  )}
                 </div>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   {event.title}
                 </h1>
                 <div className="flex flex-wrap items-center gap-6 text-white/90">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
-                    <span className="font-medium">{event.category}</span>
-                  </div>
+                  {event.category && (
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-medium">{event.category}</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <User className="w-4 h-4" />
                     <span>{event.author}</span>
@@ -385,18 +368,20 @@ export default function NewsDetailPage({
 
               <div className="p-8">
                 {/* Image + excerpt */}
-                <div className="w-full mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src={event.image || "/placeholder.svg"}
-                    alt={event.title}
-                    width={1200}
-                    height={600}
-                    className="w-full h-64 object-cover"
-                  />
-                  <p className="text-sm text-gray-500 mt-2 text-center">
-                    {event.excerpt}
-                  </p>
-                </div>
+                {event.image && (
+                  <div className="w-full mb-8 rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={1200}
+                      height={600}
+                      className="w-full h-64 object-cover"
+                    />
+                    <p className="text-sm text-gray-500 mt-2 text-center">
+                      {event.excerpt}
+                    </p>
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="prose prose-lg max-w-none mb-8">
@@ -417,7 +402,7 @@ export default function NewsDetailPage({
                     <span>•</span>
                     <span>
                       {labels.lastUpdated}:{" "}
-                      {new Date().toLocaleDateString(lang)}
+                      {new Date(event.updatedAt).toLocaleDateString(lang)}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -503,16 +488,4 @@ function escapeHtml(unsafe: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-function historyBackSafely() {
-  // prefer router back if available, otherwise fallback
-  try {
-    if (typeof window !== "undefined") {
-      if (window.history.length > 1) window.history.back();
-      else window.location.href = "/events/news";
-    }
-  } catch (e) {
-    window.location.href = "/events/news";
-  }
 }

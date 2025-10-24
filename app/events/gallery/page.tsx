@@ -1,3 +1,4 @@
+// app/events/gallery/page.tsx
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
@@ -9,38 +10,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Footer } from "@/components/footer";
 import { useLanguage } from "@/lib/i18n/context"
 import { translations } from "@/lib/i18n/translations"
-
-type MediaItem = {
-    id: string;
-    title: string;
-    dateLabel: string;
-    dateISO: string;
-    location: string;
-    category: string;
-    participants: string;
-    image: string;
-    description: string;
-    likes: number;
-    downloads: number;
-    views: number;
-    type: 'photo' | 'video';
-    duration?: string;
-};
-
-type Album = {
-    id: string;
-    title: string;
-    description: string;
-    coverImage: string;
-    mediaCount: number;
-    photoCount: number;
-    videoCount: number;
-    dateLabel: string;
-    dateISO: string;
-    location: string;
-    category: string;
-    tags: string[];
-};
+import { galleryService, Album, MediaItem, GalleryFilters } from "@/app/services/gallery";
 
 export default function GalleryPage() {
     const router = useRouter();
@@ -49,51 +19,19 @@ export default function GalleryPage() {
     // Get translated content
     const galleryT = translations[language].GallerylodingPage;
 
-    // Initialize with empty arrays to avoid hydration mismatch
+    // State management
     const [albums, setAlbums] = useState<Album[]>([]);
     const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    // Initialize data on client side only
-    useEffect(() => {
-        const initializedAlbums: Album[] = galleryT.albumsData.map(albumData => ({
-            ...albumData,
-            coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            mediaCount: Math.floor(Math.random() * 50) + 20,
-            photoCount: Math.floor(Math.random() * 40) + 15,
-            videoCount: Math.floor(Math.random() * 10) + 2,
-            dateLabel: "January 2024",
-            dateISO: "2024-01-31"
-        }));
-
-        const initializedMediaItems: MediaItem[] = galleryT.mediaItems.map((item, index) => ({
-            ...item,
-            dateLabel: "January 15, 2024",
-            dateISO: "2024-01-15",
-            participants: "Community Members",
-            image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
-            likes: Math.floor(Math.random() * 200) + 50,
-            downloads: Math.floor(Math.random() * 100) + 20,
-            views: Math.floor(Math.random() * 2000) + 500,
-            type: index % 3 === 0 ? 'video' : 'photo',
-            duration: index % 3 === 0 ? "2:45" : undefined
-        }));
-
-        setAlbums(initializedAlbums);
-        setMediaItems(initializedMediaItems);
-    }, [galleryT.albumsData, galleryT.mediaItems]);
-
-    // State for current view
+    // View state
     const [currentView, setCurrentView] = useState<'albums' | 'album-detail'>('albums');
     const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
     const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
     const [showMediaModal, setShowMediaModal] = useState(false);
 
-    // Extract unique categories from albums
-    const categories = useMemo(() => {
-        const uniqueCategories = [...new Set(albums.map(album => album.category))];
-        return uniqueCategories;
-    }, [albums]);
-
+    // Filter state
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState<"latest" | "popular" | "name">("latest");
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -102,6 +40,120 @@ export default function GalleryPage() {
     const [viewMode, setViewMode] = useState<"grid" | "masonry">("grid");
     const [hoveredCard, setHoveredCard] = useState<string | null>(null);
     const pageSize = 12;
+
+    // Fetch albums on component mount
+    useEffect(() => {
+        const fetchAlbums = async () => {
+            try {
+                setLoading(true);
+                const filters: GalleryFilters = {
+                    search,
+                    categories: selectedCategories,
+                    sort,
+                    page,
+                    pageSize
+                };
+                
+                const response = await galleryService.getAllAlbums(filters);
+                if (response.success) {
+                    setAlbums(response.data as Album[]);
+                } else {
+                    setError(response.message || 'Failed to fetch albums');
+                    // Fallback to mock data
+                    setAlbums(galleryT.albumsData.map(albumData => ({
+                        ...albumData,
+                        coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+                        mediaCount: Math.floor(Math.random() * 50) + 20,
+                        photoCount: Math.floor(Math.random() * 40) + 15,
+                        videoCount: Math.floor(Math.random() * 10) + 2,
+                        dateLabel: "January 2024",
+                        dateISO: "2024-01-31",
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    })));
+                }
+            } catch (err) {
+                console.error('Error fetching albums:', err);
+                setError('Failed to load gallery');
+                // Fallback to mock data
+                setAlbums(galleryT.albumsData.map(albumData => ({
+                    ...albumData,
+                    coverImage: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+                    mediaCount: Math.floor(Math.random() * 50) + 20,
+                    photoCount: Math.floor(Math.random() * 40) + 15,
+                    videoCount: Math.floor(Math.random() * 10) + 2,
+                    dateLabel: "January 2024",
+                    dateISO: "2024-01-31",
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                })));
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAlbums();
+    }, [search, selectedCategories, sort, page, galleryT.albumsData]);
+
+    // Fetch album media when album is selected
+    useEffect(() => {
+        const fetchAlbumMedia = async () => {
+            if (currentView === 'album-detail' && selectedAlbum) {
+                try {
+                    setLoading(true);
+                    const response = await galleryService.getAlbumMedia(selectedAlbum.id, {});
+                    if (response.success) {
+                        setMediaItems(response.data as MediaItem[]);
+                    } else {
+                        // Fallback to mock data
+                        setMediaItems(galleryT.mediaItems.map((item, index) => ({
+                            ...item,
+                            dateLabel: "January 15, 2024",
+                            dateISO: "2024-01-15",
+                            participants: "Community Members",
+                            image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+                            likes: Math.floor(Math.random() * 200) + 50,
+                            downloads: Math.floor(Math.random() * 100) + 20,
+                            views: Math.floor(Math.random() * 2000) + 500,
+                            type: index % 3 === 0 ? 'video' : 'photo',
+                            duration: index % 3 === 0 ? "2:45" : undefined,
+                            tags: [],
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        })));
+                    }
+                } catch (err) {
+                    console.error('Error fetching album media:', err);
+                    // Fallback to mock data
+                    setMediaItems(galleryT.mediaItems.map((item, index) => ({
+                        ...item,
+                        dateLabel: "January 15, 2024",
+                        dateISO: "2024-01-15",
+                        participants: "Community Members",
+                        image: "/mannar-island-beaches-sri-lanka-pristine-coastline.jpg",
+                        likes: Math.floor(Math.random() * 200) + 50,
+                        downloads: Math.floor(Math.random() * 100) + 20,
+                        views: Math.floor(Math.random() * 2000) + 500,
+                        type: index % 3 === 0 ? 'video' : 'photo',
+                        duration: index % 3 === 0 ? "2:45" : undefined,
+                        tags: [],
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    })));
+                } finally {
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchAlbumMedia();
+    }, [currentView, selectedAlbum, galleryT.mediaItems]);
+
+    // Extract unique categories from albums
+    const categories = useMemo(() => {
+        const uniqueCategories = [...new Set(albums.map(album => album.category))];
+        return uniqueCategories;
+    }, [albums]);
 
     const filteredAndSortedAlbums = useMemo(() => {
         // Filter by search and categories
@@ -122,13 +174,13 @@ export default function GalleryPage() {
         filtered.sort((a, b) => {
             switch (sort) {
                 case "latest":
-                    return b.dateISO.localeCompare(a.dateISO);
+                    return new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime();
                 case "popular":
                     return b.mediaCount - a.mediaCount;
                 case "name":
                     return a.title.localeCompare(b.title);
                 default:
-                    return b.dateISO.localeCompare(a.dateISO);
+                    return new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime();
             }
         });
         return filtered;
@@ -151,19 +203,76 @@ export default function GalleryPage() {
         setPage(1);
     };
 
-    const handleAlbumClick = (album: Album) => {
+    const handleAlbumClick = async (album: Album) => {
         setSelectedAlbum(album);
         setCurrentView('album-detail');
+        
+        // Track album view
+        try {
+            await galleryService.updateAlbum(album.id, {
+                views: (album.views || 0) + 1
+            });
+        } catch (err) {
+            console.error('Error tracking album view:', err);
+        }
     };
 
     const handleBackToAlbums = () => {
         setCurrentView('albums');
         setSelectedAlbum(null);
+        setMediaItems([]);
     };
 
-    const handleMediaClick = (media: MediaItem) => {
+    const handleMediaClick = async (media: MediaItem) => {
         setSelectedMedia(media);
         setShowMediaModal(true);
+        
+        // Track media view
+        try {
+            await galleryService.updateMediaItem(media.id, {
+                views: media.views + 1
+            });
+        } catch (err) {
+            console.error('Error tracking media view:', err);
+        }
+    };
+
+    const handleLikeMedia = async (mediaId: string) => {
+        try {
+            const response = await galleryService.likeMediaItem(mediaId);
+            if (response.success) {
+                // Update local state
+                setMediaItems(prev => prev.map(item => 
+                    item.id === mediaId 
+                        ? { ...item, likes: item.likes + 1 }
+                        : item
+                ));
+                if (selectedMedia?.id === mediaId) {
+                    setSelectedMedia(prev => prev ? { ...prev, likes: prev.likes + 1 } : null);
+                }
+            }
+        } catch (err) {
+            console.error('Error liking media:', err);
+        }
+    };
+
+    const handleDownloadMedia = async (mediaId: string) => {
+        try {
+            const response = await galleryService.trackDownload(mediaId);
+            if (response.success) {
+                // Update local state
+                setMediaItems(prev => prev.map(item => 
+                    item.id === mediaId 
+                        ? { ...item, downloads: item.downloads + 1 }
+                        : item
+                ));
+                if (selectedMedia?.id === mediaId) {
+                    setSelectedMedia(prev => prev ? { ...prev, downloads: prev.downloads + 1 } : null);
+                }
+            }
+        } catch (err) {
+            console.error('Error tracking download:', err);
+        }
     };
 
     const handleCloseModal = () => {
@@ -178,8 +287,7 @@ export default function GalleryPage() {
         return num.toString();
     };
 
-    // Show loading state while data is being initialized
-    if (albums.length === 0 && currentView === 'albums') {
+    if (loading && albums.length === 0) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
                 <TopBar />
@@ -196,6 +304,30 @@ export default function GalleryPage() {
         );
     }
 
+    if (error && albums.length === 0) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
+                <TopBar />
+                <Navigation />
+                <div className="container mx-auto px-4 py-16">
+                    <div className="text-center py-24">
+                        <div className="w-32 h-32 bg-gradient-to-br from-red-100 to-red-50 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                            <Camera className="w-16 h-16 text-red-500" />
+                        </div>
+                        <h3 className="text-3xl font-bold text-foreground mb-4">Error Loading Gallery</h3>
+                        <p className="text-muted-foreground mb-8">{error}</p>
+                        <button
+                            onClick={() => window.location.reload()}
+                            className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90"
+                        >
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
             {/* Top Navigation */}
@@ -203,14 +335,12 @@ export default function GalleryPage() {
             <Navigation />
 
             {/* Breadcrumbs */}
-            
-           <div className="container-x py-4">
-          <Breadcrumbs items={[
-            { label: t.nav.home, href: "/" },
-            { label: galleryT.breadcrumb, href: "/events/gallery" },
-           
-          ]} />
-        </div>
+            <div className="container-x py-4">
+                <Breadcrumbs items={[
+                    { label: t.nav.home, href: "/" },
+                    { label: galleryT.breadcrumb, href: "/events/gallery" },
+                ]} />
+            </div>
 
             {/* Hero Section */}
             <section className="relative py-24 bg-gradient-to-br from-[var(--primary)] via-[var(--primary)/0.9] to-[var(--primary)/0.8] overflow-hidden">
@@ -269,418 +399,408 @@ export default function GalleryPage() {
                     </div>
                 </section>
             )}
-             <main className="relative pt-6">
-                 
-        <section className=" py-16">
-          <div className="container-x text-center">
 
-       
-
-            {/* Search & Filter Section - Sticky */}
-            <section className="sticky top-16 z-10 bg-card shadow-sm py-6 border-b border-border">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-                        {/* Search */}
-                        <div className="relative w-full md:w-2/5">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                            <input
-                                type="text"
-                                placeholder={currentView === 'albums'
-                                    ? galleryT.search.albums
-                                    : galleryT.search.media
-                                }
-                                value={search}
-                                onChange={(e) => {
-                                    setSearch(e.target.value);
-                                    setPage(1);
-                                }}
-                                className="w-full pl-10 pr-4 py-3 rounded-lg border border-input focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none bg-background text-foreground"
-                            />
-                            {search && (
-                                <button
-                                    onClick={() => setSearch("")}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                                >
-                                    <X className="w-5 h-5" />
-                                </button>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-                            {/* View Mode Toggle */}
-                            {/* <div className="flex bg-muted rounded-lg p-1.5 border border-border">
-                                <button
-                                    onClick={() => setViewMode("grid")}
-                                    className={`p-2 rounded-md transition-all duration-300 ${viewMode === "grid"
-                                            ? "bg-background shadow-sm border border-border"
-                                            : "hover:bg-muted/80"
-                                        }`}
-                                    title={galleryT.viewMode.grid}
-                                >
-                                    <Grid3X3 className="w-4 h-4" />
-                                </button>
-                                <button
-                                    onClick={() => setViewMode("masonry")}
-                                    className={`p-2 rounded-md transition-all duration-300 ${viewMode === "masonry"
-                                            ? "bg-background shadow-sm border border-border"
-                                            : "hover:bg-muted/80"
-                                        }`}
-                                    title={galleryT.viewMode.masonry}
-                                >
-                                    <List className="w-4 h-4" />
-                                </button>
-                            </div> */}
-
-                            {/* Sort By */}
-                            <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">
-                                <span className="text-foreground font-medium whitespace-nowrap">{galleryT.sort.label}:</span>
-                                <select
-                                    value={sort}
-                                    onChange={(e) => {
-                                        setSort(e.target.value as "latest" | "popular" | "name");
-                                        setPage(1);
-                                    }}
-                                    className="bg-transparent border-none focus:ring-0 focus:outline-none text-foreground"
-                                >
-                                    <option value="latest">{galleryT.sort.newest}</option>
-                                    <option value="popular">{galleryT.sort.popular}</option>
-                                    <option value="name">{galleryT.sort.name}</option>
-                                </select>
-                            </div>
-
-                            {/* Filter Toggle (only show for albums view) */}
-                            {currentView === 'albums' && (
-                                <button
-                                    onClick={() => setShowFilters(!showFilters)}
-                                    className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
-                                >
-                                    <Filter className="w-5 h-5" />
-                                    <span>{galleryT.filters.button}</span>
-                                    {selectedCategories.length > 0 && (
-                                        <span className="bg-primary text-primary-foreground text-sm rounded-full h-6 w-6 flex items-center justify-center">
-                                            {selectedCategories.length}
-                                        </span>
-                                    )}
-                                </button>
-                            )}
-
-                            {/* Clear Filters */}
-                            {(search || selectedCategories.length > 0) && (
-                                <button
-                                    onClick={clearFilters}
-                                    className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary transition-colors font-medium"
-                                >
-                                    <X className="w-5 h-5" />
-                                    <span>{galleryT.filters.clearAll}</span>
-                                </button>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Category Filters (only show for albums view) */}
-                    {showFilters && currentView === 'albums' && (
-                        <div className="mt-6 pt-6 border-t border-border">
-                            <h3 className="text-lg font-medium text-foreground mb-4">{galleryT.filters.category}</h3>
-                            <div className="flex flex-wrap gap-3">
-                                {categories.map((category) => (
-                                    <button
-                                        key={category}
-                                        onClick={() => toggleCategory(category)}
-                                        className={`px-4 py-2 rounded-full font-medium transition-all border ${selectedCategories.includes(category)
-                                                ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                                                : "bg-muted text-foreground border-border hover:bg-muted/80"
-                                            }`}
-                                    >
-                                        {category}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </section>
-
-            {/* Content Section */}
-            <section className="py-16">
-                <div className="container mx-auto px-4">
-                    {/* Results Count */}
-                    <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div>
-                            <p className="text-lg text-muted-foreground">
-                                {currentView === 'albums' ? (
-                                    <>
-                                        {galleryT.albums.resultsCount
-                                            .replace("{count}", visibleAlbums.length.toString())
-                                            .replace("{total}", filteredAndSortedAlbums.length.toString())
-                                        }
-                                    </>
-                                ) : (
-                                    <>
-                                        Showing <span className="font-bold text-primary">{mediaItems.length}</span> {galleryT.albumDetail.mediaItems}{" "}
-                                        <span className="font-bold text-foreground">{selectedAlbum?.title}</span>
-                                    </>
-                                )}
-                            </p>
-                            {(search || selectedCategories.length > 0) && currentView === 'albums' && (
-                                <p className="text-sm text-muted-foreground mt-1">
-                                    Filtered by: {search && `"${search}"`} {selectedCategories.length > 0 && `${selectedCategories.join(", ")}`}
-                                </p>
-                            )}
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <div className="text-sm text-muted-foreground bg-card px-4 py-2 rounded-lg border border-border">
-                                Page <span className="font-bold text-primary">{page}</span> of <span className="font-bold">{totalPages}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Albums View */}
-                    {currentView === 'albums' ? (
-                        visibleAlbums.length === 0 ? (
-                            <div className="text-center py-24">
-                                <div className="w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl flex items-center justify-center mx-auto mb-8">
-                                    <Folder className="w-16 h-16 text-primary" />
-                                </div>
-                                <h3 className="text-3xl font-bold text-foreground mb-4">{galleryT.albums.noResults.title}</h3>
-                            </div>
-                        ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {visibleAlbums.map((album) => (
-                                    <div
-                                        key={album.id}
-                                        className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
-                                        onMouseEnter={() => setHoveredCard(album.id)}
-                                        onMouseLeave={() => setHoveredCard(null)}
-                                        onClick={() => handleAlbumClick(album)}
-                                    >
-                                        {/* Album Cover */}
-                                        <div className="aspect-video overflow-hidden relative">
-                                            <img
-                                                src={album.coverImage}
-                                                alt={album.title}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
-
-                                            {/* Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                                            {/* Media Type Badges */}
-                                            <div className="absolute top-4 left-4 flex gap-2">
-                                                <span className="px-3 py-1 bg-blue-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
-                                                    <ImageIcon className="w-3 h-3" />
-                                                    {album.photoCount}
-                                                </span>
-                                                <span className="px-3 py-1 bg-red-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
-                                                    <Play className="w-3 h-3" />
-                                                    {album.videoCount}
-                                                </span>
-                                            </div>
-
-                                            {/* Hover Action */}
-                                            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                                <div className="flex items-center gap-2 text-card font-semibold">
-                                                    {galleryT.albums.viewAlbum}
-                                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Album Info */}
-                                        <div className="p-6">
-                                            <h3 className="font-bold text-foreground text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                                                {album.title}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )
-                    ) : (
-                        /* Album Detail View - Media Items */
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                            {mediaItems.map((item) => (
-                                <div
-                                    key={item.id}
-                                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
-                                    onMouseEnter={() => setHoveredCard(item.id)}
-                                    onMouseLeave={() => setHoveredCard(null)}
-                                    onClick={() => handleMediaClick(item)}
-                                >
-                                    {/* Media Thumbnail */}
-                                    <div className="aspect-square overflow-hidden relative">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            <main className="relative pt-6">
+                <section className="py-16">
+                    <div className="container-x text-center">
+                        {/* Search & Filter Section - Sticky */}
+                        <section className="sticky top-16 z-10 bg-card shadow-sm py-6 border-b border-border">
+                            <div className="container mx-auto px-4">
+                                <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                                    {/* Search */}
+                                    <div className="relative w-full md:w-2/5">
+                                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                                        <input
+                                            type="text"
+                                            placeholder={currentView === 'albums'
+                                                ? galleryT.search.albums
+                                                : galleryT.search.media
+                                            }
+                                            value={search}
+                                            onChange={(e) => {
+                                                setSearch(e.target.value);
+                                                setPage(1);
+                                            }}
+                                            className="w-full pl-10 pr-4 py-3 rounded-lg border border-input focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none bg-background text-foreground"
                                         />
+                                        {search && (
+                                            <button
+                                                onClick={() => setSearch("")}
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                                            >
+                                                <X className="w-5 h-5" />
+                                            </button>
+                                        )}
+                                    </div>
 
-                                        {/* Video Overlay */}
-                                        {item.type === 'video' && (
-                                            <>
-                                                <div className="absolute inset-0 bg-black/20"></div>
-                                                <div className="absolute top-4 right-4 bg-red-500 text-card px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
-                                                    <Play className="w-3 h-3" />
-                                                    {galleryT.albumDetail.video}
-                                                </div>
-                                                {item.duration && (
-                                                    <div className="absolute bottom-4 right-4 bg-black/70 text-card px-2 py-1 rounded text-sm">
-                                                        {item.duration}
-                                                    </div>
+                                    <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                                        {/* Sort By */}
+                                        <div className="flex items-center gap-2 bg-muted rounded-lg px-4 py-2.5">
+                                            <span className="text-foreground font-medium whitespace-nowrap">{galleryT.sort.label}:</span>
+                                            <select
+                                                value={sort}
+                                                onChange={(e) => {
+                                                    setSort(e.target.value as "latest" | "popular" | "name");
+                                                    setPage(1);
+                                                }}
+                                                className="bg-transparent border-none focus:ring-0 focus:outline-none text-foreground"
+                                            >
+                                                <option value="latest">{galleryT.sort.newest}</option>
+                                                <option value="popular">{galleryT.sort.popular}</option>
+                                                <option value="name">{galleryT.sort.name}</option>
+                                            </select>
+                                        </div>
+
+                                        {/* Filter Toggle (only show for albums view) */}
+                                        {currentView === 'albums' && (
+                                            <button
+                                                onClick={() => setShowFilters(!showFilters)}
+                                                className="flex items-center gap-2 px-4 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium border border-primary/20"
+                                            >
+                                                <Filter className="w-5 h-5" />
+                                                <span>{galleryT.filters.button}</span>
+                                                {selectedCategories.length > 0 && (
+                                                    <span className="bg-primary text-primary-foreground text-sm rounded-full h-6 w-6 flex items-center justify-center">
+                                                        {selectedCategories.length}
+                                                    </span>
                                                 )}
-                                            </>
+                                            </button>
                                         )}
 
-                                        {/* Hover Actions */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        
+                                        {/* Clear Filters */}
+                                        {(search || selectedCategories.length > 0) && (
+                                            <button
+                                                onClick={clearFilters}
+                                                className="flex items-center gap-2 px-4 py-2.5 text-muted-foreground hover:text-primary transition-colors font-medium"
+                                            >
+                                                <X className="w-5 h-5" />
+                                                <span>{galleryT.filters.clearAll}</span>
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
 
-                                        {/* Hover Info */}
-                                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                            <div className="flex justify-between items-center mb-3">
-                                                <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold backdrop-blur-sm">
-                                                    {item.type === 'video' ? galleryT.albumDetail.video : galleryT.albumDetail.photo}
-                                                </span>
-                                               
-                                            </div>
-                                            <div className="flex items-center gap-2 text-card font-semibold">
-                                                {item.type === 'video' ? galleryT.albumDetail.viewVideo : galleryT.albumDetail.viewPhoto}
-                                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                            </div>
+                                {/* Category Filters (only show for albums view) */}
+                                {showFilters && currentView === 'albums' && (
+                                    <div className="mt-6 pt-6 border-t border-border">
+                                        <h3 className="text-lg font-medium text-foreground mb-4">{galleryT.filters.category}</h3>
+                                        <div className="flex flex-wrap gap-3">
+                                            {categories.map((category) => (
+                                                <button
+                                                    key={category}
+                                                    onClick={() => toggleCategory(category)}
+                                                    className={`px-4 py-2 rounded-full font-medium transition-all border ${selectedCategories.includes(category)
+                                                            ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                                                            : "bg-muted text-foreground border-border hover:bg-muted/80"
+                                                        }`}
+                                                >
+                                                    {category}
+                                                </button>
+                                            ))}
                                         </div>
                                     </div>
+                                )}
+                            </div>
+                        </section>
 
-                                    {/* Media Info */}
-                                    <div className="p-6">
-                                        <h3 className="font-bold text-foreground text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
-                                            {item.description}
+                        {/* Content Section */}
+                        <section className="py-16">
+                            <div className="container mx-auto px-4">
+                                {/* Results Count */}
+                                <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                    <div>
+                                        <p className="text-lg text-muted-foreground">
+                                            {currentView === 'albums' ? (
+                                                <>
+                                                    {galleryT.albums.resultsCount
+                                                        .replace("{count}", visibleAlbums.length.toString())
+                                                        .replace("{total}", filteredAndSortedAlbums.length.toString())
+                                                    }
+                                                </>
+                                            ) : (
+                                                <>
+                                                    Showing <span className="font-bold text-primary">{mediaItems.length}</span> {galleryT.albumDetail.mediaItems}{" "}
+                                                    <span className="font-bold text-foreground">{selectedAlbum?.title}</span>
+                                                </>
+                                            )}
                                         </p>
-                                        <div className="space-y-2">
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <Calendar className="w-4 h-4" />
-                                                <span>{item.dateLabel}</span>
+                                        {(search || selectedCategories.length > 0) && currentView === 'albums' && (
+                                            <p className="text-sm text-muted-foreground mt-1">
+                                                Filtered by: {search && `"${search}"`} {selectedCategories.length > 0 && `${selectedCategories.join(", ")}`}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <div className="text-sm text-muted-foreground bg-card px-4 py-2 rounded-lg border border-border">
+                                            Page <span className="font-bold text-primary">{page}</span> of <span className="font-bold">{totalPages}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Albums View */}
+                                {currentView === 'albums' ? (
+                                    visibleAlbums.length === 0 ? (
+                                        <div className="text-center py-24">
+                                            <div className="w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                                                <Folder className="w-16 h-16 text-primary" />
                                             </div>
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <MapPin className="w-4 h-4" />
-                                                <span className="line-clamp-1">{item.location}</span>
+                                            <h3 className="text-3xl font-bold text-foreground mb-4">{galleryT.albums.noResults.title}</h3>
+                                        </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                            {visibleAlbums.map((album) => (
+                                                <div
+                                                    key={album.id}
+                                                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
+                                                    onMouseEnter={() => setHoveredCard(album.id)}
+                                                    onMouseLeave={() => setHoveredCard(null)}
+                                                    onClick={() => handleAlbumClick(album)}
+                                                >
+                                                    {/* Album Cover */}
+                                                    <div className="aspect-video overflow-hidden relative">
+                                                        <img
+                                                            src={album.coverImage}
+                                                            alt={album.title}
+                                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        />
+
+                                                        {/* Gradient Overlay */}
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                                        {/* Media Type Badges */}
+                                                        <div className="absolute top-4 left-4 flex gap-2">
+                                                            <span className="px-3 py-1 bg-blue-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                                <ImageIcon className="w-3 h-3" />
+                                                                {album.photoCount}
+                                                            </span>
+                                                            <span className="px-3 py-1 bg-red-500 text-card rounded-full text-sm font-semibold backdrop-blur-sm flex items-center gap-1">
+                                                                <Play className="w-3 h-3" />
+                                                                {album.videoCount}
+                                                            </span>
+                                                        </div>
+
+                                                        {/* Hover Action */}
+                                                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                            <div className="flex items-center gap-2 text-card font-semibold">
+                                                                {galleryT.albums.viewAlbum}
+                                                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Album Info */}
+                                                    <div className="p-6">
+                                                        <h3 className="font-bold text-foreground text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                                            {album.title}
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                ) : (
+                                    /* Album Detail View - Media Items */
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                        {mediaItems.map((item) => (
+                                            <div
+                                                key={item.id}
+                                                className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
+                                                onMouseEnter={() => setHoveredCard(item.id)}
+                                                onMouseLeave={() => setHoveredCard(null)}
+                                                onClick={() => handleMediaClick(item)}
+                                            >
+                                                {/* Media Thumbnail */}
+                                                <div className="aspect-square overflow-hidden relative">
+                                                    <img
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                    />
+
+                                                    {/* Video Overlay */}
+                                                    {item.type === 'video' && (
+                                                        <>
+                                                            <div className="absolute inset-0 bg-black/20"></div>
+                                                            <div className="absolute top-4 right-4 bg-red-500 text-card px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                                                                <Play className="w-3 h-3" />
+                                                                {galleryT.albumDetail.video}
+                                                            </div>
+                                                            {item.duration && (
+                                                                <div className="absolute bottom-4 right-4 bg-black/70 text-card px-2 py-1 rounded text-sm">
+                                                                    {item.duration}
+                                                                </div>
+                                                            )}
+                                                        </>
+                                                    )}
+
+                                                    {/* Hover Actions */}
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                                    
+
+                                                    {/* Hover Info */}
+                                                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                        <div className="flex justify-between items-center mb-3">
+                                                            <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold backdrop-blur-sm">
+                                                                {item.type === 'video' ? galleryT.albumDetail.video : galleryT.albumDetail.photo}
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-card font-semibold">
+                                                            {item.type === 'video' ? galleryT.albumDetail.viewVideo : galleryT.albumDetail.viewPhoto}
+                                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Media Info */}
+                                                <div className="p-6">
+                                                    <h3 className="font-bold text-foreground text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                                                        {item.title}
+                                                    </h3>
+                                                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
+                                                        {item.description}
+                                                    </p>
+                                                    <div className="space-y-2">
+                                                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                            <Calendar className="w-4 h-4" />
+                                                            <span>{item.dateLabel}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                            <MapPin className="w-4 h-4" />
+                                                            <span className="line-clamp-1">{item.location}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {/* Pagination (only for albums view) */}
+                                {currentView === 'albums' && totalPages > 1 && (
+                                    <div className="flex items-center justify-center gap-4 mt-20">
+                                        <button
+                                            className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
+                                            disabled={page === 1}
+                                            onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                        >
+                                            <ChevronLeft className="w-5 h-5" />
+                                            {galleryT.pagination.previous}
+                                        </button>
+
+                                        <div className="flex gap-2">
+                                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                                                <button
+                                                    key={p}
+                                                    onClick={() => setPage(p)}
+                                                    className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 ${p === page
+                                                            ? "bg-primary text-primary-foreground shadow-sm border-primary"
+                                                            : "border-border bg-card hover:bg-muted hover:shadow-lg"
+                                                        }`}
+                                                >
+                                                    {p}
+                                                </button>
+                                            ))}
+                                        </div>
+
+                                        <button
+                                            className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
+                                            disabled={page === totalPages}
+                                            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                        >
+                                            {galleryT.pagination.next}
+                                            <ChevronRight className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </section>
+
+                        {/* Media Modal */}
+                        {showMediaModal && selectedMedia && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-6 overflow-y-auto">
+                                <div className="relative bg-card rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden animate-in fade-in duration-300">
+                                    {/* Close Button */}
+                                    <button
+                                        onClick={handleCloseModal}
+                                        className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-card rounded-full flex items-center justify-center transition-all duration-200"
+                                        aria-label="Close modal"
+                                    >
+                                        <X className="w-6 h-6" />
+                                    </button>
+
+                                    {/* Modal Content */}
+                                    <div className="flex flex-col lg:flex-row">
+                                        {/* Media Display */}
+                                        <div className="relative w-full lg:w-2/3 bg-black flex items-center justify-center">
+                                            {selectedMedia.type === 'photo' ? (
+                                                <img
+                                                    src={selectedMedia.image}
+                                                    alt={selectedMedia.title}
+                                                    className="w-full h-full max-h-[70vh] object-contain transition-transform duration-300 hover:scale-[1.02]"
+                                                />
+                                            ) : (
+                                                <div className="relative w-full h-80 sm:h-96 lg:h-[500px] bg-black flex items-center justify-center">
+                                                    <div className="text-center text-card">
+                                                        <Play className="w-16 h-16 mx-auto mb-4 opacity-80 hover:opacity-100 transition" />
+                                                        <p className="text-lg font-medium">Video Player Placeholder</p>
+                                                        <p className="text-sm text-gray-400 mt-2">{selectedMedia.duration}</p>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Media Info */}
+                                        <div className="lg:w-1/3 p-6 sm:p-8 border-t lg:border-t-0 lg:border-l border-border bg-card overflow-y-auto max-h-[80vh]">
+                                            <h2 className="text-2xl font-bold text-foreground mb-4 leading-tight">
+                                                {selectedMedia.title}
+                                            </h2>
+
+                                            <p className="text-muted-foreground mb-6 leading-relaxed text-sm sm:text-base">
+                                                {selectedMedia.description}
+                                            </p>
+
+                                            <div className="space-y-4 mb-6">
+                                                <div className="flex items-center gap-3 text-sm sm:text-base">
+                                                    <Calendar className="w-4 h-4 text-muted-foreground" />
+                                                    <span className="text-foreground">{selectedMedia.dateLabel}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3 text-sm sm:text-base">
+                                                    <MapPin className="w-4 h-4 text-muted-foreground" />
+                                                    <span className="text-foreground">{selectedMedia.location}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3 text-sm sm:text-base">
+                                                    <Users className="w-4 h-4 text-muted-foreground" />
+                                                    <span className="text-foreground">{selectedMedia.participants}</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex items-center justify-between border-t border-border pt-6">
+                                                <button
+                                                    onClick={() => handleLikeMedia(selectedMedia.id)}
+                                                    className="flex items-center gap-2 text-muted-foreground hover:text-red-500 transition-colors"
+                                                >
+                                                    <Heart className="w-5 h-5" />
+                                                    <span>{formatNumber(selectedMedia.likes)}</span>
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDownloadMedia(selectedMedia.id)}
+                                                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                                                >
+                                                    <Download className="w-5 h-5" />
+                                                    <span>{formatNumber(selectedMedia.downloads)}</span>
+                                                </button>
+                                                <button className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                                                    <Share2 className="w-5 h-5" />
+                                                    <span>Share</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    )}
-
-                    {/* Pagination (only for albums view) */}
-                    {currentView === 'albums' && totalPages > 1 && (
-                        <div className="flex items-center justify-center gap-4 mt-20">
-                            <button
-                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
-                                disabled={page === 1}
-                                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                            >
-                                <ChevronLeft className="w-5 h-5" />
-                                {galleryT.pagination.previous}
-                            </button>
-
-                            <div className="flex gap-2">
-                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                                    <button
-                                        key={p}
-                                        onClick={() => setPage(p)}
-                                        className={`px-5 py-4 rounded-2xl border font-semibold transition-all duration-300 ${p === page
-                                                ? "bg-primary text-primary-foreground shadow-sm border-primary"
-                                                : "border-border bg-card hover:bg-muted hover:shadow-lg"
-                                            }`}
-                                    >
-                                        {p}
-                                    </button>
-                                ))}
                             </div>
-
-                            <button
-                                className="flex items-center gap-3 px-6 py-4 rounded-2xl border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 hover:shadow-lg"
-                                disabled={page === totalPages}
-                                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                            >
-                                {galleryT.pagination.next}
-                                <ChevronRight className="w-5 h-5" />
-                            </button>
-                        </div>
-                    )}
-                </div>
-            </section>
-
-            {/* Media Modal */}
-            {showMediaModal && selectedMedia && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-6 overflow-y-auto">
-  <div className="relative bg-card rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden animate-in fade-in duration-300">
-    {/* Close Button */}
-    <button
-      onClick={handleCloseModal}
-      className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-card rounded-full flex items-center justify-center transition-all duration-200"
-      aria-label="Close modal"
-    >
-      <X className="w-6 h-6" />
-    </button>
-
-    {/* Modal Content */}
-    <div className="flex flex-col lg:flex-row">
-      {/* Media Display */}
-      <div className="relative w-full lg:w-2/3 bg-black flex items-center justify-center">
-        {selectedMedia.type === 'photo' ? (
-          <img
-            src={selectedMedia.image}
-            alt={selectedMedia.title}
-            className="w-full h-full max-h-[70vh] object-contain transition-transform duration-300 hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="relative w-full h-80 sm:h-96 lg:h-[500px] bg-black flex items-center justify-center">
-            <div className="text-center text-card">
-              <Play className="w-16 h-16 mx-auto mb-4 opacity-80 hover:opacity-100 transition" />
-              <p className="text-lg font-medium">Video Player Placeholder</p>
-              <p className="text-sm text-gray-400 mt-2">{selectedMedia.duration}</p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Media Info */}
-      <div className="lg:w-1/3 p-6 sm:p-8 border-t lg:border-t-0 lg:border-l border-border bg-card overflow-y-auto max-h-[80vh]">
-        <h2 className="text-2xl font-bold text-foreground mb-4 leading-tight">
-          {selectedMedia.title}
-        </h2>
-
-        <p className="text-muted-foreground mb-6 leading-relaxed text-sm sm:text-base">
-          {selectedMedia.description}
-        </p>
-
-        <div className="space-y-4 mb-6">
-          <div className="flex items-center gap-3 text-sm sm:text-base">
-            <Calendar className="w-4 h-4 text-muted-foreground" />
-            <span className="text-foreground">{selectedMedia.dateLabel}</span>
-          </div>
-          <div className="flex items-center gap-3 text-sm sm:text-base">
-            <MapPin className="w-4 h-4 text-muted-foreground" />
-            <span className="text-foreground">{selectedMedia.location}</span>
-          </div>
-          <div className="flex items-center gap-3 text-sm sm:text-base">
-            <Users className="w-4 h-4 text-muted-foreground" />
-            <span className="text-foreground">{selectedMedia.participants}</span>
-          </div>
-        </div>
-
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-            )}
-               </div>
-        </section>
+                        )}
+                    </div>
+                </section>
             </main>
 
             {/* Footer */}
