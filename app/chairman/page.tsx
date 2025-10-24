@@ -225,7 +225,7 @@ export default function ChairmanPage() {
         </div>
       </section>
 
-      {/* 🧭 Values & Philosophy */}
+      {/* 🧭 Valuesmmmmmmm & Philosophy */}
       <section className="bg-muted/30 py-20">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-primary text-center mb-12">
